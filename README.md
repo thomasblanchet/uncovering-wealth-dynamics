@@ -162,66 +162,66 @@ Description of programs/code
 The codes are included in the folder `R`. They should run in the following order:
 
 - Preliminaries:
- - `R/01-utils.R` defines several useful functions.
+  - `R/01-utils.R` defines several useful functions.
 - Data imports:
- - `R/02-import-dina.R` imports the DINA micro and macro data.
- - `R/02-import-scf.R` imports the main, cross-sectional Survey of Consumer Finances data.
- - `R/02-import-scf-panel.R` imports the 2007-2009 Panel Survey of Consumer Finances.
- - `R/02-import-scf-plus.R` imports the SCF+ (the SCF extended historically by Kuhn, Schularick and Steins, 2020).
- - `R/02-plot-dina-scf.R` plots some basic results from the DINA and SCF data.
- - `R/02-import-sipp.R` imports the SIPP data.
- - `R/02-import-psid.R` imports the PSID data.
- - `R/02-import-census.R` imports the census microdata.
- - `R/02-import-population.R` imports the population data.
- - `R/02-import-mortality.R` imports mortality data (life tables).
- - `R/02-import-female-fertility.R` imports female fertility data.
- - `R/02-import-marital-status.R` imports data on marital status.
- - `R/02-import-estate-tax-schedule.R` imports data on the estate tax.
- - `R/02-import-forbes400.R` import the panel data from the Forbes 400.
+  - `R/02-import-dina.R` imports the DINA micro and macro data.
+  - `R/02-import-scf.R` imports the main, cross-sectional Survey of Consumer Finces data.
+  - `R/02-import-scf-panel.R` imports the 2007-2009 Panel Survey of Consumer Finces.
+  - `R/02-import-scf-plus.R` imports the SCF+ (the SCF extended historically by Kuh Schularick and Steins, 2020).
+  - `R/02-plot-dina-scf.R` plots some basic results from the DINA and SCF data.
+  - `R/02-import-sipp.R` imports the SIPP data.
+  - `R/02-import-psid.R` imports the PSID data.
+  - `R/02-import-census.R` imports the census microdata.
+  - `R/02-import-population.R` imports the population data.
+  - `R/02-import-mortality.R` imports mortality data (life tables).
+  - `R/02-import-female-fertility.R` imports female fertility data.
+  - `R/02-import-marital-status.R` imports data on marital status.
+  - `R/02-import-estate-tax-schedule.R` imports data on the estate tax.
+  - `R/02-import-forbes400.R` import the panel data from the Forbes 400.
 - Preliminary data preparation:
- - `R/03-combine-calibrate-microdata.R` combines the DINA microdata with the SCF.
- - `R/03-estimate-marriage-rates.R` estimates age-specific marriage/divorce rates.
- - `R/03-estimate-male-fertility.R` estimates fertility rates for men.
- - `R/03-estimate-intergenerational-linkages.R` simulates intergenerational linkages in the microdata.
- - `R/03-estimate-inheritance-process.R` simulates the effect of inheritance in the microdata.
- - `R/03-estimate-marriage-process.R` simulates the effects of marriage and divorce.
+  - `R/03-combine-calibrate-microdata.R` combines the DINA microdata with the SCF.
+  - `R/03-estimate-marriage-rates.R` estimates age-specific marriage/divorce rates.
+  - `R/03-estimate-male-fertility.R` estimates fertility rates for men.
+  - `R/03-estimate-intergenerational-linkages.R` simulates intergenerational linkages in the microdata.
+  - `R/03-estimate-inheritance-process.R` simulates the effect of inheritance in the microdata.
+  - `R/03-estimate-marriage-process.R` simulates the effects of marriage and divorce.
 - Creation of input data for the model:
- - `R/04-prepare-data.R` prepares the microdata for estimation.
- - `R/04-estimate-distribution-wealth.R` estimates the distribution of wealth.
- - `R/04-estimate-distribution-income.R` estimates the distribution of income (by wealth).
- - `R/04-estimate-distribution-birth.R` estimates a distribution for newly entering units.
- - `R/04-estimate-distribution-death.R` estimates the distribution of people at death.
- - `R/04-estimate-distribution-inheritance.R` estimates the distribution of the effect of inheritances.
- - `R/04-estimate-distribution-marriage.R` estimates the distribution of the effect of marriages and divorces.
+  - `R/04-prepare-data.R` prepares the microdata for estimation.
+  - `R/04-estimate-distribution-wealth.R` estimates the distribution of wealth.
+  - `R/04-estimate-distribution-income.R` estimates the distribution of income (by wealth).
+  - `R/04-estimate-distribution-birth.R` estimates a distribution for newly entering units.
+  - `R/04-estimate-distribution-death.R` estimates the distribution of people at death.
+  - `R/04-estimate-distribution-inheritance.R` estimates the distribution of the effect of inheritances.
+  - `R/04-estimate-distribution-marriage.R` estimates the distribution of the effect of marriages and divorces.
 - Model fit:
- - `R/05-prepare-data-model.R` combines all the relevant input data into a single object.
- - `R/05-fit-model.R` fits the benchmark model.
- - `R/05-fit-model-robustness-delta.R` performs robustness checks for the delta parameter.
- - `R/05-fit-model-robustness-bw.R` performs robustness checks for the bandwidth parameters.
- - `R/05-fit-model-robustness-bootstrap.R` calculates confidence intervals using bootstrap.
+  - `R/05-prepare-data-model.R` combines all the relevant input data into a single object.
+  - `R/05-fit-model.R` fits the benchmark model.
+  - `R/05-fit-model-robustness-delta.R` performs robustness checks for the delta parameter.
+  - `R/05-fit-model-robustness-bw.R` performs robustness checks for the bandwidth parameters.
+  - `R/05-fit-model-robustness-bootstrap.R` calculates confidence intervals using bootstrap.
 - Analysis of the results:
- - `R/06-decompose-effects.R` decomposes the drivers of the growth of the top 1%.
- - `R/06-analyze-panels.R` compares mobility estimates with the SCF and the SIPP.
+  - `R/06-decompose-effects.R` decomposes the drivers of the growth of the top 1%.
+  - `R/06-analyze-panels.R` compares mobility estimates with the SCF and the SIPP.
 - Perform simulations of the models:
- - `R/07-simulation-functions.R` defines functions useful for simulating the model.
- - `R/07-prepare-simulation.R` preprocesses data for the simulations.
- - `R/07-simulate-model.R` simulates the benchmark model until 2019.
- - `R/07-simulate-model-future.R` simulates the benchmark model until 2070.
- - `R/07-simulate-model-capital.R` simulates a counterfactual with pre-1980 rates of return.
- - `R/07-simulate-model-demography.R` simulates a counterfactual for demography.
- - `R/07-simulate-model-estate-tax-high.R` simulates a counterfactual with a confiscatory estate tax.
- - `R/07-simulate-model-estate-tax.R` simulates a counterfactual with no change in the estate tax.
- - `R/07-simulate-model-gains-zero.R` simulates a counterfactual with no capital gains.
- - `R/07-simulate-model-gains.R` simulates a counterfactual with pre-1980 capital gains.
- - `R/07-simulate-model-growth.R` simulates a counterfactual with pre-1980 growth.
- - `R/07-simulate-model-income-taxes.R` simulates a counterfactual with pre-1980 taxes.
- - `R/07-simulate-model-labor-income.R` simulates a counterfactual with pre-1980 labor income inequality.
- - `R/07-simulate-model-savings.R` simulates a counterfactual with pre-1980 savings.
- - `R/07-simulate-model-sanders.R` simulates a counterfactual with the Sanders wealth tax.
- - `R/07-simulate-model-warren-i.R` simulates a counterfactual with the Warren wealth tax (first version).
- - `R/07-simulate-model-warren-ii.R` simulates a counterfactual with the Warren wealth tax (second version).
+  - `R/07-simulation-functions.R` defines functions useful for simulating the model.
+  - `R/07-prepare-simulation.R` preprocesses data for the simulations.
+  - `R/07-simulate-model.R` simulates the benchmark model until 2019.
+  - `R/07-simulate-model-future.R` simulates the benchmark model until 2070.
+  - `R/07-simulate-model-capital.R` simulates a counterfactual with pre-1980 rates of return.
+  - `R/07-simulate-model-demography.R` simulates a counterfactual for demography.
+  - `R/07-simulate-model-estate-tax-high.R` simulates a counterfactual with a confiscatory estate tax.
+  - `R/07-simulate-model-estate-tax.R` simulates a counterfactual with no change in the estate tax.
+  - `R/07-simulate-model-gains-zero.R` simulates a counterfactual with no capital gains.
+  - `R/07-simulate-model-gains.R` simulates a counterfactual with pre-1980 capital gains.
+  - `R/07-simulate-model-growth.R` simulates a counterfactual with pre-1980 growth.
+  - `R/07-simulate-model-income-taxes.R` simulates a counterfactual with pre-1980 taxes.
+  - `R/07-simulate-model-labor-income.R` simulates a counterfactual with pre-1980 labor income inequality.
+  - `R/07-simulate-model-savings.R` simulates a counterfactual with pre-1980 savings.
+  - `R/07-simulate-model-sanders.R` simulates a counterfactual with the Sanders wealth tax.
+  - `R/07-simulate-model-warren-i.R` simulates a counterfactual with the Warren wealth tax (first version).
+  - `R/07-simulate-model-warren-ii.R` simulates a counterfactual with the Warren wealth tax (second version).
 - Analysis of wealth taxes:
- - `R/08-wealth-tax-simulations.R` applies the paper's wealth tax formulas.
+  - `R/08-wealth-tax-simulations.R` applies the paper's wealth tax formulas.
  
 ### License for Code
 
