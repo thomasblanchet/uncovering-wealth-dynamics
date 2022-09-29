@@ -41,8 +41,10 @@ vignettes/*.pdf
 
 # Files 50MB+
 raw-data/wpp/WPP2019_Life_Table_OtherVariants.csv
+raw-data/wpp/WPP2019_PopulationByAgeSex_OtherVariants.csv
 raw-data/wpp/WPP2019_PopulationByAgeSex_Medium.csv
 raw-data/wpp/WPP2019_Life_Table_Medium.csv
+raw-data/scf-plus/SCF_plus.dta
 raw-data/scf/p13i6.dta
 raw-data/scf/p89i6.dta
 raw-data/scf/p92i4.dta
