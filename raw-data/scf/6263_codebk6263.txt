@@ -1,0 +1,3136 @@
+     CODEBOOK FOR 1962 SURVEY OF FINANCIAL CHARACTERISTICS OF CONSUMERS
+                  AND 1963 CHANGES IN FAMILY FINANCES
+
+                         September 15, 1997
+
+     This document reproduces the content of the original codebook
+issued for the public version of the 1962 Survey of Financial
+Charactersitics of Consumers (SFCC) and the 1963 Survey of Changes in
+Family Finances (SCFF).  The SFCC is sometimes known as the 1963 SFCC
+because the data for the survey were collected in 1963 with a
+reference year of 1962.  The SCFF is a reinterview with respondents to
+the SFCC.  A detailed description of the survey methodology and
+results is provided in "Survey of Financial Characteristics of
+Consumers" by Dorothy S. Projector and Gertrude S. Weiss (Board of
+Governors of the Federal Reserve System, 1966), and "Survey of Changes
+in Family Finances," by Dorothy S. Projector (Board of Governors of
+the Federal Reserve System, 1968).  Copies of the questionniares are
+available separately.
+
+     These surveys are major landmarks in the history of wealth
+surveys.  They are the direct ancestors of the series of Surveys of
+Consumer Finances that began in 1983.  The questionnaires were
+directly focused on collecting the details of family wealth.  The
+sample design included a special sample of relatively wealthy
+respondents selected from tax files; this design allowed the survey
+both to improve the precision of the measurement of highly
+concentrated assets, and to deal with differentially higher unit
+nonresponse among wealthy households.
+
+     The project was conducted under the leadership of Dorothy
+Projector for the Board of Governors of the Federal Reserve System.
+Data for the surveys were collected by the Bureau of the Census.  All 
+processing beyond data entry was performed at the Federal Reserve.
+
+     The surveys were among the first federal surveys to have a public
+use dataset.  Most of the missing data in this file were imputed.
+James Smith at the University of Michigan has provided a copy of an
+earlier version of the dataset which had been lost at the Federal
+Reserve; although there are more missing data items in this file, it
+is not certain that it is an accurate reflection of the true amount of
+data that was originally missing.
+
+     Three versions of the datasets are made available with this
+codebook.  First, a SAS dataset contains merged data from the SFCC and
+the SCFF.  The variable numbers in the codebook below refer to the
+numbering system in this dataset.  Variables from the SFCC have a
+prefix of "V" and those from the SCFF have a prefix of "X."  A copy of
+the SAS program used to create this dataset is provided at the end of
+this codebook.  Second, there are separate copies of the original
+public use version of the SFCC and the SCFF files in ASCII format.
+The coding conventions in these files may be unfamiliar to many users.
+To conserve space, negative numbers were entered using an "overpunch":
+that is, the person who entered the data on punched cards backspaced
+over the leading digit and entered a minus sign over the terminal
+digit (J=-1, K=-2, L=-3, M=-4, N=-5, O=-6, P=-7, Q=-8, R=-9, and }=-0).
+The SAS program presented for the SAS dataset provides one way of
+dealing with such data.  Third, the earlier dataset from James Smith
+is provided.  A SAS program to read this dataset is also given at the
+end of this codebook.
+
+     To assist users in verifying the proper installation of this
+dataset, the output of an unweighted execution of the SAS procedure
+PROC MEANS and a similar weighted execution (using V4) are given at
+the end of the codebook.
+
+
+SPECIAL NOTE:  ALL TAPE LOCATIONS ARE THE ENDING POINT FOR THE VARIABLE,
+               NOT THE STARTING POINT.
+
+*****************************************************************************
+
+1962 SURVEY OF FINANCIAL CHARACTERISTICS OF CONSUMERS
+
+                                                           Source:   
+Var                                 Report   Location   FRB-1A Questionnaire
+Num     Item             	    Basis    on Tape    Page    Item No.
+_________________________________________________________________________      
+
+  1  Sequence Number (1 to 2557)               10      
+
+  2  Provisional weight (before		       20
+     adjustment for nonresponse)
+
+  3  Dummy Weight (1.000)                    1990
+
+  4  Final weight (after                     2000
+     adjustment for nonresponse)
+     (multiplied by 1000)
+
+  5  Checking accounts - balance     Head      30        2        1b
+  6			             Wife      40        
+  7				     OFM       50
+
+  8  U.S. Savings Bonds -            Head      60        2        2
+  9  face value			     Wife      70 
+ 10				     OFM       80
+
+ 11  U.S. Government Bills -	     Family    90        2        3
+     par value
+
+ 12  U.S. Government Notes -	     Family   100	 2	  4
+     par value
+
+ 13  U.S. Government Certificates -  Family   110	 2	  5
+     par value
+
+     U.S. Government Bonds other
+     than Savings Bonds - par value
+ 14     1963-67 maturity	     Family   120	 2	  6a
+ 15     1968-72 maturity	     Family   130	 2	  6b
+ 16     1973-82 maturity	     Family   140	 2	  6c
+ 17     1983 or later maturity	     Family   150	 2	  6d
+ 18     maturity date unknown	     Family   160	 2	  6e
+
+ 19  State and local bonds -	     Family   170	 2	  7a
+     par value
+
+ 20  Bonds, debentures and notes     Family   180        2	  7b
+     of foreign corp. or gov. - 
+     par value
+
+ 21  Domestic corp. bonds,	     Family   190	 2	  7c
+     debentures, and notes - 
+     par value
+
+ 22  Mortgage assets		     Head     200	 2	  8a
+ 23				     Wife     210 
+ 24				     OFM      220
+
+ 25  Loans to businesses in which    Family   290	 2	  8b
+     no family member has active or
+     non-active interest
+
+ 26  Other loan assets (non-mortgage Head     300	 2	  8c
+ 27  loans to individuals)           Wife     310
+ 28                                  OFM      320
+  
+ 29  Total amount paid into	     Head     330*	 2	  9
+ 30  individual annuity		     Wife     340*
+ 31				     OFM      350*
+
+ 32  Estates in probate - amount     Family   360*	 2	  10
+     to be received
+
+ 33  Term group life insurance -     Head    1960*	 3	  11a
+ 34  face value			     Wife    1970*	 
+ 35				     OFM     1980*
+
+ 36  Life insurance other than       Head     480*	 3        11b(1)
+ 37  term - face value		     Wife     490*
+ 38				     OFM      500*
+
+ 39  Life insurance other than       Head     510*	 3	  11b(2)
+ 40  term - cash surrender value     Wife     520*	 
+ 41				     OFM      530*
+
+ 42  Loan outstanding secured by     Head     600	 3	  11c
+ 43  life insurance policies	     Wife     610
+ 44				     OFM      620
+
+     Balances in savings accounts:			 4	  12
+
+ 45  Savings and loan associations   Head     380
+ 46				     Wife     390
+ 47				     OFM      400
+ 48			             Family   410#
+ 49				     N.A.     420&
+
+ 50  Credit unions		     Head     430
+ 51				     Wife     440
+ 52				     OFM      450
+ 53				     Family   460#
+ 54				     N.A.     470&
+ 
+ 55  Commercial banks		     Head    1810
+ 56              		     Wife    1820
+ 57				     OFM     1830
+ 58				     Family  1840#
+ 59		 		     N.A.    1850&
+
+ 60  Mutual savings banks	     Head    1860
+ 61			             Wife    1870
+ 62				     OFM     1880
+ 63				     Family  1890#
+ 64				     N.A.    1900&
+
+ 65  Type of institution not	     Head    1910
+ 66  ascertained		     Wife    1920
+ 67				     OFM     1930
+ 68				     Family  1940#
+ 69			             N.A.    1950&
+
+     Market value of stock:				 6	  13
+
+ 70  Publicly traded stock-common    Family   560
+ 71  Publicly traded stock-preferred Family   570
+ 72  Shares in mutual funds	     Family   580
+ 73  Investment clubs		     Family   590
+ 74  Type of stock not ascertained   Family   550
+
+     Book value of family's share			 8	  14g(2)
+     in business - active interest:
+
+ 75  Closely held non-farm corp.     Family   700
+ 76  Partnership (nonfarm)	     Family   760
+ 77  Sole proprietorship (nonfarm)   Family   810
+ 78  Type not ascertained (non-farm) Family   650
+ 79  Farm - all types		     Family   860
+
+     Market value of family's share			 8	  14h
+     in business - active interest:
+
+ 80  Closely held non-farm corp.     Family   710*
+ 81  Partnership (non-farm)	     Family   770*
+ 82  Sole proprietorship (non-farm)  Family   820*
+ 83  Type not ascertained (non-farm) Family   660*
+ 84  Farm - all types		     Family   870*
+
+     Loans to businesses in which			 8	  14i(1)
+     family has active interest:
+
+ 85  Closely held non-farm corp.     Family   230
+ 86  Partnership (non-farm)	     Family   240
+ 87  Type not ascertained (non-farm) Family   670
+ 88  Farm - all types		     Family   250
+
+     Family's share of undistributed			 8	  14j
+     profits of closely held corp.:			    minus
+							12	  24e(2)
+
+ 89  Non-farm corp.		     Family   720*
+ 90  Farm corp.			     Family   880*
+
+     Market value of family's share			 9	  15d
+     in business - non-active interest:
+
+ 91  Closely held non-farm crop.     Family   730
+ 92  Partnership (non-farm)	     Family   780
+ 93  Sole proprietorship (non-farm)  Family   830
+ 94  Type not ascertained (non-farm) Family   630
+ 95  Farm - all types		     Family   890
+
+     Loans to businesses in which			 9	  15e(1)
+     family has non-active interest:
+
+ 96  Closely held non-farm corp.     Family   260
+ 97  Partnership (non-farm)	     Family   270
+ 98  Sole proprietorship (non-farm)  Family   690
+ 99  Type not ascertained (non-farm) Family   640
+100  Farm - all types		     Family   280
+
+101  Profit sharing plans - amount   Family   900	10	  16	
+     that could be withdrawn
+
+102  Retirement plans - amount       Family   910*	10	  17	
+     that could be withdrawn
+
+     Principal residence:
+
+103  Market value		     Family   920	10	  18a(1)
+104  Debt			     Family   930	10        18a(2)
+
+     Other residence for family use:
+
+105  Market value		     Family   940	10	  18b(2)
+106  Debt			     Family   950	10	  18b(3)
+
+     Investment real estate:
+
+107  Market value		     Family   960	10	  19a
+108  Debt			     Family   970	10	  19b
+
+     Brokerage accounts:
+ 
+109  Credit balance		     Family   980	11	  20a
+110  Debit balance		     Family   990	11	  20b
+
+111  Automobiles - market value	     Family  1100       11        21
+
+112  Other assets (oil royalties     Head    1110	11	  22
+113  patents, commodity contracts)   Wife    1120	
+114				     OFM     1130    
+
+115  Loans secured by stock	     Family  1000	11        23a(1)
+
+116  Loans secured by bonds	     Family  1010	11	  23a(2)
+
+     Installment debt:
+
+117  Automobile			     Family  1020	11	  23b(1)
+118  Home repair and modernization   Family  1030	11	  23b(2)
+119  Other consumer goods	     Family  1040	11	  23b(3)
+120  Other purposes		     Family  1050	11	  23b(4)
+
+     Non installment debt:
+
+121  Banks			     Family  1060	11	  23c(1)
+122  Other financial institutions    Family  1070	11	  23c(2)
+123  Doctors, dentists, hospitals    Family  1080	11	  23c(3)
+124  Private individuals	     Family  1090	11	  23c(4)
+
+125  Wage and salary income	     Head    1140	12	  24a
+126				     Wife    1150
+127				     OFM     1160
+
+128  Income from sole prop.          H & W   1170	12	  24b
+129  (non-farm)			     OFM     1180
+
+130  Income from partnership         H & W   1190	12	  24c
+131  (non-farm)			     OFM     1200
+
+132  Farm income		     H & W   1210       12	  24d
+133				     OFM     1220
+
+     Dividend income:
+
+134  Publicly traded stocks	     H & W   1230	12	  24e(1)
+135				     OFM     1240
+
+136  Closely held corp. - active     H & W   1250	12	  24e(2)
+137				     OFM     1260
+
+138  Other closely held corp.	     H & W   1270	12	  24e(3)
+139				     OFM     1280
+
+     Interest income:
+
+140  U.S. Government securities      H & W   1290	12	  24f(1)
+141				     OFM     1300
+
+142  State and local bonds           H & W   1310	12	  24f(2)
+143				     OFM     1320
+
+144  Corporate and foreign bonds     H & W   1330	12	  24f(3)
+145				     OFM     1340
+
+146  Saving accounts                 H & W   1350	12	  24f(4)
+147				     OFM     1360
+
+148  Loans, mortgages	             H & W   1370	12	  24f(5)
+149				     OFM     1380
+
+150  Net income from rents and       H & W   1390	12	  24g
+151  royalties			     OFM     1400
+
+152  Pensions, annuities             H & W   1410	12	  24h
+153				     OFM     1420
+
+154  Income from trust/estates       H & W   1430	12	  24i
+155				     OFM     1440
+
+156  Other income                    H & W   1450	12	  24j
+157				     OFM     1460
+
+     Capital gain or loss - securities:			12	  24k
+
+158  Short-term			     H & W   1470*
+159				     OFM     1480*
+160  Long-term			     H & W   1490*
+161				     OFM     1500*
+
+162  Capital gain or loss - other    H & W   1510*	12	  24l
+163  assets			     OFM     1520*
+
+     Assets held in formal trusts:
+
+164  Cash or checking accounts       Family  1530	13	  a
+
+165  Savings accounts	             Family  1540	13	  b
+
+166  U.S. Savings Bonds              Family  1550	13	  c
+
+167  U.S. Government mktable sec.    Family  1560	13	  d
+
+168  State and local bonds           Family  1570	13	  e
+
+169  Bonds, notes, debentures of     Family  1580	13	  f
+     foreign corps. & governments
+
+170  Domestic corporate bonds        Family  1590	13	  g
+
+171  Publicly traded stock, mutual   Family  1600	13	  h
+     funds
+
+172  Equity in unincorporated bus.   Family  1610	13	  i
+     and closely held corps.
+
+173  Real estate	             Family  1620	13	  j
+
+174  Other trust assets              Family  1630	13	  k
+
+175  Type not ascertained (used      Family  1800       13	  
+     when entire value of trust
+     was reported without specification
+     of type of assets)
+
+176  Summation of all trust assets   Family   370	13	  a-k
+
+
+Note:
+  * - Variable was not included in published income and wealth estimates.
+  # - Savings accounts were entered on a "Family" basis only when a
+      single figure was given for the accounts of all family members.
+      This item is NOT the summation of the reports for individual
+      family members.
+  & - Savings accounts were entered on a "N.A." basis when the family
+      member owning an individual account was not reported.
+
+
+Var
+Num		Code				Location on Tape
+_____________________________________________________________________
+
+177	Questionnaire type				1638	
+	   01  FRB-1
+	   02  FRB-2
+
+178     Region						1640
+           01  Northeast
+	   02  North Central
+	   03  South
+	   04  West
+
+179	Size of place					1642
+	   01  Urbanized area, pop. 1 million or more
+	   02  Urbanized area, pop. 250,000 to 999,999
+	   03  Urbanized area, pop. under 250,000
+           04  (not used)
+	   05  Urban places outside urbanized area
+	   06  Rural
+
+180	Age of family head, Dec. 31, 1962		1644
+	   17-98  Age in years
+	   99     Not ascertained
+
+181	Sex of family head				1646
+	   01  Male
+	   02  Female
+	   11  Not ascertained
+
+182	Marital status of family head			1648
+	   01  Married, wife present
+	   02  Separated, widowed, divorced
+	   03  Never married
+	   11  Not ascertained
+
+183	Years married to present spouse			1650
+	   00-98  Number of years
+	   99	  Not ascertained
+
+184	Education of head				1652
+	   00-20  Number of years
+	   99	  Not ascertained
+
+185	Months head worked for pay in 1962		1654
+	   00-12  Number of months
+	   99     Not ascertained
+
+186	Full or part-time employment of head		1656
+	   01  Full time
+	   02  Part time
+	   11  Not ascertained
+
+187	Occupation of family head			1658
+	   01  Self-employed professional, technical
+	       or kindred worker
+	   02  Salaried professional, technical or
+	       kindred worker
+	   03  Farm operator or farm manager
+	   04  Self-employed manager, official or 
+	       proprietor, except farm
+	   05  Salaried manager, official or 
+	       proprietor, except farm
+	   06  Clerical or kindred worker
+	   07  Sales worker
+	   08  Craftsman, foreman, or kindred worker
+	   09  Operative or kindred worker (including
+	       mine laborer)
+	   10  Service worker
+	   11  Farm laborer or foreman
+	   12  Laborer, except farm or mine
+	   13  Did not work in 1962
+	   14  In Armed Forces
+	   19  Not ascertained
+
+188	Race of family head				1662
+	   01  White
+	   02  Nonwhite
+	   11  Not ascertained
+
+189	Age of wife, Dec. 31, 1962			1664
+	   00     No wife
+	   17-98  Age in years
+	   99	  Not ascertained
+
+190	Education of wife				1666
+	   00-20  Number of years
+	   88	  No wife
+	   99	  Not ascertained
+
+191	Months wife worked for pay in 1962		1668
+	   00-12  Number of months
+	   88     No wife
+	   99	  Not ascertained
+
+192	Full or part-time employment of wife		1670
+	   01  Full time
+	   02  Part time
+	   11  Not ascertained
+
+193	Occupation of wife				1672
+	   01-14  (Same codes as head)
+	   18     No wife
+	   19     Not ascertained
+
+194	Size of unit					1674
+	   01-98  Number of persons
+	   99     Not ascertained
+
+195     Number of adults (age 18 and over)		1676
+	   01-98  Number of persons
+	   99	  Not ascertained
+
+196	Number of children (under 18 years)		1678
+	   01-98  Number of children
+	   99	  Not ascertained
+
+197	Age of youngest child under 18			1680
+	   00-17  Age of years (00 if no children)
+	   99	  Not ascertained
+
+198	Age of oldest child under 18			1682
+	   00-17  Age of years (00 if no children)
+	   99	  Not ascertained
+
+199     Number of adults other than head and wife	1684
+	   00     None
+	   01-98  Number of adults
+	   99     Not ascertained
+
+200	First reason for saving				1698
+	   01  To build own business
+	   02  To provide for old age
+	   03  To provide for emergencies
+	   04  To provide for children's education
+	   05  To help children set up household
+	   06  To provide an estate for family
+	   07  To buy or build home
+	   08  To by some large item, such as a car
+	       or furniture
+	   09  To take a vacation or a trip
+	   10  To acquire financial independence
+	   11  To increase income
+	   12  Any other reason
+	   19  Not ascertained
+
+201	Second reason for saving			1700
+	   (Same codes as for first reason)
+
+202	Third reason for saving				1702
+	   (Same codes as for first reason)
+
+203	First objective of investment			1704
+	   01  Maximum current cash return
+	   02  Safe, steady return
+	   03  Growth of capital through appreciation
+	       in value
+	   04  Safety of capital
+	   05  Liquidity, ready availability or
+	       marketability
+	   06  Minimizing income taxes
+	   07  Any other objective
+	   11  Not ascertained
+
+204	Second objective of investment			1706
+	   (Same codes as for first objective)
+
+205	Third objective of investment			1708
+	   (Same codes as for first objective)
+
+206	Assets associated with maximum current		1710
+	cash return
+	    00  This objective not mentioned by resp.
+	    01  Cash and savings accounts
+	    02  U.S. Savings Bonds
+	    03  U.S. marketable bonds
+	    04  State and local bonds
+	    05  Corporate bonds
+	    06  Bonds, type not specified
+	    07  Common stock
+	    08  Preferred stock
+	    09  Mutual funds
+	    10  Stock, type not specified
+	    11  Securities, type not specified
+	    12  Investment real estate
+	    13  Business interests
+	    15  Government bonds, type not specified
+	    14  Any other asset
+	    19  Not ascertained
+
+207	Assets associated with safe, steady return	1712
+	    (Same codes as for variable 206)
+
+208	Assets associated with growth of capital	1714
+	    (Same codes as for variable 206)
+
+209	Assets associated with safety of capital	1716
+	    (Same codes as for variable 206)
+
+210	Assets associated with liquidity, ready		1718
+	availability
+	    (Same codes as for variable 206)
+
+211	Assets associated with minimizing income taxes	1720
+	    (Same codes as for variable 206)
+
+212	Assets representing best compromise in		1722
+	meeting various objectives
+	    (Same codes as for variable 206)
+
+213     Inheritance of assets (including insurance	1726
+	settlement or large gift from someone not
+	in the family now)
+	    01  No assets inherited (or received)
+	    02  Some assets inherited, but not a 
+		substantial portion of present assets
+	    03  Inherited assets are a substantial
+		portion of present assets
+	    07  Assets inherited; not ascertained 
+		whether a substantial portion of
+		present assets
+	    11  Not ascertained whether any assets
+		inherited
+
+214	Number of checking accounts - Head		1728 
+	    00     None
+	    01-98  Number of accounts
+	    99	   Not ascertained
+
+215	Number of checking accounts - Wife		1730
+	    (Same codes as for head)
+
+216	Number of checking accounts - OFM		1732
+	    (Same codes as for head)
+
+217	Number of checking accounts - Family		1734
+	    (Same codes as for head)
+
+218	Age of family head - bracket code		1742
+	    01  Under 25
+	    02  25 - 34
+	    03  35 - 44
+	    04  45 - 54
+	    05  55 - 64
+	    06  65 and over
+
+219	Employment status of family head		1746
+	    01  Self-employed
+	    02  Employed by others
+	    03  Retired (Did not work in 1962 and 
+		age 65 or over)
+	    04  Did not work in 1962 (under age 65)
+	    05  Occupation not ascertained
+	    06  Farm operator
+	    07  Farm laborer
+
+220	Number of businesses in which family had	1748
+	active interest
+	    00     None
+	    01-98  Number of businesses
+	    99	   Not ascertained
+
+221	Number of businesses in which family had	1750
+	had non-active interest
+	    00     None
+	    01-98  Number of businesses
+	    99	   Not ascertained
+
+
+
+SPECIAL NOTE:  ALL TAPE LOCATIONS ARE THE ENDING POINT FOR THE VARIABLE,
+               NOT THE STARTING POINT.
+
+*****************************************************************************
+
+1963 SURVEY OF CHANGES IN FAMILY FINANCES
+
+                                                           Source:   
+Var	                            Report   Location   FRB-2A Questionnaire
+Num	Item			    Basis    on Tape    Page    Item No.
+_________________________________________________________________________      
+
+  1  Sequence Number	                       10      
+     (from 1963 Survey)
+
+  2  Final weight 			       20
+     (multiplied by 1000)
+
+  3  Total of prices charged for     Family    30	 2	  1
+     automobiles purchased
+
+  4  Total trade-in allowances	     Family    40	 2	  1
+     received
+
+  5  Total proceeds from sales of    Family    50	 2	  1
+     autos
+
+  6  Value of autos owned 12-31-62   Family    60	
+
+     Checking accounts					 2	  2
+
+  7  Number of accounts 12-31-63     Head      65
+       00     None
+       01-98  Number
+       99     Not ascertained
+
+  8  Number or accounts 12-31-62     Head      70
+       (Same codes as for var. 7)
+
+  9  Total 12-31-63 balance	     Head      80
+ 10  Total 12-31-62 balance	     Head      90
+
+ 11  Number of accounts 12-31-63     Wife      95
+       00     None
+       01-98  Number
+       99     Not ascertained
+
+ 12  Number or accounts 12-31-62     Wife     100
+       (Same codes as for var. 7)
+
+ 13  Total 12-31-63 balance	     Wife     110
+ 14  Total 12-31-62 balance	     Wife     120
+
+ 15  Number of accounts 12-31-63     OFM      125
+       00     None
+       01-98  Number
+       99     Not ascertained
+
+ 16  Number or accounts 12-31-62     OFM      130
+       (Same codes as for var. 7)
+
+ 17  Total 12-31-63 balance	     OFM      140
+ 18  Total 12-31-62 balance	     OFM      150
+
+     Global bonds and debentures -			 3	  3
+     
+ 19  Purchases			     Family   190#
+ 20  Sales		             Family   200#
+
+     U.S. Savings bonds -				 3	  3a
+
+ 21  Holdings 12-31-62		     Head     210
+ 22				     Wife     220
+ 23			             OFM      230
+ 24  Purchases			     Head     240
+ 25				     Wife     250
+ 26				     OFM      260
+ 27  Redemptions		     Head     270
+ 28				     Wife     280
+ 29				     OFM      290
+
+     U.S. Government bills, notes			 3	  3b1
+     and certificates -
+
+ 30  Holdings 12-31-62		     Family   300
+ 31  Purchases			     Family   310
+ 32  Sales			     Family   320
+
+     U.S. Government bonds -				 3	  3b2
+     other than savings bonds
+
+ 33  Holdings 12-31-62		     Family   330
+ 34  Purchases			     Family   340
+ 35  Sales			     Family   350
+
+     State and local bonds -				 3	  3c1
+
+ 36  Holdings 12-31-62		     Family   360
+ 37  Purchases			     Family   370
+ 38  Sales			     Family   380
+
+     Foreign corporation and				 3	  3c2
+     government bonds - 
+
+ 39  Holdings 12-31-62		     Family   390
+ 40  Purchases			     Family   400
+ 41  Sales			     Family   410
+
+     Domestic corporate bonds - 			 3	  3c3
+
+ 42  Holdings 12-31-62		     Family   420
+ 43  Purchases			     Family   430
+ 44  Sales			     Family   440
+
+     Savings account balances -				 4/5	  4a/b
+
+ 45  In commercial banks - 1963	     Head    2550
+ 46				     Wife    2560
+ 47				     OFM     2570
+ 48				     Family  2580
+ 49				     N.A.    2590
+
+ 50  In commercial banks - 1962	     Head    2600
+ 51				     Wife    2610
+ 52				     OFM     2620
+ 53				     Family  2630
+ 54				     N.A.    2640
+
+ 55  In savings & loan assoc. - 1963 Head    2650
+ 56				     Wife    2660
+ 57				     OFM     2670
+ 58				     Family  2680
+ 59				     N.A.    2690
+
+ 60  In savings & loan assoc. - 1962 Head    2700
+ 61				     Wife    2710
+ 62				     OFM     2720
+ 63				     Family  2730
+ 64				     N.A.    2740
+
+ 65  In credit union, postal         Head    2750
+ 66  savings, etc. - 1962	     Wife    2760
+ 67				     OFM     2770
+ 68				     Family  2780
+ 69				     N.A.    2790
+
+ 70  In credit union, postal         Head    2800
+ 71  savings, etc. - 1963	     Wife    2810
+ 72				     OFM     2820
+ 73				     Family  2830
+ 74				     N.A.    2840
+
+ 75  In mutual savings banks - 1963  Head    2850
+ 76				     Wife    2860
+ 77				     OFM     2870
+ 78				     Family  2880
+ 79				     N.A.    2890
+
+ 80  In mutual savings banks - 1962  Head    2900
+ 81				     Wife    2910
+ 82				     OFM     2920
+ 83				     Family  2930
+ 84				     N.A.    2940
+
+ 85  Type of institution not         Head    2950
+ 86  ascertained - 1963		     Wife    2960
+ 87				     OFM     2970
+ 88				     Family  2980
+ 89				     N.A.    2990
+
+ 90  Type of institution not         Head    3000
+ 91  ascertained - 1962		     Wife    3010
+ 92				     OFM     3020
+ 93				     Family  3030
+ 94				     N.A.    3040
+
+     Principal residence -				 6	  5col2
+
+ 95  Market value 12-31-62	     Family   450
+ 96  Mortgage debt 12-31-63	     Family   460
+ 97  Mortgage debt 12-31-62	     Family   470
+ 98  Property purchased		     Family   480
+ 99  Cost of improvements	     Family   490
+100  Total sales		     Family   500
+
+     Vacation homes and other residences		 
+     for family use - 					 6	  5col3
+
+101  Market value 12-31-62	     Family   510
+102  Mortgage debt 12-31-63	     Family   520
+103  Mortgage debt 12-31-62	     Family   530
+104  Property purchased		     Family   540
+105  Cost of improvements	     Family   550
+106  Total sales		     Family   560
+
+     Investment real estate - 				 6	  5col4
+
+107  Market value 12-31-62	     Family   570
+108  Mortgage debt 12-31-63	     Family   580
+109  Mortgage debt 12-31-62	     Family   590
+110  Property purchased		     Family   600
+111  Cost of improvements	     Family   610
+112  Total sales		     Family   620
+
+     12-31-62 holdings of publicly 
+     traded stock -					 8,9	  6a
+
+113  Publicly traded stock - common  Family  3050
+114  Publicly traded stock - pref.   Family  3060
+115  Shares in mutual funds	     Family  3070
+116  Investment clubs		     Family  3080
+117  Type of stock not ascertained   Family  3090
+
+     1963 purchases of publicly traded stock		 10,11	  6b
+
+118  Publicly traded stock - common  Family  3100
+119  Publicly traded stock - pref.   Family  3110
+120  Shares in mutual funds	     Family  3120
+121  Investment clubs		     Family  3130
+122  Type of stock not ascertained   Family  3140
+
+     1963 sales of publicly traded stock		 10,11	  6b
+
+123  Publicly traded stock - common  Family  3150
+124  Publicly traded stock - pref.   Family  3160
+125  Shares in mutual funds	     Family  3170
+126  Investment clubs		     Family  3180
+127  Type of stock not ascertained   Family  3190
+
+     Share of change in book equity of
+     business (if old active business)			 12	  7a3e
+
+128  Closely held non-farm corp.     Family  3200
+129  Partnership (non-farm)	     Family  3260
+130  Sole proprietorship (non-farm)  Family  3310
+131  Type not ascertained (non-farm) Family  3360
+132  Farms - all types		     Family  3410
+
+     Total 1963 investment in active
+     business interest -				 13	  7b2ab
+
+133  Closely held non-farm corp.     Family  3210
+134  Partnership (non-farm)	     Family  3270
+135  Sole proprietorship (non-farm)  Family  3320
+136  Type not ascertained (non-farm) Family  3370
+137  Farms - all types		     Family  3420
+
+     Proceeds from sale of active
+     business interest -				 12,13	  7ab4
+
+138  Closely held non-farm corp.     Family  3220
+139  Partnership (non-farm)	     Family  3280
+140  Sole proprietorship (non-farm)  Family  3330
+141  Type not ascertained (non-farm) Family  3380
+142  Farms - all types		     Family  3430
+
+     Loans to businesses in which family
+     member has active interest -			 12,13	  7a6b
+								  7b3b
+
+143  Closely held non-farm corp.     Family   760
+     12-31-63
+144  Closely held non-farm corp.     Family   770
+     12-31-62
+145  Partnership (non-farm) 12-31-63 Family   780
+146  Partnership (non-farm) 12-31-62 Family   790
+147  Type not ascertained (non-farm) Family   800
+     12-31-63
+148  Type not ascertained (non-farm) Family   810
+     12-31-62
+149  Farm - all types 12-31-63       Family   820
+150  Farm - all types 12-31-62       Family   830
+
+     Family's share of profits of 
+     active interest closely held
+     corp. - 1963					 13	  7a7
+								  7b5
+151  Non-farm corp.		     Family  3230*          minus
+152  Farm corp.			     Family  3440*	 20	  15e2
+
+     Total 1963 investment in non-active
+     business interest -				 14,15	  8a5
+								  8b2
+153  Closely held non-farm corp.     Family  3240
+154  Partnership (non-farm)	     Family  3290
+155  Sole proprietorship (non-farm)  Family  3340
+156  Type not ascertained (non-farm) Family  3390
+157  Farms - all types		     Family  3450
+
+     Loans to businesses in which family
+     member has non-active interest -			 14,15	  8a4
+								  8b3
+
+158  Closely held non-farm corp.     Family   840
+     12-31-63
+159  Closely held non-farm corp.     Family   850
+     12-31-62
+160  Partnership (non-farm) 12-31-63 Family   860
+161  Partnership (non-farm) 12-31-62 Family   870
+162  Other bus.  (non-farm) 12-31-63 Family  3580
+163  Other bus.  (non-farm) 12-31-62 Family  3590
+164  Type not ascertained (non-farm) Family   880
+     12-31-63
+165  Type not ascertained (non-farm) Family   890
+     12-31-62
+166  Farm - all types - 12-31-63     Family   900
+167  Farm - all types - 12-31-62     Family   910
+
+     Proceeds from sale of non-active
+     business interest					 14,15	  8a6
+								  8b4
+
+168  Closely held non-farm corp.     Family  3250
+169  Partnership (non-farm)	     Family  3300
+170  Sole proprietorship (non-farm)  Family  3350
+171  Type not ascertained (non-farm) Family  3400
+172  Farms - all types		     Family  3460
+
+     Brokerage accounts -				 16	  9
+
+173  Credit balance 12-31-63	     Family   630
+174  Credit balance 12-31-62	     Family   640
+175  Debit balance  12-31-63	     Family   650
+176  Debit balance  12-31-62	     Family   660
+
+     Mortgage assets -					 
+
+177  Holdings 12-31-62		     Head     670	 16	  10acol2
+178				     Wife     680
+179				     OFM      690
+
+180  Amount loaned or paid	     Head     700	 16	  10bcol2
+181  for such assets in 1963 -	     Wife     710
+182				     OFM      720
+
+183  Amount received from loan	     Head     730	 16	  10ccol2
+184  principal repayment or sale     Wife     740
+185  of such assets in 1963          OFM      750  
+
+     Loans to businesses in which no family
+     member has an active or non-active
+     business interest -
+
+186  Amount of such loans 12-31-62   Family   920	 16	  10acol3
+187  Amount loaned or paid for 
+     such assets in 1963	     Family   930	 16	  10bcol3
+188  Amount received from loan 
+     principal repayment or sale
+     of such assets in 1963	     Family   940	 16	  10ccol3
+
+     Other loan assets - 
+     (non-mortgage loans to 
+     individuals)
+
+189  Holdings 12-31-62		     Head     950	 16	  10acol4
+190				     Wife     960	
+191				     OFM      970
+
+192  Amount loaned or paid for	     Head     980	 16	  10bcol4
+193  such assets in 1963	     Wife     990
+194				     OFM     1000
+ 
+195  Amount received from loan	     Head    1010	 16	  10ccol4
+196  principal repayment or sale     Wife    1020
+197  of such assets in 1963	     OFM     1030
+
+     Life insurance -
+
+198  Face value of term and group    Head    1040*	 17	  11c1
+199  policies - 12-31-63	     Wife    1050*
+200				     OFM     1060*
+
+201  Face value of term and group    Head    1070*	 17	  11c1
+202  policies - 12-31-62	     Wife    1080*
+203				     OFM     1090*
+
+204  Face value of regular           Head    1100*	 17	  11c2
+205  policies - 12-31-63	     Wife    1110*
+206				     OFM     1120*
+
+207  Face value of regular           Head    1130*	 17	  11c2
+208  policies - 12-31-62	     Wife    1140*
+209				     OFM     1150*
+
+210  Cash surrender value -          Head    1160*	 17	  11d
+211  12-31-63			     Wife    1170*
+212				     OFM     1180*
+
+213  Cash surrender value -          Head    1190*	 17	  11b
+214  12-31-62			     Wife    1200*
+215				     OFM     1210*
+
+216  Proceeds from policies -        Head    1220	 17	  11e
+217  cashed in			     Wife    1230
+218				     OFM     1240
+
+219  Loans secured by life           Head    1250	 17	  11f2
+220  insurance - 12-31-63	     Wife    1260
+221				     OFM     1270
+
+222  Loans secured by life           Head    1280	 17	  11f1
+223  insurance - 12-31-62	     Wife    1290
+224				     OFM     1300
+
+225  Premiums paid for term          Head    1310*	 17	  11g1
+226  and group insurance	     Wife    1320*
+227				     OFM     1330*
+
+228  Premiums paid for regular       Head    1340*	 17	  11g2
+229  insurance			     Wife    1350*
+230				     OFM     1360*
+
+     Individual annuities -				 18
+
+231  Total amount paid in as of	     Head    1370*
+232  12-31-62			     Wife    1380*
+233				     OFM     1390*
+
+231  Premiums paid		     Head    1400*	 18	  12a1
+232				     Wife    1410*
+233				     OFM     1420*
+
+237  Amount received from 	     Head    1430*	 18	  12a2
+238  surrender			     Wife    1440*
+239				     OFM     1450*
+
+     Retirement plans connected with
+     employment - 
+
+240  Amount that could have been     Family  1460*		  
+     withdrawn 12-31-62
+241  Contributions	 	     Family  1470		  12b1
+242  Withdrawals		     Family  1480		  12b2
+
+     Other employer sponsored 
+     savings plans - 
+
+243  Amount that could have been     Family  1490		  
+     withdrawn 12-31-62
+244  Contributions		     Family  1500		  12c1
+245  Withdrawals		     Family  1510		  12c2
+
+     Other assets - oil royalties,
+     patents, commodity contracts - 
+
+246  Holdings as of 12-31-62	     Family  1520		  13
+247  Purchases			     Family  1530
+248  Sales			     Family  1540
+
+     Loans secured by stock -				 19	  14a1
+
+249  12-31-63			     Family  1550
+250  12-31-62			     Family  1560
+
+     Loans secured by bonds -					  14a2
+
+251  12-31-63			     Family  1570
+252  12-31-62			     Family  1580
+
+     Installment debt -						  14b
+
+253  Auto - 12-31-63		     Family  1590		  14b1
+254  Auto - 12-31-62		     Family  1600		 
+255  Home repair and modernization
+     12-31-63			     Family  1610		  14b2
+256  Home repair and modernization 
+     12-31-62			     Family  1620		
+257  Other consumer goods
+     12-31-63			     Family  1630		  14b3
+258  Other consumer goods	
+     12-31-62			     Family  1640
+259  Other purposes - 12-31-63       Family  1650		  14b4
+260  Other purposes - 12-31-62       Family  1660
+
+     Non-installment debt -				 19	  14c
+
+261  Banks - 12-31-63		     Family  1670		  14c1
+262  Banks - 12-31-62		     Family  1680		  
+263  Other financial institutions
+     12-31-63			     Family  1690		  14c2
+264  Other financial institutions
+     12-31-62			     Family  1700		  
+265  Doctors, dentists, hospitals
+     12-31-63			     Family  1710		  14c3
+266  Doctors, dentists, hospitals
+     12-31-62			     Family  1720	
+267  Private individuals 
+     12-31-63			     Family  1730		  14c4
+268  Private individuals 
+     12-31-62			     Family  1740		  
+
+269  1962 income - total excluding
+     capital gains - excluding
+     assigned income data	     Family  1750&		 
+
+270  1963 income - total excluding
+     capital gains - excluding
+     assigned income data	     Family  3600&
+
+271  Wages and salary income - 1963  Head    1760	 20	  15a 
+272				     Wife    1770 
+273				     OFM     1780
+
+274  Income from sole		     H & W   1790		  15b
+275  proprietorships and	     OFM     1800
+     professions - non-farm 1963		    
+			 
+276  Income from partnership -	     H & W   1810		  15c
+277  non-farm 1963		     OFM     1820
+
+278  Farm income - 1963		     H & W   1830		  15d
+279			             OFM     1840
+
+280  Dividend income -		     H & W   1850		  15e1
+281  publicly traded stock	     OFM     1860
+
+282  Closely held corp. -	     H & W   1870		  15e2
+283  family active - 1963	     OFM     1880
+
+284  Other closely held corp. -      H & W   1890		  15e3
+285  1963			     OFM     1900
+
+     Interest income -
+
+286  U.S. Government securities -    H & W   1910		  15f1
+287  1963			     OFM     1920
+				   
+288  State and local bonds - 1963    H & W   1930		  15f2
+289				     OFM     1940
+				   
+290  Corporate and foreign bonds -   H & W   1950		  15f3
+291  1963			     OFM     1960
+				   
+292  Savings accounts - 1963         H & W   1970		  15f4
+293				     OFM     1980
+				   
+294  Loans, mortgages, other         H & W   1990		  15f5
+295  interest sources - 1963	     OFM     2000
+				   
+296  Net income from rents and       H & W   2010		  15g
+297  royalties - 1963		     OFM     2020
+				   
+298  Income from old age pensions    H & W   2030		  15h
+299  and annuities - 1963	     OFM     2040
+				   
+300  Income from trust/estates -     H & W   2050		  15i
+301  1963			     OFM     2060
+				   
+302  Other income - 1963             H & W   2070		  15j
+303				     OFM     2080
+
+     Capital gain or loss from sale
+     of securities - 
+
+304  Short-term - 1963		     H & W   2090*		  15k1
+305				     OFM     2100*
+306  Long-term - 1963	             H & W   2110*		  15k2
+307				     OFM     2120*
+				   
+308  Capital gain or loss from       H & W   2130*		  15l
+309  sale of assets other than	     OFM     2140*
+     securities - 1963
+
+     Lump sums from insurance, 
+     annuities, pension funds -
+
+310  Received in cash		     Family  2190	 21	  17a
+311  Received in form of annuities   Family  2200*		  17b
+
+     Insurance beqeathed outside 
+312  family			     Family  2210*	 21	  18
+
+     Estate settlements -				 21	  19
+     
+     To family members -					  19col2
+
+313  Cash			     Family  2220*
+314  Publicly traded stock	     Family  2230*
+315  Bonds			     Family  2240*
+316  Real estate		     Family  2250*
+317  Other property		     Family  2260*
+
+     To persons oustide family unit  -				  19col3
+
+318  Cash			     Family  2270*
+319  Publicly traded stock	     Family  2280*
+320  Bonds			     Family  2290*
+321  Real estate		     Family  2300*
+322  Other property		     Family  2310*
+
+     To organizations -						  19col4
+
+323  Cash			     Family  2320*
+324  Publicly traded stock	     Family  2330*
+325  Bonds			     Family  2340*
+326  Real estate		     Family  2350*
+327  Other property		     Family  2360*
+
+     Interests in estates in 
+328  probate - 12-31-62		     Family  2370*	 22	  20b
+
+     Gifts or inheritances 
+329  received - in formal trust	     Family  2380*		  20a
+		    
+     Not in formal trust - 
+
+330  Cash			     Family  2390*
+331  Publicly traded stock	     Family  2400*
+332  Bonds			     Family  2410*
+333  Real estate		     Family  2420*
+334  Other property		     Family  2430*
+
+     Gifts made -					 22	  21a
+
+     To persons outside family -				  21acol1
+
+335  Cash			     Family  2450
+336  Publicly traded stock	     Family  2460*
+337  Bonds			     Family  2470*
+338  Real estate		     Family  2480*
+339  Other property		     Family  2490*
+
+     To organizations -					 22	  21acol2
+
+340  Cash			     Family  2500*
+341  Publicly traded stock	     Family  2510*
+342  Bonds			     Family  2520*
+343  Real estate		     Family  2530*
+344  Other property		     Family  2540*
+
+     Cash put in trust for 
+345  family members		     Family   160	 23	  22acol2
+
+346  Interest in trust - 12-31-62    Family   170		  22b
+
+     Cash received from liquidation
+347  of trust			     Family   180		  22acol3
+
+
+Var					Report		 Location 
+Num		Code			Basis		 on Tape
+_____________________________________________________________________
+
+348  Number of old savings accounts 
+     listed - 1963			Family		   2145
+       00     None
+       01-98  Number
+       99     Not ascertained
+
+349  Number of new savings accounts
+     listed - 1963			Family		   2150
+       (same codes as for var. 348)
+
+350  Number of old stock issues with
+     1963 transactions			Family		   2155
+       (same codes as for var. 348)
+
+351  Number of new stock issues		Family		   2160
+       (same codes as for var. 348)
+
+352  Number of old active business
+     interests as reported in 1963	Family		   2163
+       (same codes as for var. 348)
+   
+353  Number of old active business
+     interests as reported in 1964	Family		   2165
+       (same codes as for var. 348)
+
+354  Number of new active business
+     interests				Family		   2170
+       (same codes as for var. 348)
+
+355  Number of old non-active business
+     interests as reported in 1963	Family		   2173
+       (same codes as for var. 348)
+
+356  Number of old non-active business
+     interests as reported in 1964	Family		   2175
+       (same codes as for var. 348)
+
+357  Number of new non-active business
+     interests				Family		   2180
+       (same codes as for var. 348)
+
+358  Age of family head			Head		   3524
+       01  under 25
+       02  25-34
+       03  35-44
+       04  45-54
+       05  55-64
+       06  65 and over
+
+359  Age of family head, 12-31-62	Head		   3526
+       17-98  Age in years
+       99     Not ascertained
+
+360  Address control			Family		   3528
+       00  No family member remaining
+           at 1963 address
+       04  One or more family members
+           remaining at 1963 address
+       09  Not ascertained
+
+361  Residence of head			Head		   3532
+       01  Resides here now
+       02  Does not reside here now
+       03  Deceased
+       09  Not ascertained
+
+362  Number of months head worked	Head		   3534
+     for pay in 1963
+       00     None
+       01-12  Number of months
+       99     Not ascertained
+
+363  Whether head covered by Social	Head		   3536
+     Security
+       01  Covered by Social Security
+       02  Not covered by Social Security
+       09  Not ascertained
+
+364  Source of head's data		Head		   3538
+       01  Data supplied at family unit
+       03  Data supplied by head living
+           elsewhere
+       07  Data not obtained
+
+365  Residence of wife			Wife		   3540
+       01  Resides here now
+       02  Does not reside here now
+       03  Deceased
+       04  No wife 12-31-62
+       09  Not ascertained
+
+366  Number of months wife worked	Wife		   3542
+     for pay in 1963
+       00     None
+       01-12  Number of months
+       99     Not ascertained
+
+367  Whether wife covered by Social	Wife		   3544
+     Security
+       (same codes as for head)
+
+368  Source of wife's data		Wife		   3546
+       01  Data supplied at family unit
+       03  Data supplied by wife living
+           elsewhere
+       07  Data not obtained
+       09  Not ascertained
+
+369  Number of OFM's residing with	OFM		   3548
+     family
+       00     None
+       01-98  Number
+       99     Not ascertained
+
+370  Number of OFM's that had left	OFM		   3550
+     the family
+       (same codes as var. 369)
+
+371  Number of OFM's that had died	OFM		   3552
+       (same codes as var. 369)
+
+372  Number of months OFM's worked	OFM		   3554
+     for pay in 1963
+       (same codes as var. 369)
+
+373  Number of OFM's covered by		OFM		   3556
+     Social Security
+       (same codes as var. 369)
+
+374  Number of OFM's for whom data	OFM		   3558@
+     not obtained
+       (same codes as var. 369)
+
+     Investment activities - 
+
+375  U.S. Savings bonds -		Family		   3462
+     Change in holdings					
+        01  Asset not held, not 
+            answered, or no change
+        02  Holdings increased
+        03  Holdings decreased
+        09  Not ascertained
+
+376  Source or use of funds		Family		   3466
+        00  Change in holdings coded
+            01 or 09
+        
+	If change in holdings coded 02:
+        Source of funds - 
+        10  Income
+        20  Gifts, etc.
+        30  Bank accounts
+        40  Borrowed
+        51  Shifted from U.S. savings
+            bonds
+        52  Shifted from marketable
+            bonds
+        53  Shifted from publicly
+            traded stock
+        54  Shifted from own home
+        55  Shifted from auto
+        56  Shifted from active business
+        57  Shifted from life insurance
+            annuities, retirement funds
+        58  Shifted from other investments
+        59  Shifted from investment - 
+            type not ascertained
+        60  Other
+        99  Item not answered
+
+        If change in holdings coded 03: 
+        Use of funds - 
+        10  Expenses
+        20  Old debts
+        31  Shifted to U.S. savings bonds
+        32  Shifted to marketable bonds
+        33  Shifted to stocks
+        34  Shifted to own home
+        35  Shifted to auto
+        36  Shifted to active business
+        37  Shifted to bank accounts
+        38  Shifted to other investments
+        39  Shifted to investment - 
+            type not ascertained
+        40  Other
+        99  Item not answered
+ 
+377  Reason for this asset		Family		  3470
+        00  Change in holdings coded 
+            01 or 09
+        
+        If change in holdings coded 02:
+        01  Maximum current cash return
+        02  Safe, steady return
+        03  Growth of capital
+        04  Preservation of capital - 
+            safety and security
+        05  Liquidity-ready availability
+            and marketability
+        06  Minimizing income taxes
+        07  Diversification of portfolio
+        08  Part of regular savings program
+        09  Convenience
+        10  Other
+        12  Maximum current cash return
+            and preservation of capital
+        13  Maximum current cash return
+            and liquidity-availability-
+            marketability
+        14  Safe, steady return and preservation
+            of capital
+        15  Safe, steady return and liquidity-
+	    availability-marketability
+        99  Not ascertained
+ 
+        If change in holdings coded 03:
+        01  Asset matured or was called for 
+            redemption
+        02  Profit taking
+        03  No longer a good rate of return
+        04  Change in valuation or too risky
+        05  Convenience-only asset held-
+            avoid going into debt
+        06  Sold this asset in order to keep
+            other assets
+        07  Other
+        99  Not ascertained
+
+     Marketable U.S. Government -
+ 
+378  Change in holdings			Family		  3472
+       (same codes as for var. 375)
+379  Source or use of funds		Family		  3476
+       (same codes as for var. 376)
+380  Reason for this asset		Family		  3480
+       (same codes as for var. 377)
+
+     State and local bonds -
+ 
+381  Change in holdings			Family		  3483
+       (same codes as for var. 375)
+382  Source or use of funds		Family		  3486
+       (same codes as for var. 376)
+383  Reason for this asset		Family		  3490
+       (same codes as for var. 377)
+
+     Domestic corporate bonds -
+ 
+384  Change in holdings			Family		  3492
+       (same codes as for var. 375)
+385  Source or use of funds		Family		  3496
+       (same codes as for var. 376)
+386  Reason for this asset		Family		  3500
+       (same codes as for var. 377)
+
+     Savings accounts -
+ 
+387  Change in holdings			Family		  3502
+       (same codes as for var. 375)
+388  Source or use of funds		Family		  3506
+       (same codes as for var. 376)
+389  Reason for this asset		Family		  3510
+       (same codes as for var. 377)
+
+     Publicly traded stock -
+ 
+390  Change in holdings			Family		  3512
+       (same codes as for var. 375)
+391  Source or use of funds		Family		  3516
+       (same codes as for var. 376)
+392  Reason for this asset		Family		  3520
+       (same codes as for var. 377)
+
+393  Employment status of head		Head		  3602
+       01  Self-employed
+       02  Employed by others
+       03  Retired
+       04  Did not work in 1962
+       05  Occupation n.a.
+       06  Farm operator
+       07  Farm laborer
+
+394  Employment - housing status	Head		  3604
+       00  Farm operator
+       01  Non-farm home owner,
+           self-employed
+       02  Non-farm home owner,
+           employed by others
+       03  Non-farm home owner, retired
+       04  Non-farm home owner, 
+           not employed in 1962
+       05  Non-farm home owner, 
+           occupation N.A.
+       06  Non-farm renter, self-employed
+       07  Non-farm renter, employed
+           by others
+       08  Non-farm renter, retired
+       09  Non-farm renter, not 
+           employed in 1962
+       10  Non-farm renter, occupation N.A.
+       11  Farm laborer
+
+395  Size of unit			Family		 3606
+       01  One
+       02  Two
+       03  Three
+       04  Four
+       05  Five or more
+       11  Not ascertained
+
+396  Education of head			Head		 3608
+       00  None
+       01  Elementary school, less
+           than 8 years
+       02  Elementary school, 8 years
+       03  High school, 1-3 years
+       04  High school, 4 years
+       05  College, 1-3 years  
+       06  College, 4 years  
+       07  College, 5 years or more  
+       11  Not ascertained
+
+397  Race of head			Head		3610
+       01  White
+       02  Nonwhite
+       11  Not ascertained
+
+398  Region				Family		3612
+       01  Northeast
+       02  North Central
+       03  South
+       04  West
+
+
+Note:
+  * - Variable was not included in published income and wealth estimates.
+  # - The respondent may have elected to report total figures
+      for purchases and for sales of bonds regardless of type
+      in which case the amounts would have been entered here.  
+      In such cases the purchases and sales of the specific types
+      of bonds included are recorded as zero.
+  & - This field is recorded as 9999999999 or 9999999998 if an
+      assignment was made to any of the components.  If no 
+      assignment was made, it is equivalent to the sum of the 
+      components.  Components of 1963 income are in locations
+      1760 through 2080.
+  @ - In a limited number of cases data was not obtained for all of
+      the other family members in the re-interview and the unit was
+      classified as a respondent.  In these instances it could be 
+      determined or readily assumed that the missing other family
+      member held only a very minor portion of the unit's wealth in
+      1962 and had little or no income.  Consequently, it was assumed the
+      saving or dissaving of the individual was negligible and the
+      unit was accepted as a reinterview respondent with this
+      individual having no change or no saving or dissaving.
+
+
+*****************************************************************************
+* THIS PROGRAM READS THE PROJECTOR DATA AND COMBINES THE INTERVIEW AND  
+  RE-INTERVIEW SURVEYS; 
+* THIS VERSION CORRECTS READ ERRORS ENCOUNTERED IN THE ORIGNIAL TAPE;   
+* THEN WRITE EBCDIC F10.0 FILE; 
+
+OPTIONS ERRORS=200;
+
+LIBNAME OUT 'output dataset library';
+FILENAME SFCC62IM '1962 ascii dataset = sfcc62imp';
+FILENAME SCFF63 '1963 ascii dataset = scff63'; 
+
+* FIRST, READ THE 1962 SURVEY DATA;     
+
+DATA T62;       
+  INFILE SFCC62IM LRECL=2000;
+  INPUT @1 V1 ZD10. @11 V2 ZD10. @1981 V3 ZD10. @1991 V4 ZD10. @21      
+    (V5-V24)(ZD10.)     
+    @281 (V25-V32)(ZD10.) @1951 (V33-V35)(ZD10.) @471 (V36-V41)(ZD10.)  
+    @591 (V42-V44)(ZD10.) @371 (V45-V54)(ZD10.) @1801 (V55-V69)(ZD10.)  
+    @551 (V70-V74)(ZD10.) @691 V75 ZD10. @751 V76 ZD10. @801 V77 ZD10.  
+    @641 V78 ZD10. @851 V79 ZD10. @701 V80 ZD10. @761 V81 ZD10. @ 811 V82 ZD10. 
+    @651 V83 ZD10. @861 V84 ZD10. @221 V85 ZD10. @231 V86 ZD10. @661 V87 ZD10.  
+    @241 V88 ZD10. @711 V89 ZD10. @871 V90 ZD10. @721 V91 ZD10. @771 V92 ZD10.  
+    @821 V93 ZD10. @621 V94 ZD10. @881 V95 ZD10. @251 V96 ZD10. @261 V97 ZD10.  
+    @681 V98 ZD10. @631 V99 ZD10. @271 V100 ZD10. @891 (V101-V110)(ZD10.)       
+    @1091 (V111-V114)(ZD10.) @991 (V115-V124)(ZD10.) @1131 (V125-V174)(ZD10.)   
+    @1791 V175 ZD10. @361 V176 ZD10.    
+    @1637 (V177-V187)(ZD2.) @1661 (V188-V199)(ZD2.) @1697 (V200-V212)(ZD2.)     
+    @1725 (V213-V217)(ZD2.) @1741 V218 ZD2. @1745 (V219-V221)(ZD2.);    
+  ARRAY VARS {*} V1-V221;       
+  MISSING M N;  
+  DO I=1 TO DIM(VARS);  
+    IF (VARS{I} EQ 9999999999) THEN VARS{I}=.M; 
+    IF (VARS{I} EQ 9999999998) THEN VARS{I}=.N; 
+  END;  
+RUN;    
+
+* NEXT, READ IN THE 1963 RE-INTERVIEW SURVEY;   
+
+DATA T63;       
+  INFILE SCFF63 LRECL=3612;
+  INPUT @1 (X1-X6)(ZD10.) @61 X7 ZD5. @66 X8 ZD5. @71 X9 ZD10. @81 X10 ZD10.    
+    @91 X11 ZD5. @96 X12 ZD5. @101 X13 ZD10. @111 X14 ZD10. @121 X15 ZD5.       
+    @126 X16 ZD5. @131 X17 ZD10. @141 X18 ZD10. @181 (X19-X44)(ZD10.)   
+    @2541 (X45-X94)(ZD10.) @441 (X95-X112)(ZD10.) @3041 (X113-X128)(ZD10.)      
+    @3251 X129 ZD10. @3301 X130 ZD10. @3351 X131 ZD10. @3401 X132 ZD10. 
+    @3201 X133 ZD10. @3261 X134 ZD10. @3311 X135 ZD10. @3361 X136 ZD10. 
+    @3411 X137 ZD10. @3211 X138 ZD10. @3271 X139 ZD10. @3321 X140 ZD10. 
+    @3371 X141 ZD10. @3421 X142 ZD10. @751 (X143-X150)(ZD10.) @3221 X151 ZD10.  
+    @3431 X152 ZD10. @3231 X153 ZD10. @3281 X154 ZD10. @3331 X155 ZD10. 
+    @3381 X156 ZD10. @3441 X157 ZD10. @831 (X158-X161)(ZD10.) @3571 X162 ZD10.  
+    @3581 X163 ZD10. @871 (X164-X167)(ZD10.) @3241 X168 ZD10. @3291 X169 ZD10.  
+    @3341 X170 ZD10. @3391 X171 ZD10. @3451 X172 ZD10. @621 (X173-X185)(ZD10.)  
+    @911 (X186-X269)(ZD10.) @3591 X270 ZD10. @1751 (X271-X309)(ZD10.)   
+    @2181 (X310-X334)(ZD10.) @2441 (X335-X344)(ZD10.) @151 (X345-X347)(ZD10.)   
+    @2141 X348 ZD5. @2146 X349 ZD5. @2151 X350 ZD5. @2156 X351 ZD5. @2161 X352  
+    3. @2164 X353 ZD2. @2166 X354 ZD5. @2171 X355 3. @2174 X356 ZD2.    
+    @2176 X357 ZD5. @3523 (X358-X360)(ZD2.) @3531 (X361-X365)(ZD2.)     
+    @3541 X366 ZDB2. @3543 (X367-X374)(ZD2.)    
+    @3459 (X375-X376)(ZD4.) @3469 X377 ZD2. @3469 (X378-X383)(ZD4.)     
+    @3491 X384 ZD2. @3493 (X385-X386)(ZD4.) @3501 X387 ZD2. @3503 X388 ZD4.     
+    @3507 X389 ZD4. @3511 X390 ZD2. @3513 X391 ZD4. @3517 X392 ZD4.     
+    @3601 (X393-X398)(ZD2.);    
+  ARRAY VARS {*} X1-X398;       
+  MISSING M N;  
+  DO I=1 TO DIM(VARS);  
+    IF (VARS{I} EQ 9999999999) THEN VARS{I}=.M; 
+    IF (VARS{I} EQ 9999999998) THEN VARS{I}=.N; 
+  END;  
+  V1=X1;
+RUN;    
+
+PROC SORT DATA=T62; BY V1;      
+RUN;    
+
+PROC SORT DATA=T63; BY V1;
+RUN;      
+
+DATA OUT.MERGED;
+  MERGE T62 T63; BY V1; 
+  MISSING M N;  
+* CORRECT SOME MINOR DATA ENTRY PROBLEMS;
+  IF (V1 EQ 195 AND V185 EQ .) THEN V185=10;    
+  IF (V1 EQ 574 AND V212 EQ .) THEN V212=10;    
+  IF (V1 EQ 849 AND V197 EQ .) THEN V197=10;    
+  IF (V1 EQ 1056 AND V212 EQ .) THEN V212=10;   
+  IF (V1 EQ 1884 AND V198 EQ .) THEN V198=10;   
+  IF (V1 EQ 2225 AND V183 EQ .) THEN V183=10;   
+  IF V1=1118 THEN DO;
+    IF V134=. THEN V134=7100;
+  END;
+* NOTE:  MANY VALUES OF X366 WERE READ INCORRECTLY BEFORE THE ZDB FORMAT
+  WAS USED;     
+* SOME VALUES WERE STILL INCORRECT, MANY 9'S CODED AS 90, FIXING THAT
+  HERE;
+  IF V1 IN(31 33 35 37 65 91 136 162 369 423 446 499 509 519 525 559 563
+  750 913 916 946 951 1067 1076 1079 1090 1149 1240 1269 1330 1399
+  1435 1549 1610 1655 1831 1872 1874 1969 2015 2041 2067 2094 2096
+  2134 2143 2167 2216 2267 2356 2368 2454 2504) THEN DO;
+    IF X366 EQ . THEN DO;
+      X366=9;
+    END;
+  END;
+* A FEW OTHER EDITS TO THE DATA, SOME OVERPUNCH CHARACTERS(ALL }'S)
+  APPEAR WHERE THE VALUE FOR THE VARIABLE IS ZERO.;
+  IF V1 IN(332 350 590 1667 1689 1775 2110) THEN DO;
+    IF X198 EQ . THEN X198=0;
+  END;
+  IF V1 IN(332 2110) THEN DO;
+    IF X199 EQ . THEN X199=0;
+  END;
+  IF V1 IN(1689 2110) THEN DO;
+    IF X200 EQ . THEN X200=0;
+  END;
+  IF V1 IN(332 690 839 1667 1689 1775 2110) THEN DO;
+    IF X204 EQ . THEN X204=0;
+  END;
+  IF V1 IN(332 839 1667 1775 2110) THEN DO;
+    IF X205 EQ . THEN X205=0;
+  END;
+  IF V1 IN(1689 1775 2110) THEN DO;
+    IF X206 EQ . THEN X206=0;
+  END;
+  IF V1 IN(590 1166) THEN DO;
+    IF X210 EQ . THEN X210=0;
+  END;
+  IF V1 IN(354) THEN DO;
+    IF X211 EQ . THEN X211=0;
+    IF X212 EQ . THEN X212=0;
+  END;
+  
+RUN;    
+
+ENDSAS;
+/*      
+*****************************************************************************
+
+* THIS PROGRAM READS THE ORIGINAL PROJECTOR DATA FROM JIM SMITH AT
+  MICHIGAN;
+* THIS VERSION CORRECTS READ ERRORS ENCOUNTERED IN THE ORIGNIAL TAPE;           
+
+FILENAME TAPE62 '/.....sfcc62js.dat';
+
+* FIRST, READ THE 1962 SURVEY DATA;                                             
+* THE FIRST OBSERVATION IN THE DATASET IS A DUMMY RECORD HEADER;
+                                                                                
+DATA ONE;                                                                       
+  INFILE TAPE62 LRECL=2000 FIRSTOBS=2;
+  INPUT @1 V1 ZD10. @11 V2 ZD10. @1981 V3 ZD10. @1991 V4 ZD10. @21              
+    (V5-V24)(ZD10.)                                                             
+    @281 (V25-V32)(ZD10.) @1951 (V33-V35)(ZD10.) @471 (V36-V41)(ZD10.)          
+    @591 (V42-V44)(ZD10.) @371 (V45-V54)(ZD10.) @1801 (V55-V69)(ZD10.)          
+    @551 (V70-V74)(ZD10.) @691 V75 ZD10. @751 V76 ZD10. @801 V77 ZD10.          
+    @641 V78 ZD10. @851 V79 ZD10. @701 V80 ZD10. @761 V81 ZD10. @ 811 V82 ZD10. 
+    @651 V83 ZD10. @861 V84 ZD10. @221 V85 ZD10. @231 V86 ZD10. @661 V87 ZD10.  
+    @241 V88 ZD10. @711 V89 ZD10. @871 V90 ZD10. @721 V91 ZD10. @771 V92 ZD10.  
+    @821 V93 ZD10. @621 V94 ZD10. @881 V95 ZD10. @251 V96 ZD10. @261 V97 ZD10.  
+    @681 V98 ZD10. @631 V99 ZD10. @271 V100 ZD10. @891 (V101-V110)(ZD10.)       
+    @1091 (V111-V114)(ZD10.) @991 (V115-V124)(ZD10.) @1131 (V125-V174)(ZD10.)   
+    @1791 V175 ZD10. @361 V176 ZD10.                                            
+    @1637 (V177-V187)(ZD2.) @1661 (V188-V199)(ZD2.) @1697 (V200-V212)(ZD2.)     
+    @1725 (V213-V217)(ZD2.) @1741 V218 ZD2. @1745 (V219-V221)(ZD2.);            
+  ARRAY VARS {*} V1-V221;                                                       
+  MISSING M N;                                                                  
+  DO I=1 TO DIM(VARS);                                                          
+    IF (VARS{I} EQ 9999999999) THEN VARS{I}=.M;                                 
+    IF (VARS{I} EQ 9999999998) THEN VARS{I}=.N;                                 
+  END;                                                                          
+RUN;                                                                            
+                                                                                
+DATA DOT;                                                                       
+  SET ONE;                                                         
+  MISSING M N;                                                                  
+  IF (V1 EQ 195 AND V185 EQ .) THEN V185=10;                                    
+  IF (V1 EQ 574 AND V212 EQ .) THEN V212=10;                                    
+  IF (V1 EQ 849 AND V197 EQ .) THEN V197=10;                                    
+  IF (V1 EQ 1056 AND V212 EQ .) THEN V212=10;                                   
+  IF (V1 EQ 1884 AND V198 EQ .) THEN V198=10;                                   
+  IF (V1 EQ 2225 AND V183 EQ .) THEN V183=10;                                   
+* NOTE:  MANY VALUES OF X366 WERE READ INCORRECTLY BEFORE THE ZDB FORMAT        
+  WAS USED;                                                                     
+  ARRAY VARS {*} V1-V221;                                               
+  DO I=1 TO DIM(VARS);                                                          
+    IF (VARS{I} EQ -9999) THEN DO;                                              
+      VARS{I}=-9997;                                                            
+      PUT ' FOR CASE ' V1 ' VARIABLE ' I ' WAS -9999 AND REASSIGNED AS -9997';  
+    END;                                                                        
+    IF (VARS{I} EQ -9998) THEN DO;                                              
+      PUT ' FOR CASE ' V1 ' VARIABLE ' I ' WAS -9998 AND REASSIGNED AS -9997';  
+      VARS{I}=-9997;                                                            
+    END;                                                                        
+    IF (VARS{I} EQ .M OR VARS{I} EQ .) THEN VARS{I}=-9999;                      
+    IF (VARS{I} EQ .N) THEN VARS{I}=-9998;                                      
+  END;                                                                          
+RUN;                                                                            
+/*                                                                              
+*****************************************************************************
+Output of unweighted PROC MEANS on MERGED dataset
+
+
+     Variable     N          Mean       Std Dev       Minimum       Maximum
+     ----------------------------------------------------------------------
+     V1        2557       1279.00   738.2866426     1.0000000       2557.00
+     V2        2557   18192293.57   15228605.90      53925.00   43155098.00
+     V3        2557       1000.00             0       1000.00       1000.00
+     V4        2557   22654282.38   18429444.88      80962.00   65516462.00
+     V5        2557       3047.27      14773.67             0     440761.00
+     V6        2557   625.7254595       5916.12             0     193732.00
+     V7        2557   145.3570591       3185.37             0     156041.00
+     V8        2557       1343.76       9059.62             0     242137.00
+     V9        2557   312.4125929       4769.91             0     209000.00
+     V10       2557   158.2397341       1256.32             0      25500.00
+     V11       2557       1085.68      25941.05             0    1150000.00
+     V12       2557   608.3519750      11555.83             0     385000.00
+     V13       2557    62.4168948       2683.08             0     135000.00
+     V14       2557   314.0922957       6257.16             0     250000.00
+     V15       2557   188.1497849       3068.92             0      95000.00
+     V16       2557    85.9014470       3135.15             0     150000.00
+     V17       2557   246.3707470       9016.27             0     450000.00
+     V18       2557    69.5228784       1604.05             0      59600.00
+     V19       2557       9736.62      79366.14             0    1653000.00
+     V20       2557   165.1881111       3227.61             0     120000.00
+     V21       2557       2076.64      25668.32             0     600000.00
+     V22       2557       2250.41      27759.37             0     803765.00
+     V23       2557   488.3574501      16169.88             0     803765.00
+     V24       2557    24.8439578   694.6558286             0      25000.00
+     V25       2557       1510.73      27588.65             0     885000.00
+     V26       2557   777.5967931      10993.45             0     326527.00
+     V27       2557   257.1302307       7285.01             0     326527.00
+     V28       2557    32.9558076       1151.67             0      42700.00
+     V29       2551   221.4621717       4564.97             0     200000.00
+     V30       2556    54.9972613       2384.96             0     120000.00
+     V31       2557     4.1845913   133.5755208             0       5800.00
+     V32       2555       2264.81      55170.77             0    2283897.00
+     V33       2541      10503.93      29481.39             0     550000.00
+     V34       2556   605.5430360       3795.97             0     101800.00
+     V35       2556   433.4761346       1994.24             0      31000.00
+     V36       2541      16288.79      42597.13             0     503680.00
+     V37       2553       2253.85      16747.80             0     500000.00
+     V38       2552       1573.70       9189.72             0     307000.00
+     V39       2383       4188.39      13666.44             0     300000.00
+     V40       2466   774.2980535       7835.98             0     264863.00
+     V41       2488   186.8388264       1487.73             0      62000.00
+     V42       2557   409.8654673       4226.82             0     170000.00
+     V43       2557   101.5381306       3172.73             0     150000.00
+     V44       2557     2.8474775    71.6688844             0       3000.00
+     V45       2557       1378.33       6683.56             0     160000.00
+     V46       2557   293.5177943       2974.64             0      79510.00
+     V47       2557   176.5021510       1297.62             0      26000.00
+     V48       2557     1.8028940    89.5007424             0       4525.00
+     V49       2557   291.0351975      14716.71             0     744177.00
+     V50       2557    94.8095424   870.4188863             0      29798.00
+     V51       2557   120.1173250       5360.05             0     270882.00
+     V52       2557    12.7254595   184.6686764             0       5256.00
+     V53       2557             0             0             0             0
+     V54       2557             0             0             0             0
+     V55       2557       2304.99      16130.60             0     490000.00
+     V56       2557   777.7321079       8002.23             0     207500.00
+     V57       2557   265.7270239       2922.05             0     108763.00
+     V58       2557    26.0500587       1076.28             0      52683.00
+     V59       2557     4.6765741   224.3881627             0      11338.00
+     V60       2557   880.1063747       9212.95             0     400000.00
+     V61       2557   215.2323035       2737.33             0     107943.00
+     V62       2557    98.7747360       1046.53             0      23078.00
+     V63       2557             0             0             0             0
+     V64       2557             0             0             0             0
+     V65       2557    34.3918655   953.8036816             0      35000.00
+     V66       2557     1.7864685    57.0343752             0       2000.00
+     V67       2557     2.3289011    62.2641289             0       2000.00
+     V68       2557     1.4442706    73.0321260             0       3693.00
+     V69       2557    71.0782167       2328.76             0     105700.00
+     V70       2557      87794.81     683815.24             0   21013500.00
+     V71       2557   721.0254204      11945.27             0     556690.00
+     V72       2557       5185.66      98401.19             0    4653803.00
+     V73       2557    29.5600313   584.9280141             0      20000.00
+     V74       2557   409.8654673       4226.82             0     170000.00
+     V75       2557      37873.48     266776.98     -16500.00    5000000.00
+     V76       2557       4760.88      60209.73     -77685.00    1632100.00
+     V77       2557       3313.03      30392.85     -11503.00     915355.00
+     V78       2557   350.5510364      11390.59             0     473463.00
+     V79       2557       5993.41      96815.99     -22500.00    3550000.00
+     V80       2494      35600.95     275588.97             0    5000000.00
+     V81       2515       4798.53      59339.32             0    1500000.00
+     V82       2466       2828.14      29650.25  -150.0000000     750000.00
+     V83       2554   173.9013312       6582.52             0     324444.00
+     V84       2507       6409.07     131369.28             0    5130000.00
+     V85       2557       1696.07      20383.04             0     650000.00
+     V86       2557   134.3727024       5075.95             0     250000.00
+     V87       2557     9.9953070   505.4305653             0      25558.00
+     V88       2557   154.9327337       4982.82             0     234877.00
+     V89       2496       1315.68      12543.36    -135000.00     227805.00
+     V90       2554   -53.3880188       2413.59     -80472.00      43791.00
+     V91       2557       1672.25      21160.30             0     792212.00
+     V92       2557       1481.40      29594.64             0    1125000.00
+     V93       2557   346.9495503       7578.25             0     295800.00
+     V94       2557             0             0             0             0
+     V95       2557   814.7888150      11292.71             0     262000.00
+     V96       2557   311.4822057       5991.85             0     230000.00
+     V97       2557    39.3038717       1938.19             0      98000.00
+     V98       2557    43.5944466       1998.69             0     100471.00
+     V99       2557             0             0             0             0
+     V100      2557     0.4008604    15.7954714             0   750.0000000
+     V101      2557       1570.73      13608.73             0     340000.00
+     V102      2453       1276.93       7855.54             0     150000.00
+     V103      2557      18830.98      29972.46             0     450000.00
+     V104      2557       4044.33       7645.82             0      85000.00
+     V105      2557       1979.77      12671.08             0     350000.00
+     V106      2557   248.0876027       2857.18             0      85000.00
+     V107      2557      14126.90     105121.85             0    3000000.00
+     V108      2557       4064.96      54586.79             0    1532201.00
+     V109      2557   121.5862339       1811.45             0      60658.00
+     V110      2557   749.2037544      20460.15             0     750000.00
+     V111      2557       1658.11       2016.73             0      20000.00
+     V112      2557       1436.91      29720.44             0    1000000.00
+     V113      2557     7.7829488   250.7760822             0       9000.00
+     V114      2557     0.0391083     1.9775826             0   100.0000000
+     V115      2557       2319.31      39633.51             0    1704026.00
+     V116      2557   282.4301916       6621.69             0     300000.00
+     V117      2557   278.5479077   706.8816301             0       8000.00
+     V118      2557    41.6491983   276.1898589             0       6100.00
+     V119      2557    61.6808760   185.8027350             0       3500.00
+     V120      2557    61.9284318   520.7347320             0      21388.00
+     V121      2557   947.8842393      13082.06             0     430502.00
+     V122      2557   103.2033633       3245.77             0     163100.00
+     V123      2557    16.6057880   109.1219125             0       2900.00
+     V124      2557   867.2561596      25011.27             0    1067211.00
+     V125      2557       9225.11      17251.32             0     226000.00
+     V126      2557   666.2006257       1815.62             0      39077.00
+     V127      2557   462.0144701       1707.54             0      25000.00
+     V128      2557       1435.16       8998.53    -217074.00     135469.00
+     V129      2557     2.7105984   156.5692108      -4600.00       5000.00
+     V130      2557       1945.73      12323.65     -56096.00     220800.00
+     V131      2557     1.0668752    53.9484538             0       2728.00
+     V132      2557   104.1204537       2668.35     -84127.00      49793.00
+     V133      2557     6.6069613   138.9244681             0       4200.00
+     V134      2557       2459.33      14086.27             0     250890.00
+     V135      2557   107.0156433       1929.72             0      83082.00
+     V136      2557   541.7195933       5274.63             0     140000.00
+     V137      2557     8.8576457   221.0168492             0       7350.00
+     V138      2557    69.5701995       1470.78             0      67897.00
+     V139      2557     0.2366054    11.8658690             0   600.0000000
+     V140      2557    84.0617912   800.0324295             0      20684.00
+     V141      2557     6.3508017   167.3680784             0       7821.00
+     V142      2557   286.8439578       2337.30             0      61963.00
+     V143      2557     4.4751662   152.3018193             0       7528.00
+     V144      2557    45.9898318   578.8176003             0      20000.00
+     V145      2557     8.5029331   275.8679937             0      10125.00
+     V146      2557   215.0735237       1074.24             0      30000.00
+     V147      2557    16.4419241   111.8366736             0       4000.00
+     V148      2557   238.8670317       2652.55             0     102000.00
+     V149      2557     1.0864294    37.6817863             0       1663.00
+     V150      2557   534.3089558       4908.04     -24133.00     168961.00
+     V151      2557    17.9867032   454.8513590             0      13607.00
+     V152      2557   358.6120454       1538.43             0      28591.00
+     V153      2557    28.9538522   187.9248640             0       3000.00
+     V154      2557       1044.00      18122.21             0     729118.00
+     V155      2557    57.4716465       1358.02             0      50000.00
+     V156      2557    83.0965976   593.6101319             0      20000.00
+     V157      2557    15.5799765   146.1531783             0       2772.00
+     V158      2541   -77.6241637       1615.57     -52000.00      29542.00
+     V159      2557    -0.1141963    82.5464081      -2887.00       3000.00
+     V160      2533       4495.15     123574.66     -24710.00    6000000.00
+     V161      2557    15.0144701   552.3445350      -7049.00      25926.00
+     V162      2552   833.5552508      12168.07     -15000.00     479218.00
+     V163      2557     0.1083301    36.7849085      -1050.00       1500.00
+     V164      2557    79.5314822       1408.53             0      53906.00
+     V165      2557   185.7133359       3793.42             0     120000.00
+     V166      2557     0.0097771     0.4943957             0    25.0000000
+     V167      2557       1444.35      59742.59             0    3000000.00
+     V168      2557   640.8470864      12385.54             0     458065.00
+     V169      2557     1.1732499    44.2131709             0       2000.00
+     V170      2557    73.5909269       1480.11             0      50000.00
+     V171      2557       8344.61     164300.94             0    7000000.00
+     V172      2557       1319.87      32505.24             0    1215000.00
+     V173      2557   304.6421588       8074.74             0     375000.00
+     V174      2557   106.3390692       4008.99             0     200000.00
+     V175      2557       2691.56      74244.57             0    3500000.00
+     V176      2557      15192.23     236753.15             0   10000000.00
+     V177      2557     1.7211576     0.4485175     1.0000000     2.0000000
+     V178      2557     2.3015252     1.0714907     1.0000000     4.0000000
+     V179      2557     3.4939382     1.7050918     1.0000000     6.0000000
+     V180      2557    49.5874071    14.6167754    17.0000000    92.0000000
+     V181      2557     1.1525225     0.4469144     1.0000000    11.0000000
+     V182      2557     1.2843176     0.6324250     1.0000000    11.0000000
+     V183      2557    31.2342589    31.4305671             0    99.0000000
+     V184      2557    13.1345327    11.5780626             0    99.0000000
+     V185      2557    10.4693000     8.7421067             0    99.0000000
+     V186      2557     2.6491983     3.6365779     1.0000000    11.0000000
+     V187      2557     7.0426281     3.9132991     1.0000000    19.0000000
+     V188      2557     2.2072741     3.1727853     1.0000000    11.0000000
+     V189      2557    35.8795463    22.8033961             0    99.0000000
+     V190      2557    29.7985921    32.8107944             0    99.0000000
+     V191      2557    21.8987094    35.6908170             0    99.0000000
+     V192      2557     7.4517012     3.6145076     1.0000000    11.0000000
+     V193      2557    12.4399687     4.2869509     1.0000000    19.0000000
+     V194      2557     3.3453266     2.6356824     1.0000000    99.0000000
+     V195      2557     2.4348846     5.4682326             0    99.0000000
+     V196      2557     1.4802503     5.6816377             0    99.0000000
+     V197      2557     3.7563551     7.4245082             0    99.0000000
+     V198      2557     5.7704341     8.5704355             0    99.0000000
+     V199      2557     0.6554556     5.5520533    -1.0000000    99.0000000
+     V200      2557     6.1513492     5.1832774     1.0000000    19.0000000
+     V201      2557    10.3590145     7.1197675     1.0000000    19.0000000
+     V202      2557    15.7856864     5.8422988     1.0000000    19.0000000
+     V203      2557     7.1200626     4.1607066     1.0000000    11.0000000
+     V204      2557     8.2616347     3.7084667     1.0000000    11.0000000
+     V205      2557     9.5709816     2.9332938     1.0000000    11.0000000
+     V206      2557     0.8685960     3.1117582             0    19.0000000
+     V207      2557     2.3206883     4.6462934             0    19.0000000
+     V208      2557     3.0852562     5.4889779             0    99.0000000
+     V209      2557     2.0825186     4.5307845             0    19.0000000
+     V210      2557     0.8552992     3.0355523             0    19.0000000
+     V211      2557     0.6351193     2.7261963             0    19.0000000
+     V212      2557    14.7813844     5.4507610     1.0000000    19.0000000
+     V213      2557     1.3637075     1.0246859     1.0000000    11.0000000
+     V214      2557     2.2761048    11.7475911             0    99.0000000
+     V215      2557     0.7860774     7.8063411             0    99.0000000
+     V216      2557     0.4986312     6.1867534             0    99.0000000
+     V217      2557     2.0919046     5.3769273             0    99.0000000
+     V218      2557     3.9624560     1.4028804     1.0000000     6.0000000
+     V219      2557     2.1497849     1.1005107     1.0000000     7.0000000
+     V220      2557     0.4489636     1.3655999             0    50.0000000
+     V221      2557     0.1572155     2.0485881             0    99.0000000
+     I         2557   371.7958545    63.8487473   222.0000000   399.0000000
+     X1        2164       1295.47   739.1338726     1.0000000       2557.00
+     X2        2164   26768484.29   20991307.82      85501.00   96410681.00
+     X3        2164   824.6756007       1721.55             0      13602.00
+     X4        2164   229.0207948   691.7315794             0       7600.00
+     X5        2164    36.3918669   259.0342833             0       5500.00
+     X6        2164       1646.96       1983.19             0      20000.00
+     X7        2164     3.0240296    14.4778555             0    99.0000000
+     X8        2164     2.0351201    10.7234675             0    99.0000000
+     X9        2164       3000.05      15730.57      -1697.00     541017.00
+     X10       2164       2868.23      14776.30             0     440761.00
+     X11       2164     6.3327172    23.8956009             0    99.0000000
+     X12       2164     0.6173752     6.7175768             0    99.0000000
+     X13       2164   495.5365065       5122.55   -24.0000000     157258.00
+     X14       2164   568.0670055       5990.91             0     193732.00
+     X15       2164     5.1229205    21.6303936             0    99.0000000
+     X16       2164     0.4815157     6.0174757             0    99.0000000
+     X17       2164    87.2781885   653.0877386             0      12311.00
+     X18       2164    84.2647874   830.7939068             0      21009.00
+     X19       2164             0             0             0             0
+     X20       2164             0             0             0             0
+     X21       2164       1382.55       9642.21             0     242137.00
+     X22       2164   345.9861368       5167.62             0     209000.00
+     X23       2164   161.9265250       1318.53             0      25500.00
+     X24       2164   118.7153420       1337.30             0      50000.00
+     X25       2164    55.5591497       1221.33             0      50000.00
+     X26       2164    18.7107209   393.5558682             0      15000.00
+     X27       2164    85.2795749       1278.41             0      48532.00
+     X28       2164    16.1890018   537.5940528             0      24450.00
+     X29       2164     7.5970425   117.0328510             0       3000.00
+     X30       2164       1754.22      30237.31             0    1150000.00
+     X31       2164   686.3992606      15783.98             0     600000.00
+     X32       2164       1048.11      18393.71             0     535980.00
+     X33       2164   622.6187616       8871.45             0     270000.00
+     X34       2164   153.8484288       5270.90             0     242137.00
+     X35       2164    95.4306839       2098.30             0      80000.00
+     X36       2164       7466.55      65139.71             0    1618363.00
+     X37       2164       1344.76      17611.99             0     598720.00
+     X38       2164       1024.29      14963.94             0     419096.00
+     X39       2164   135.8299445       3092.58             0     120000.00
+     X40       2164     8.9648799   241.4617618             0      10000.00
+     X41       2164    17.9759704   471.5756606             0      15000.00
+     X42       2164       1862.00      24642.38             0     600000.00
+     X43       2164   262.1303142       4315.53             0     146000.00
+     X44       2164   255.6940850       5254.23             0     190325.00
+     X45       2164       2178.92      13667.98             0     414548.00
+     X46       2164   641.2190388       6351.95             0     213528.00
+     X47       2164   303.5120148       2601.69             0      67000.00
+     X48       2164    28.1423290       1006.60             0      43638.00
+     X49       2164     7.4639556   242.3739371             0      10642.00
+     X50       2164       1800.32       9652.97             0     264146.00
+     X51       2164   664.7421442       8192.33             0     270882.00
+     X52       2164   288.9510166       3139.46             0     108763.00
+     X53       2164    30.7809612       1169.92             0      52683.00
+     X54       2164     5.3317930   243.7652761             0      11338.00
+     X55       2164       1514.15       6950.22             0     160000.00
+     X56       2164   289.5207948       2703.56             0      85000.00
+     X57       2164   215.8091497       1483.31             0      26000.00
+     X58       2164     0.0231054     1.0748340             0    50.0000000
+     X59       2164   194.0850277       8816.16             0     410000.00
+     X60       2164       1308.44       6425.77             0     160000.00
+     X61       2164   241.6344732       2266.74             0      60000.00
+     X62       2164   193.4653420       1364.83             0      26000.00
+     X63       2164     0.0392791     1.8272177             0    85.0000000
+     X64       2164   343.8895564      15997.33             0     744177.00
+     X65       2164   138.0027726       1835.75             0      78486.00
+     X66       2164    19.9690388   245.8473482             0       6340.00
+     X67       2164    11.6635860   152.8574755             0       3584.00
+     X68       2164             0             0             0             0
+     X69       2164             0             0             0             0
+     X70       2164   102.9792052   919.3617236             0      29798.00
+     X71       2164    15.8706100   204.8932356             0       5818.00
+     X72       2164    11.5254159   159.9251784             0       4616.00
+     X73       2164             0             0             0             0
+     X74       2164             0             0             0             0
+     X75       2164   709.4394640       5068.04             0     112483.00
+     X76       2164   272.9274492       3343.66             0     105612.00
+     X77       2164    96.1534196   932.8709961             0      23525.00
+     X78       2164             0             0             0             0
+     X79       2164             0             0             0             0
+     X80       2164   639.3424214       4617.84             0     107906.00
+     X81       2164   230.9500924       2942.73             0     107943.00
+     X82       2164    98.3696858       1044.87             0      23078.00
+     X83       2164             0             0             0             0
+     X84       2164             0             0             0             0
+     X85       2164    17.2033272   674.3416983             0      31000.00
+     X86       2164     1.4177449    55.1058090             0       2500.00
+     X87       2164     1.1829945    32.5419572             0       1060.00
+     X88       2164             0             0             0             0
+     X89       2164    39.0480591       1310.18             0      58000.00
+     X90       2164    14.9907579   569.9304853             0      26000.00
+     X91       2164     2.1109057    61.9940693             0       2000.00
+     X92       2164     0.9034196    29.8033221             0       1055.00
+     X93       2164             0             0             0             0
+     X94       2164    35.1418669       1117.11             0      48000.00
+     X95       2164      18127.29      28425.71             0     350000.00
+     X96       2164       4393.12       8658.06             0     108000.00
+     X97       2164       4111.30       7619.70             0      85000.00
+     X98       2164       1122.78       6900.78             0     100000.00
+     X99       2164   247.6548059       1563.20             0      50846.00
+     X100      2164   554.0018484       4466.56             0      92000.00
+     X101      2164       1829.73      12544.91             0     350000.00
+     X102      2164   172.7985213       2357.05             0      81000.00
+     X103      2164   232.1950092       2915.96             0      85000.00
+     X104      2164   136.4902957       3322.42             0     146000.00
+     X105      2164    31.4736599   513.8980965             0      15000.00
+     X106      2164   123.3618299       2448.97             0     100000.00
+     X107      2164      13256.11     101706.87             0    3000000.00
+     X108      2164       3655.59      45404.49             0    1350000.00
+     X109      2164       3633.54      48971.61             0    1532201.00
+     X110      2164   798.5748614       7586.62             0     162000.00
+     X111      2164   385.7569316       7800.93             0     300000.00
+     X112      2164   885.2694085      11223.00             0     308000.00
+     X113      2164      81215.57     698828.22             0   21013500.00
+     X114      2164   665.9653420      12624.07             0     556690.00
+     X115      2164       5702.30     106745.21             0    4653803.00
+     X116      2164    30.5124769   626.6774212             0      20000.00
+     X117      2164   356.7527726      11060.53             0     500000.00
+     X118      2164       4883.65      35872.37             0     842068.00
+     X119      2164    69.5660813       1456.07             0      46200.00
+     X120      2164   127.4986137       1658.00             0      63125.00
+     X121      2164    15.7911275   544.1925046             0      25000.00
+     X122      2164    15.9376155   545.8263873             0      25000.00
+     X123      2164       4807.55      38561.21             0     996000.00
+     X124      2164    38.6326248   769.7501864             0      28478.00
+     X125      2164   115.4639556       1912.36             0      69000.00
+     X126      2164     5.3553604   114.6863332             0       3500.00
+     X127      2164    25.0069316   877.3268674             0      38919.00
+     X128      2164   989.4616451      17354.46    -302562.00     300000.00
+     X129      2164   178.9219039       8854.71    -137429.00     330000.00
+     X130      2164    97.5309612       2629.88     -54539.00      54214.00
+     X131      2164    -9.8049908   464.1755868     -21250.00       2196.00
+     X132      2164    45.3484288      11648.53    -425000.00     258896.00
+     X133      2164   173.0614603       3868.68             0     162000.00
+     X134      2164    12.2920518   288.0201933             0      10500.00
+     X135      2164   216.8243993       6260.14             0     253492.00
+     X136      2164     0.6007394    27.9456827             0       1300.00
+     X137      2164    39.1002773       1177.67             0      50218.00
+     X138      2164   736.6256932      19300.97      -3000.00     789053.00
+     X139      2164   595.4459335      23888.45             0    1105172.00
+     X140      2164    61.6289279       2588.78             0     120000.00
+     X141      2164             0             0             0             0
+     X142      2164    64.2236599       1932.42             0      85000.00
+     X143      2164       1470.31      18929.69             0     560769.00
+     X144      2164       1708.72      21349.31             0     650000.00
+     X145      2164   161.2550832       5531.25             0     250000.00
+     X146      2164   158.7758780       5517.50             0     250000.00
+     X147      2164     4.7449168   220.7279002             0      10268.00
+     X148      2164    11.8105360   549.4121224             0      25558.00
+     X149      2164    19.8706100   570.5621579             0      22000.00
+     X150      2164   146.2000924       5281.41             0     234877.00
+     X151      2099       1205.99      15452.60     -70406.00     350000.00
+     X152      2163   -34.7263061       1593.53     -63005.00      21115.00
+     X153      2164    63.7897412       1349.21             0      55330.00
+     X154      2164    95.9565619       3277.66             0     150000.00
+     X155      2164     2.9135860   134.3588994             0       6250.00
+     X156      2164             0             0             0             0
+     X157      2164    14.4408503   396.5997547             0      16000.00
+     X158      2164   316.6455638       8070.19             0     355400.00
+     X159      2164   360.6561922       6505.97             0     230000.00
+     X160      2164    24.9353050       1076.70             0      50000.00
+     X161      2164     0.8780037    25.8765142             0       1000.00
+     X162      2164    50.7768022       2319.46             0     107881.00
+     X163      2164    51.5115527       2172.59             0     100471.00
+     X164      2164             0             0             0             0
+     X165      2164             0             0             0             0
+     X166      2164             0             0             0             0
+     X167      2164     0.4736599    17.1695671             0   750.0000000
+     X168      2164    16.1737523   752.3837657             0      35000.00
+     X169      2164             0             0             0             0
+     X170      2164     0.0924214     4.2993358             0   200.0000000
+     X171      2164             0             0             0             0
+     X172      2164     6.4695009   231.4894056             0      10000.00
+     X173      2164   120.9815157       2420.14             0      86728.00
+     X174      2164    88.7028651       1346.17             0      40000.00
+     X175      2164   811.6760628      30624.09             0    1421255.00
+     X176      2164   493.0097043      15256.78             0     700000.00
+     X177      2164       1753.89      24559.90             0     803765.00
+     X178      2164   551.3997227      17566.81             0     803765.00
+     X179      2164    29.3558226   755.0424714             0      25000.00
+     X180      2164   344.5868762       7671.25             0     300000.00
+     X181      2164    52.9487061       2105.56             0      96781.00
+     X182      2164             0             0             0             0
+     X183      2164   237.7158041       3192.90             0     111077.00
+     X184      2164    48.9399261       1742.65             0      80148.00
+     X185      2164     1.4741220    43.9254904             0       1450.00
+     X186      2164       1301.91      27828.01             0     885000.00
+     X187      2164   207.2818854       4129.96             0     150000.00
+     X188      2164   159.9939926       4638.26             0     210470.00
+     X189      2164   719.1085952      10658.45             0     326527.00
+     X190      2164   300.6386322       7917.66             0     326527.00
+     X191      2164    20.6561922   918.8946576             0      42700.00
+     X192      2164   146.2809612       2470.80             0      82000.00
+     X193      2164    46.3202403       1247.14             0      47994.00
+     X194      2164     0.1524954     6.4808718             0   300.0000000
+     X195      2164   134.9487061       2439.27             0      97783.00
+     X196      2164   108.0646950       2960.46             0      97783.00
+     X197      2164    20.7948244   918.9141698             0      42700.00
+     X198      2155       9835.45      26764.25             0     320000.00
+     X199      2164   433.3447320       1967.69             0      50000.00
+     X200      2164   471.0300370       3035.14             0     100000.00
+     X201      2150      10646.98      30188.67             0     550000.00
+     X202      2164   612.6007394       3896.56             0     101800.00
+     X203      2163   420.6957929       1908.11             0      31000.00
+     X204      2151      17457.58      51217.13             0     900000.00
+     X205      2160       2550.15      18604.77             0     500000.00
+     X206      2161       1702.69       7202.12             0     150000.00
+     X207      2154      15782.78      41919.29             0     503680.00
+     X208      2163       2384.41      17680.83             0     500000.00
+     X209      2161       1498.55       7157.02             0     150000.00
+     X210      2005       4090.37      15920.66             0     343122.00
+     X211      2075   735.9590361       8498.66             0     278485.00
+     X212      2099   200.0100048       1631.34             0      63500.00
+     X213      2034       4122.92      13745.55             0     300000.00
+     X214      2090   812.3191388       8290.98             0     264863.00
+     X215      2110   200.8004739       1589.05             0      62000.00
+     X216      2163   114.5543227       1651.16             0      48000.00
+     X217      2164     3.7245841   114.4214575             0       5000.00
+     X218      2164     7.9034196   142.5056257             0       5000.00
+     X219      2164   429.0420518       4608.00             0     170000.00
+     X220      2164   127.5540665       3950.44             0     175000.00
+     X221      2164     5.0300370   141.8852868             0       5000.00
+     X222      2164   413.0859519       4469.17             0     170000.00
+     X223      2164   115.3927911       3442.69             0     150000.00
+     X224      2164     3.3646026    77.8969628             0       3000.00
+     X225      2103    94.9524489   518.1713185             0      12000.00
+     X226      2148     3.3608007    20.6362849             0   572.0000000
+     X227      2149     2.8641228    24.2255494             0   842.0000000
+     X228      2112   361.2779356       1295.55             0      25000.00
+     X229      2147    51.5975780   395.9949708             0       7737.00
+     X230      2147    29.2883093   110.7428079             0       2000.00
+     X231      2160   204.0370370       4702.32             0     200000.00
+     X232      2163    64.9898289       2592.55             0     120000.00
+     X233      2164     3.7892791   134.9113644             0       5800.00
+     X234      2164    10.5323475   236.1961783             0      10000.00
+     X235      2164     3.1423290   111.8057397             0       5000.00
+     X236      2164     0.0577634     2.6870849             0   125.0000000
+     X237      2164     0.3687616    13.5802903             0   600.0000000
+     X238      2164     0.2310536    10.7483395             0   500.0000000
+     X239      2164             0             0             0             0
+     X240      2081       1298.57       7441.91             0     142000.00
+     X241      2164   100.7435305   479.8793127             0      12000.00
+     X242      2164    29.8119224       1204.57             0      55943.00
+     X243      2164       1495.94      13929.55             0     340000.00
+     X244      2164    68.5753235       1648.71             0      75000.00
+     X245      2164    73.9117375       2178.12             0      72949.00
+     X246      2164       1198.82      27499.71             0    1000000.00
+     X247      2164   262.6936229       4955.64             0     162500.00
+     X248      2164    25.7888170       1007.40             0      46562.00
+     X249      2164       2173.82      32833.25             0    1283135.00
+     X250      2164       2368.24      42206.71             0    1704026.00
+     X251      2164    95.8174677       2200.28             0      90000.00
+     X252      2164   123.3359519       2172.18             0      70000.00
+     X253      2164   277.8817006   685.5784198             0       5050.00
+     X254      2164   289.7578558   720.2942190             0       8000.00
+     X255      2164    43.5614603   278.3405276             0       6500.00
+     X256      2164    44.5134011   285.3433508             0       6100.00
+     X257      2164    56.6012015   181.6874935             0       3000.00
+     X258      2164    63.9034196   189.1528463             0       3500.00
+     X259      2164    46.8059150   338.2937555             0       8304.00
+     X260      2164    56.8567468   320.6918100             0       8196.00
+     X261      2164   787.8146950      10445.16             0     407800.00
+     X262      2164   978.6247689      14048.63             0     430502.00
+     X263      2164   113.3978743       3520.78             0     163100.00
+     X264      2164   117.1233826       3527.25             0     163100.00
+     X265      2164    24.2458410   144.3523474             0       4138.00
+     X266      2164    18.4912200   117.7622467             0       2900.00
+     X267      2164   941.1275416      25973.06             0    1009831.00
+     X268      2164   994.8359519      27177.00             0    1067211.00
+     X269      1997      18132.49      33726.47             0     407022.00
+     X270      2032      18328.21      35898.89     -28000.00     724395.00
+     X271      2164       9208.61      17793.05             0     231850.00
+     X272      2164   683.5646950       1847.06             0      37278.00
+     X273      2164   583.1774492       1977.81             0      25000.00
+     X274      2164       1434.40      10218.68    -217074.00     155261.00
+     X275      2164     8.6072089   174.3756024             0       6158.00
+     X276      2164       1664.22      11213.96     -21621.00     249077.00
+     X277      2164    12.2999076   639.4738903      -3988.00      29420.00
+     X278      2164    73.9856747       2552.69     -84127.00      35000.00
+     X279      2164    12.6298521   306.9154842             0      12239.00
+     X280      2164       2448.60      14638.29             0     287680.00
+     X281      2164    60.6307763   864.4148986             0      26493.00
+     X282      2164   444.5905730       5244.04             0     150538.00
+     X283      2164    14.1668207   337.3953322             0       9916.00
+     X284      2164    42.1746765   795.2120906             0      30000.00
+     X285      2164     0.2795749    12.8984056             0   600.0000000
+     X286      2164    73.5633087   685.2037693             0      11490.00
+     X287      2164     4.8525878    67.8937259             0       1700.00
+     X288      2164   172.6095194       1558.61             0      29224.00
+     X289      2164     2.0378928    52.2196315             0       2000.00
+     X290      2164    29.3179298   434.8267813             0      16675.00
+     X291      2164     4.7883549   182.3316532             0       8411.00
+     X292      2164   220.9121996   875.2241024             0      21000.00
+     X293      2164    16.9865989   110.8740223             0       2157.00
+     X294      2164   208.8299445       2443.81             0      95000.00
+     X295      2164     2.1478743    52.3655431             0       1607.00
+     X296      2164   220.7555453       4982.56    -131518.00     109196.00
+     X297      2164     5.6963956   236.5649064  -238.0000000      10968.00
+     X298      2164   422.6247689       1781.07             0      30308.00
+     X299      2164    32.2657116   233.8407318             0       4368.00
+     X300      2164   701.4861368      17750.48             0     778950.00
+     X301      2164    34.8045287   834.3235375             0      33676.00
+     X302      2164    80.6663586   471.8842386  -136.0000000      12000.00
+     X303      2164    13.1566543   155.1936763             0       4800.00
+     X304      2162     9.3302498   739.3096741     -15000.00      23174.00
+     X305      2164     1.3354898    64.8745738  -280.0000000       3000.00
+     X306      2160   895.9620370       7800.91     -36719.00     162134.00
+     X307      2164    11.8026802   311.9687494  -224.0000000      12972.00
+     X308      2161       1116.38      25241.24     -52575.00     745000.00
+     X309      2164             0             0             0             0
+     X310      2164    16.1109057   325.0918099             0      13000.00
+     X311      2164     4.6210721   214.9667902             0      10000.00
+     X312      2163     4.7461859   195.4075317             0       9000.00
+     X313      2164     1.1959335    45.3472191             0       2068.00
+     X314      2164     0.1247689     5.8041033             0   270.0000000
+     X315      2164             0             0             0             0
+     X316      2164    15.0027726   377.5902840             0      13000.00
+     X317      2164             0             0             0             0
+     X318      2164     0.4778189    22.2275661             0       1034.00
+     X319      2164             0             0             0             0
+     X320      2164             0             0             0             0
+     X321      2164     1.5402033    71.6484312             0       3333.00
+     X322      2164             0             0             0             0
+     X323      2164             0             0             0             0
+     X324      2164             0             0             0             0
+     X325      2164             0             0             0             0
+     X326      2164             0             0             0             0
+     X327      2164             0             0             0             0
+     X328      2162       2582.02      59908.17             0    2283897.00
+     X329      2164    45.7768022       1247.48             0      51000.00
+     X330      2164   179.4145102       2414.51             0      90000.00
+     X331      2161   122.4710782       2501.65             0      85921.00
+     X332      2164    20.0933457   705.2048689             0      32000.00
+     X333      2164    94.2236599       1558.10             0      40000.00
+     X334      2163     6.6019417   162.4954084             0       5831.00
+     X335      2164   129.0328096       1688.30             0      66200.00
+     X336      2163   136.8303282       2076.73             0      49000.00
+     X337      2164     4.1446396   140.0344844             0       6000.00
+     X338      2164    25.7855823   944.5566770             0      43000.00
+     X339      2163    73.9810448       2036.18             0      63871.00
+     X340      2155   546.3781903       2594.10             0      78198.00
+     X341      2163   407.2968100       6935.56             0     267500.00
+     X342      2164     8.0984288   344.9196708             0      16000.00
+     X343      2164     4.4796673   208.3888064             0       9694.00
+     X344      2164    56.0868762       1324.16             0      50000.00
+     X345      2164    43.3373383   812.7494554             0      22500.00
+     X346      2164       9830.20     117401.01             0    3283900.00
+     X347      2164    60.8622921       2062.66             0      90000.00
+     X348      2164     1.8378004     2.1988594             0    18.0000000
+     X349      2164     0.9574861     8.4847389             0    99.0000000
+     X350      2164     1.0420518     4.1953662             0    99.0000000
+     X351      2164     1.6196858    10.6769484             0    99.0000000
+     X352      2164     0.4274492     0.9672419             0    18.0000000
+     X353      2164     0.4288355     0.9687776             0    18.0000000
+     X354      2164     0.6658965     7.9388976             0    99.0000000
+     X355      2164     0.1109057     0.5521289             0    13.0000000
+     X356      2164     0.1053604     0.4778873             0    10.0000000
+     X357      2164     0.5554529     7.3534486             0    99.0000000
+     X358      2164     3.9325323     1.3971356     1.0000000     6.0000000
+     X359      2164    49.2472274    14.5198182    17.0000000    91.0000000
+     X360      2164     3.5785582     1.2283530             0     4.0000000
+     X361      2164     1.0628466     0.5437209     1.0000000     9.0000000
+     X362      2164    11.1631238    13.3210545             0    99.0000000
+     X363      2164     1.4343808     1.2200517     1.0000000     9.0000000
+     X364      2164     1.0000000             0     1.0000000     1.0000000
+     X365      2164     2.2629390     2.4471660     1.0000000     9.0000000
+     X366      2164    21.9242144    38.2506731             0    99.0000000
+     X367      2164     3.3401109     3.0436551     1.0000000     9.0000000
+     X368      2163     2.6264448     3.2178221     1.0000000     9.0000000
+     X369      2164     1.6922366     4.9653925             0    99.0000000
+     X370      2164     0.3322551     4.7674593             0    99.0000000
+     X371      2164     0.1871534     4.2536978             0    99.0000000
+     X372      2164     4.3844732    15.6672537             0    99.0000000
+     X373      2164     2.5217190    14.8514291             0    99.0000000
+     X374      2164     0.0050832     0.0885076             0     3.0000000
+     X375      2164     1.3585952     1.1080611     1.0000000     9.0000000
+     X376      2164    84.9112754    31.5067082    10.0000000    99.0000000
+     X377      2164    85.6418669    32.6330375     1.0000000    99.0000000
+     X378      2164       8565.35       3263.31   101.0000000       9909.00
+     X379      2164    97.7495379     9.5380167             0    99.0000000
+     X380      2164    97.9445471     9.9716043             0    99.0000000
+     X381      2164   118.9926063   110.9980859   100.0000000   900.0000000
+     X382      2164       9710.03       1184.46             0       9900.00
+     X383      2164       9680.01       1424.34     1.0000000       9909.00
+     X384      2164     1.1709797     1.0799603     1.0000000     9.0000000
+     X385      2164    97.6977819     9.8695221             0    99.0000000
+     X386      2164    97.9450092     9.9696826             0    99.0000000
+     X387      2164     1.9228281     1.1442659     1.0000000     9.0000000
+     X388      2164    51.0683919    41.7531541    10.0000000    99.0000000
+     X389      2164    55.7402957    46.3443165     1.0000000    99.0000000
+     X390      2164     1.4995379     1.3256249     1.0000000     9.0000000
+     X391      2164    82.3128466    32.2980457             0    99.0000000
+     X392      2164    83.6534196    34.8475318             0    99.0000000
+     X393      2164     2.1737523     1.1153262     1.0000000     7.0000000
+     X394      2164     3.4390018     2.6278627             0    11.0000000
+     X395      2164     3.1340111     1.3900007     1.0000000     5.0000000
+     X396      2164     4.0041590     2.0372130             0    11.0000000
+     X397      2164     2.1945471     3.1562116     1.0000000    11.0000000
+     X398      2164     2.3128466     1.0701694     1.0000000     4.0000000
+
+
+*****************************************************************************
+Output of weighted (using V4/1000)  PROC MEANS on MERGED dataset
+
+
+     Variable     N          Mean       Std Dev       Minimum       Maximum
+     ----------------------------------------------------------------------
+     V1        2557       1361.39    3476076.99     1.0000000       2557.00
+     V2        2557   30496790.44   54970091662      53925.00   43155098.00
+     V3        2557       1000.00             0       1000.00       1000.00
+     V5        2557   354.0597192    9643900.84             0     440761.00
+     V6        2557    34.3096967    5261394.76             0     193732.00
+     V7        2557    20.2185450    1662683.82             0     156041.00
+     V8        2557   381.5797064   10608895.11             0     242137.00
+     V9        2557    27.5438089    2772625.65             0     209000.00
+     V10       2557    49.2265118    2435004.14             0      25500.00
+     V11       2557    50.7658204   33799832.16             0    1150000.00
+     V12       2557    20.0056198    9985987.44             0     385000.00
+     V13       2557     2.3884765    1694645.96             0     135000.00
+     V14       2557    10.4614205    3764169.67             0     250000.00
+     V15       2557    13.7621343    3306085.16             0      95000.00
+     V16       2557     2.1142193    1504629.83             0     150000.00
+     V17       2557     6.5410142    4074888.79             0     450000.00
+     V18       2557    10.4580613    1497032.30             0      59600.00
+     V19       2557   219.0822604   45608889.15             0    1653000.00
+     V20       2557    20.7063039    3450485.74             0     120000.00
+     V21       2557    80.4214801   12767505.74             0     600000.00
+     V22       2557   381.6238639   24957653.27             0     803765.00
+     V23       2557    17.8466287    8270888.37             0     803765.00
+     V24       2557     6.5623293    1404544.06             0      25000.00
+     V25       2557   126.2335048   17049801.65             0     885000.00
+     V26       2557   111.3728353    7608835.24             0     326527.00
+     V27       2557     5.3467160    3412121.63             0     326527.00
+     V28       2557     5.7847436    1897839.58             0      42700.00
+     V29       2551    16.0604117    2985940.86             0     200000.00
+     V30       2556     1.4006976     991564.48             0     120000.00
+     V31       2557     1.2588957     327451.06             0       5800.00
+     V32       2555   198.2385176   34353204.73             0    2283897.00
+     V33       2541       4253.53   44905740.19             0     550000.00
+     V34       2556   448.1891847   12036644.94             0     101800.00
+     V35       2556   385.2099325    7691327.73             0      31000.00
+     V36       2541       3677.51   56315425.20             0     503680.00
+     V37       2553   433.9278871   10460198.81             0     500000.00
+     V38       2552   769.5383601   13495023.30             0     307000.00
+     V39       2383   705.0631906   13510391.64             0     300000.00
+     V40       2466   111.3965760    5228505.48             0     264863.00
+     V41       2488    92.6049356    1827137.93             0      62000.00
+     V42       2557    58.5075205    3645932.18             0     170000.00
+     V43       2557     2.8857403    1848034.64             0     150000.00
+     V44       2557     0.8616324     110140.19             0       3000.00
+     V45       2557   590.0135695   13727626.09             0     160000.00
+     V46       2557    50.2039371    3520895.74             0      79510.00
+     V47       2557    60.2931092    2674293.92             0      26000.00
+     V48       2557     0.2418843     132139.92             0       4525.00
+     V49       2557     2.8777233    6966616.37             0     744177.00
+     V50       2557    78.7236617    2865554.24             0      29798.00
+     V51       2557    24.0988468    7201479.29             0     270882.00
+     V52       2557     4.7317552     401369.48             0       5256.00
+     V53       2557             0             0             0             0
+     V54       2557             0             0             0             0
+     V55       2557   536.8055192   13632200.33             0     490000.00
+     V56       2557    78.8799670    6615819.03             0     207500.00
+     V57       2557    73.6216959    4000793.09             0     108763.00
+     V58       2557     0.7028974     552307.26             0      52683.00
+     V59       2557     0.4544966     324098.24             0      11338.00
+     V60       2557   235.8639473    9747249.46             0     400000.00
+     V61       2557    25.8690281    3065211.88             0     107943.00
+     V62       2557    33.3447351    2350099.73             0      23078.00
+     V63       2557             0             0             0             0
+     V64       2557             0             0             0             0
+     V65       2557     7.1509768    1324913.86             0      35000.00
+     V66       2557     0.2938127     105835.01             0       2000.00
+     V67       2557     0.9444296     156355.97             0       2000.00
+     V68       2557     0.3750436     177161.18             0       3693.00
+     V69       2557     3.0603009    1982993.00             0     105700.00
+     V70       2557       3273.28     311709934             0   21013500.00
+     V71       2557    66.6713226    9577263.78             0     556690.00
+     V72       2557   429.6404494   64135667.58             0    4653803.00
+     V73       2557     4.8295153     720673.43             0      20000.00
+     V74       2557    58.5075205    3645932.18             0     170000.00
+     V75       2557       1241.84     186579698     -16500.00    5000000.00
+     V76       2557   217.7402373   32959198.72     -77685.00    1632100.00
+     V77       2557   772.8336787   29981249.95     -11503.00     915355.00
+     V78       2557     9.1789656    5891783.07             0     473463.00
+     V79       2557       1547.76   80894419.97     -22500.00    3550000.00
+     V80       2494       1117.41     195990507             0    5000000.00
+     V81       2515   307.5929334   53509092.68             0    1500000.00
+     V82       2466   816.4714778   34133466.97  -150.0000000     750000.00
+     V83       2554    10.4344708    5128884.53             0     324444.00
+     V84       2507       1075.89   96021909.89             0    5130000.00
+     V85       2557    70.8501440   11791746.63             0     650000.00
+     V86       2557     6.0599331    3258820.89             0     250000.00
+     V87       2557     0.7823871     673174.59             0      25558.00
+     V88       2557    13.6360517    4739439.75             0     234877.00
+     V89       2496    61.4477278   12012790.26    -135000.00     227805.00
+     V90       2554    -7.7751350    3168856.04     -80472.00      43791.00
+     V91       2557   181.6526188   18658801.37             0     792212.00
+     V92       2557    33.7885292   13816410.61             0    1125000.00
+     V93       2557    46.3638749    7495641.88             0     295800.00
+     V94       2557             0             0             0             0
+     V95       2557   349.0074069   31949717.70             0     262000.00
+     V96       2557    18.6551725    4138200.25             0     230000.00
+     V97       2557     1.1920446    1588452.08             0      98000.00
+     V98       2557     1.3112381    1425660.67             0     100471.00
+     V99       2557             0             0             0             0
+     V100      2557     0.3094533      71869.60             0   750.0000000
+     V101      2557   119.6941159    9083390.17             0     340000.00
+     V102      2453   348.4027088    9221750.81             0     150000.00
+     V103      2557       7943.66   50023631.66             0     450000.00
+     V104      2557       2481.93   22789853.23             0      85000.00
+     V105      2557   238.6192192   11396234.49             0     350000.00
+     V106      2557    47.3409219    3305677.75             0      85000.00
+     V107      2557       1975.43   87730186.63             0    3000000.00
+     V108      2557   403.0870483   37438311.52             0    1532201.00
+     V109      2557     9.9491622    1714404.23             0      60658.00
+     V110      2557    43.3118656   20885801.65             0     750000.00
+     V111      2557   949.2379951    5757791.98             0      20000.00
+     V112      2557    56.5628330   18928481.03             0    1000000.00
+     V113      2557     0.0517233      86304.06             0       9000.00
+     V114      2557     0.0572506      11387.43             0   100.0000000
+     V115      2557    79.5186914   18212179.09             0    1704026.00
+     V116      2557     4.6107526    2975983.57             0     300000.00
+     V117      2557   305.6679859    3424426.39             0       8000.00
+     V118      2557    45.8253568    1336700.38             0       6100.00
+     V119      2557    73.4609029     858614.83             0       3500.00
+     V120      2557    53.3316222     986260.23             0      21388.00
+     V121      2557    91.2297718    7607206.47             0     430502.00
+     V122      2557    44.1293914    2102968.46             0     163100.00
+     V123      2557    19.2486946     488892.47             0       2900.00
+     V124      2557    79.2293850   17643555.35             0    1067211.00
+     V125      2557       3862.53   21597901.02             0     226000.00
+     V126      2557   574.4050860    6450526.14             0      39077.00
+     V127      2557   356.1435336    6026529.39             0      25000.00
+     V128      2557   404.1374307   11805743.80    -217074.00     135469.00
+     V129      2557     3.0673454     646930.07      -4600.00       5000.00
+     V130      2557   150.3704705   14242911.46     -56096.00     220800.00
+     V131      2557     0.0173835      32783.04             0       2728.00
+     V132      2557   158.6849095    7146164.56     -84127.00      49793.00
+     V133      2557     8.1199735     695388.02             0       4200.00
+     V134      2557   104.6054729    8057454.94             0     250890.00
+     V135      2557     9.2102269    1357851.68             0      83082.00
+     V136      2557    12.4999261    2869030.21             0     140000.00
+     V137      2557     0.2333264     136029.47             0       7350.00
+     V138      2557     4.8681920    1280110.32             0      67897.00
+     V139      2557     0.0156174      12668.41             0   600.0000000
+     V140      2557     6.2322993     794034.82             0      20684.00
+     V141      2557     0.4402408     105428.45             0       7821.00
+     V142      2557     7.1573276    1504275.49             0      61963.00
+     V143      2557     0.6710705     121157.85             0       7528.00
+     V144      2557     2.7544911     359529.67             0      20000.00
+     V145      2557     0.3653989     269027.99             0      10125.00
+     V146      2557    55.9695217    1013187.68             0      30000.00
+     V147      2557     5.5064058     170122.43             0       4000.00
+     V148      2557    28.1827177    1621814.44             0     102000.00
+     V149      2557     0.0833024      24495.75             0       1663.00
+     V150      2557   111.0895500    5419213.85     -24133.00     168961.00
+     V151      2557     1.9139529     469924.99             0      13607.00
+     V152      2557   298.6624168    3683055.08             0      28591.00
+     V153      2557    40.8793517    1045910.70             0       3000.00
+     V154      2557    36.3898231    9979411.13             0     729118.00
+     V155      2557     3.0374223     681267.22             0      50000.00
+     V156      2557   106.3358995    2010168.56             0      20000.00
+     V157      2557    23.5215165     889778.74             0       2772.00
+     V158      2541    -2.7791576     969839.28     -52000.00      29542.00
+     V159      2557    -0.2357201      45745.05      -2887.00       3000.00
+     V160      2533    56.5704149   48596068.09     -24710.00    6000000.00
+     V161      2557     0.4745502     373206.44      -7049.00      25926.00
+     V162      2552    40.1481219    7915666.81     -15000.00     479218.00
+     V163      2557    -0.0206436      72094.28      -1050.00       1500.00
+     V164      2557     8.9008126    1643329.64             0      53906.00
+     V165      2557    30.3025347    3773396.81             0     120000.00
+     V166      2557     0.0142828       2843.89             0    25.0000000
+     V167      2557   168.6943512   90175629.57             0    3000000.00
+     V168      2557    64.8382721   14116339.46             0     458065.00
+     V169      2557     0.7930755     189467.99             0       2000.00
+     V170      2557    22.6414279    4982452.14             0      50000.00
+     V171      2557   505.3935011     214749011             0    7000000.00
+     V172      2557    30.6776715   20440779.96             0    1215000.00
+     V173      2557    16.1144762    4974658.69             0     375000.00
+     V174      2557    18.3259697    5953594.94             0     200000.00
+     V175      2557    70.2019074   44595793.45             0    3500000.00
+     V176      2557   936.8982827     311116543             0   10000000.00
+     V177      2557     1.9648183   877.0838382     1.0000000     2.0000000
+     V178      2557     2.3800862       4964.45     1.0000000     4.0000000
+     V179      2557     3.7460253       8422.99     1.0000000     6.0000000
+     V180      2557    48.8553210      75982.79    17.0000000    92.0000000
+     V181      2557     1.2093766       1984.54     1.0000000    11.0000000
+     V182      2557     1.3866699       3210.15     1.0000000    11.0000000
+     V183      2557    34.8476258     172495.66             0    99.0000000
+     V184      2557    11.9485433      61686.19             0    99.0000000
+     V185      2557     9.4339433      39519.68             0    99.0000000
+     V186      2557     3.2134938      19351.93     1.0000000    11.0000000
+     V187      2557     8.3511705      17661.06     1.0000000    19.0000000
+     V188      2557     2.1867846      14774.28     1.0000000    11.0000000
+     V189      2557    30.0912576     110599.23             0    99.0000000
+     V190      2557    35.1074813     172763.60             0    99.0000000
+     V191      2557    29.3550764     187081.02             0    99.0000000
+     V192      2557     7.1575952      17074.50     1.0000000    11.0000000
+     V193      2557    12.8958069      21084.27     1.0000000    19.0000000
+     V194      2557     3.2800610      13280.20     1.0000000    99.0000000
+     V195      2557     2.1639506      19560.55             0    99.0000000
+     V196      2557     1.4110528      20871.78             0    99.0000000
+     V197      2557     3.3287516      31024.43             0    99.0000000
+     V198      2557     5.4500567      36519.19             0    99.0000000
+     V199      2557     0.4668003      19784.38    -1.0000000    99.0000000
+     V200      2557     6.6990007      27095.19     1.0000000    19.0000000
+     V201      2557    11.1037528      34474.25     1.0000000    19.0000000
+     V202      2557    16.3012882      26206.91     1.0000000    19.0000000
+     V203      2557     9.0033040      17088.56     1.0000000    11.0000000
+     V204      2557     9.7519146      13707.01     1.0000000    11.0000000
+     V205      2557    10.3932881       9813.54     1.0000000    11.0000000
+     V206      2557     0.5436540      11611.22             0    19.0000000
+     V207      2557     1.2621566      17342.63             0    19.0000000
+     V208      2557     1.3270773      19836.33             0    99.0000000
+     V209      2557     1.0490106      16365.78             0    19.0000000
+     V210      2557     0.3248652       9233.40             0    19.0000000
+     V211      2557     0.1495313       6406.24             0    19.0000000
+     V212      2557    16.9617197      20819.18     1.0000000    19.0000000
+     V213      2557     1.2358187       3330.73     1.0000000    11.0000000
+     V214      2557     0.9150800      26718.67             0    99.0000000
+     V215      2557     0.1417062      13842.19             0    99.0000000
+     V216      2557     0.1155797      10698.19             0    99.0000000
+     V217      2557     1.3628175      18664.33             0    99.0000000
+     V218      2557     3.8596669       7123.22     1.0000000     6.0000000
+     V219      2557     2.4202937       5563.60     1.0000000     7.0000000
+     V220      2557     0.1908005       2266.63             0    50.0000000
+     V221      2557     0.0451423       1467.93             0    99.0000000
+     I         2557   376.8475071     278819.73   222.0000000   399.0000000
+     X1        2164       1379.16    3534496.42     1.0000000       2557.00
+     X2        2164   42862152.17   78762168103      85501.00   96410681.00
+     X3        2164   498.6588481    5565246.64             0      13602.00
+     X4        2164   129.5148332    2223062.69             0       7600.00
+     X5        2164    19.3351085     616707.20             0       5500.00
+     X6        2164   971.0612824    5917732.19             0      20000.00
+     X7        2164     2.0635703      57881.14             0    99.0000000
+     X8        2164     0.9215696      27188.03             0    99.0000000
+     X9        2164   371.8578999    9595024.27      -1697.00     541017.00
+     X10       2164   334.9888059    8403158.61             0     440761.00
+     X11       2164     5.7581894     111534.91             0    99.0000000
+     X12       2164     0.0902984       9005.85             0    99.0000000
+     X13       2164    22.9065597    3177748.96   -24.0000000     157258.00
+     X14       2164    24.9749438    3648892.81             0     193732.00
+     X15       2164     4.3917353      97785.80             0    99.0000000
+     X16       2164     0.1104765      10030.94             0    99.0000000
+     X17       2164    24.4282369     991750.95             0      12311.00
+     X18       2164    20.5558906    1093474.79             0      21009.00
+     X19       2164             0             0             0             0
+     X20       2164             0             0             0             0
+     X21       2164   366.5788370   10179837.34             0     242137.00
+     X22       2164    28.2588040    2929328.11             0     209000.00
+     X23       2164    51.0834847    2594103.10             0      25500.00
+     X24       2164    50.0024849    1911503.08             0      50000.00
+     X25       2164     5.9391332     800489.13             0      50000.00
+     X26       2164    13.9227192    1522014.74             0      15000.00
+     X27       2164    31.6255259    1432285.27             0      48532.00
+     X28       2164     3.0064903     720014.95             0      24450.00
+     X29       2164     4.0412899     469446.47             0       3000.00
+     X30       2164    68.3826076   37134199.08             0    1150000.00
+     X31       2164    26.1854450   17776263.63             0     600000.00
+     X32       2164    26.7148386   14923799.13             0     535980.00
+     X33       2164    31.4142661    5462439.79             0     270000.00
+     X34       2164     9.2500194    3778628.53             0     242137.00
+     X35       2164     5.6312708    2385143.23             0      80000.00
+     X36       2164   158.9394864   37364000.37             0    1618363.00
+     X37       2164    26.2767937   11090096.11             0     598720.00
+     X38       2164    13.2222715    6323909.50             0     419096.00
+     X39       2164    22.2996615    3615853.73             0     120000.00
+     X40       2164     0.9469318     364537.67             0      10000.00
+     X41       2164     0.2927506     247787.62             0      15000.00
+     X42       2164    79.9621081   12677972.30             0     600000.00
+     X43       2164     9.5494174    3012698.18             0     146000.00
+     X44       2164     9.2583053    3464365.35             0     190325.00
+     X45       2164   613.6586769   13395413.09             0     414548.00
+     X46       2164    76.8101797    5676285.22             0     213528.00
+     X47       2164    94.5191762    3922094.51             0      67000.00
+     X48       2164     0.9188511     634210.34             0      43638.00
+     X49       2164     2.8885080     482826.85             0      10642.00
+     X50       2164   507.5108363   10563445.21             0     264146.00
+     X51       2164    79.9288162    9365286.42             0     270882.00
+     X52       2164    81.2962274    4328439.79             0     108763.00
+     X53       2164     0.8034539     600387.68             0      52683.00
+     X54       2164     0.4666582     351777.30             0      11338.00
+     X55       2164   622.3145169   14433585.35             0     160000.00
+     X56       2164    58.6099653    3665680.08             0      85000.00
+     X57       2164    73.0360244    2871384.65             0      26000.00
+     X58       2164     0.0490680       7577.90             0    50.0000000
+     X59       2164     8.5384964    4356929.00             0     410000.00
+     X60       2164   583.4057572   13700850.37             0     160000.00
+     X61       2164    48.1467120    3188347.80             0      60000.00
+     X62       2164    64.0124289    2747598.48             0      26000.00
+     X63       2164     0.0834156      12882.42             0    85.0000000
+     X64       2164     3.2894106    7573104.35             0     744177.00
+     X65       2164    92.9571077    3285817.52             0      78486.00
+     X66       2164    20.3776751    1217750.82             0       6340.00
+     X67       2164     5.5308002     464285.80             0       3584.00
+     X68       2164             0             0             0             0
+     X69       2164             0             0             0             0
+     X70       2164    85.2742956    3057093.27             0      29798.00
+     X71       2164    16.4006282    1045067.21             0       5818.00
+     X72       2164     4.3068242     381569.43             0       4616.00
+     X73       2164             0             0             0             0
+     X74       2164             0             0             0             0
+     X75       2164   196.4703663    7584520.63             0     112483.00
+     X76       2164    25.6262505    3554940.32             0     105612.00
+     X77       2164    36.0556380    2409673.35             0      23525.00
+     X78       2164             0             0             0             0
+     X79       2164             0             0             0             0
+     X80       2164   198.0825773    7582381.91             0     107906.00
+     X81       2164    27.4366876    3307303.44             0     107943.00
+     X82       2164    35.9043638    2535378.34             0      23078.00
+     X83       2164             0             0             0             0
+     X84       2164             0             0             0             0
+     X85       2164     6.2108953     848921.41             0      31000.00
+     X86       2164     0.0926829      45359.20             0       2500.00
+     X87       2164     1.3747186     159355.43             0       1060.00
+     X88       2164             0             0             0             0
+     X89       2164     2.7808491    1732183.34             0      58000.00
+     X90       2164     6.5253706     882042.05             0      26000.00
+     X91       2164     0.3358456     115047.21             0       2000.00
+     X92       2164     0.8468897     134143.86             0       1055.00
+     X93       2164             0             0             0             0
+     X94       2164     2.5023752    1476800.35             0      48000.00
+     X95       2164       7994.33   50328517.01             0     350000.00
+     X96       2164       2734.33   25884346.15             0     108000.00
+     X97       2164       2557.44   23322758.11             0      85000.00
+     X98       2164   616.8539341   18548697.51             0     100000.00
+     X99       2164   110.0418949    3394287.86             0      50846.00
+     X100      2164   279.4869403   11795401.38             0      92000.00
+     X101      2164   230.0473986   11604104.97             0     350000.00
+     X102      2164    29.7341727    2516919.94             0      81000.00
+     X103      2164    42.0942455    3343242.83             0      85000.00
+     X104      2164    22.7290785    3211504.66             0     146000.00
+     X105      2164     6.1577850    1146683.54             0      15000.00
+     X106      2164    39.1363812    4673458.19             0     100000.00
+     X107      2164       1939.40   88768499.97             0    3000000.00
+     X108      2164   405.3972984   35185438.20             0    1350000.00
+     X109      2164   402.8084971   37894300.55             0    1532201.00
+     X110      2164   152.5024451   13277077.94             0     162000.00
+     X111      2164    23.9058338    4966898.93             0     300000.00
+     X112      2164   156.0652533   13770132.46             0     308000.00
+     X113      2164       3107.30     311957928             0   21013500.00
+     X114      2164    60.0412295    9459878.29             0     556690.00
+     X115      2164   458.0757114   69578499.10             0    4653803.00
+     X116      2164     5.2862885     773670.76             0      20000.00
+     X117      2164    23.6073374    8182814.97             0     500000.00
+     X118      2164   367.9029681   45626081.99             0     842068.00
+     X119      2164     8.8037407    1238446.38             0      46200.00
+     X120      2164    25.4358808    2676048.44             0      63125.00
+     X121      2164     1.0566548     243700.29             0      25000.00
+     X122      2164     0.4633628     244203.86             0      25000.00
+     X123      2164   382.4186624   50395816.05             0     996000.00
+     X124      2164     5.8216872     796420.04             0      28478.00
+     X125      2164     3.6613647    1023889.48             0      69000.00
+     X126      2164     1.2688628     176943.55             0       3500.00
+     X127      2164     1.8467775    1235209.72             0      38919.00
+     X128      2164    36.9341538   14341616.43    -302562.00     300000.00
+     X129      2164    10.8887563    5328012.53    -137429.00     330000.00
+     X130      2164    52.7333372    4349670.27     -54539.00      54214.00
+     X131      2164    -1.3322076     739664.66     -21250.00       2196.00
+     X132      2164    25.4884781    9949855.58    -425000.00     258896.00
+     X133      2164    22.3802940    5875529.69             0     162000.00
+     X134      2164     6.9548255     928230.03             0      10500.00
+     X135      2164    32.9773113    5551653.75             0     253492.00
+     X136      2164     0.4853180     121557.44             0       1300.00
+     X137      2164    28.8453096    3960573.06             0      50218.00
+     X138      2164    26.2186010   13184223.14      -3000.00     789053.00
+     X139      2164    30.9766923    9379650.31             0    1105172.00
+     X140      2164   110.2396543   17350402.12             0     120000.00
+     X141      2164             0             0             0             0
+     X142      2164    31.2018123    5059003.30             0      85000.00
+     X143      2164    66.4808229    9769997.17             0     560769.00
+     X144      2164    71.2762173   11728315.48             0     650000.00
+     X145      2164     8.0748983    3465846.37             0     250000.00
+     X146      2164     6.9268674    3542502.96             0     250000.00
+     X147      2164     0.3592938     293993.63             0      10268.00
+     X148      2164     0.8943154     731777.30             0      25558.00
+     X149      2164     0.1478235     245397.79             0      22000.00
+     X150      2164     2.5665136    3585966.34             0     234877.00
+     X151      2099    37.3318034   12802081.94     -70406.00     350000.00
+     X152      2163    -0.8367406    1213466.67     -63005.00      21115.00
+     X153      2164     3.5664366     775365.72             0      55330.00
+     X154      2164     7.4190017    4944712.68             0     150000.00
+     X155      2164     0.7767152     336051.40             0       6250.00
+     X156      2164             0             0             0             0
+     X157      2164     2.7696234     522708.50             0      16000.00
+     X158      2164    14.9717801    4151199.82             0     355400.00
+     X159      2164    18.6986104    4409497.38             0     230000.00
+     X160      2164     0.3503558     338744.04             0      50000.00
+     X161      2164     0.0402619      22022.94             0       1000.00
+     X162      2164     2.9951573    1643563.79             0     107881.00
+     X163      2164     1.4988239    1549771.74             0     100471.00
+     X164      2164             0             0             0             0
+     X165      2164             0             0             0             0
+     X166      2164             0             0             0             0
+     X167      2164     0.3537237      78123.97             0   750.0000000
+     X168      2164     0.2549350     457219.70             0      35000.00
+     X169      2164             0             0             0             0
+     X170      2164     0.1758761      28694.92             0   200.0000000
+     X171      2164             0             0             0             0
+     X172      2164     2.9692609     572938.62             0      10000.00
+     X173      2164     9.1025919    2743123.00             0      86728.00
+     X174      2164    10.3218596    1605030.86             0      40000.00
+     X175      2164    69.8952399   44136123.35             0    1421255.00
+     X176      2164    44.5299724   21943081.53             0     700000.00
+     X177      2164   337.3702925   21633551.68             0     803765.00
+     X178      2164    16.5194073    8933885.76             0     803765.00
+     X179      2164     7.5011364    1526764.89             0      25000.00
+     X180      2164    60.1400110    6033732.43             0     300000.00
+     X181      2164     0.6699602    1009931.09             0      96781.00
+     X182      2164             0             0             0             0
+     X183      2164    68.4523936    3889066.99             0     111077.00
+     X184      2164     2.2606791     917062.35             0      80148.00
+     X185      2164     0.6008475     139733.41             0       1450.00
+     X186      2164   134.6877239   16506085.16             0     885000.00
+     X187      2164    96.4238986   13557913.48             0     150000.00
+     X188      2164    50.0789877    5637271.46             0     210470.00
+     X189      2164   109.3227583    7284761.78             0     326527.00
+     X190      2164     4.6148809    3702409.70             0     326527.00
+     X191      2164     2.2477271     459171.10             0      42700.00
+     X192      2164    22.6748390    2467035.07             0      82000.00
+     X193      2164     2.8445174    1238580.47             0      47994.00
+     X194      2164     0.2110180      37271.75             0   300.0000000
+     X195      2164    30.4510319    2579092.24             0      97783.00
+     X196      2164     1.8347250    1407921.73             0      97783.00
+     X197      2164     2.4440496     460647.82             0      42700.00
+     X198      2155       4090.04   48739859.05             0     320000.00
+     X199      2164   366.5043799    6742276.69             0      50000.00
+     X200      2164   361.2974526    8111645.13             0     100000.00
+     X201      2150       4463.05   47189446.78             0     550000.00
+     X202      2164   448.1639495   12654407.04             0     101800.00
+     X203      2163   367.5303775    7352972.19             0      31000.00
+     X204      2151       4601.74   61018876.14             0     900000.00
+     X205      2160   536.9918414   10989626.64             0     500000.00
+     X206      2161   931.0737572   13270178.31             0     150000.00
+     X207      2154       3709.38   56578953.51             0     503680.00
+     X208      2163   431.2727776    9891591.42             0     500000.00
+     X209      2161   774.1389781   11837485.42             0     150000.00
+     X210      2005   758.2157553   14901110.46             0     343122.00
+     X211      2075   110.2962059    4861801.57             0     278485.00
+     X212      2099   107.5438858    2007273.80             0      63500.00
+     X213      2034   711.9970509   13242044.62             0     300000.00
+     X214      2090   108.2708013    4799988.81             0     264863.00
+     X215      2110    98.4499584    1922999.09             0      62000.00
+     X216      2163    22.9476989    2015595.09             0      48000.00
+     X217      2164     1.6969986     241062.65             0       5000.00
+     X218      2164     4.5751905     453175.06             0       5000.00
+     X219      2164    59.4817637    3889007.45             0     170000.00
+     X220      2164     3.8768535    2316973.67             0     175000.00
+     X221      2164     0.7371911     114782.74             0       5000.00
+     X222      2164    57.2516897    3701721.55             0     170000.00
+     X223      2164     2.9225379    2006889.94             0     150000.00
+     X224      2164     0.9848976     119716.75             0       3000.00
+     X225      2103    34.9117269     544337.36             0      12000.00
+     X226      2148     3.3241706      70445.86             0   572.0000000
+     X227      2149     2.5057258     106438.99             0   842.0000000
+     X228      2112    96.5240529    1552372.78             0      25000.00
+     X229      2147    13.7218497     312287.73             0       7737.00
+     X230      2147    18.6306002     285072.46             0       2000.00
+     X231      2160    17.6557808    3155539.99             0     200000.00
+     X232      2163     1.6010899    1077921.57             0     120000.00
+     X233      2164     1.4197606     354365.19             0       5800.00
+     X234      2164     4.2964740     492002.61             0      10000.00
+     X235      2164     0.4818461     163316.40             0       5000.00
+     X236      2164     0.0400070      10822.59             0   125.0000000
+     X237      2164     0.6369411      91513.13             0   600.0000000
+     X238      2164     0.0043518       7139.94             0   500.0000000
+     X239      2164             0             0             0             0
+     X240      2081   363.1921608    9683079.52             0     142000.00
+     X241      2164    57.1088046     921563.44             0      12000.00
+     X242      2164     4.8248669     599772.83             0      55943.00
+     X243      2164   122.2653254    9315441.06             0     340000.00
+     X244      2164    13.6838627    1082563.98             0      75000.00
+     X245      2164     6.2097243    1419483.15             0      72949.00
+     X246      2164    56.0967825   18283974.67             0    1000000.00
+     X247      2164     3.8903369    3045804.38             0     162500.00
+     X248      2164     0.9857544     681229.04             0      46562.00
+     X249      2164    82.6685097   16068727.19             0    1283135.00
+     X250      2164    83.7428533   19218571.89             0    1704026.00
+     X251      2164     5.7598580    1237934.37             0      90000.00
+     X252      2164     3.3750931    1719993.85             0      70000.00
+     X253      2164   298.0403175    3256408.40             0       5050.00
+     X254      2164   312.0384486    3543811.44             0       8000.00
+     X255      2164    46.0710677    1308594.92             0       6500.00
+     X256      2164    46.0439823    1364669.10             0       6100.00
+     X257      2164    67.5620728     922310.42             0       3000.00
+     X258      2164    74.0156250     861721.98             0       3500.00
+     X259      2164    48.3150651    1514435.85             0       8304.00
+     X260      2164    55.0108698    1005302.18             0       8196.00
+     X261      2164   128.1857308    7982724.87             0     407800.00
+     X262      2164    89.1335673    7874361.76             0     430502.00
+     X263      2164    42.6885355    2040572.21             0     163100.00
+     X264      2164    45.8243763    2260657.66             0     163100.00
+     X265      2164    30.9766908     727675.12             0       4138.00
+     X266      2164    20.8693678     527628.94             0       2900.00
+     X267      2164    75.8680441   18676321.98             0    1009831.00
+     X268      2164    86.2889994   19164487.13             0    1067211.00
+     X269      1997       6298.16   33193951.65             0     407022.00
+     X270      2032       6664.92   34279796.27     -28000.00     724395.00
+     X271      2164       4095.62   23339374.49             0     231850.00
+     X272      2164   608.3988416    6839994.60             0      37278.00
+     X273      2164   446.6932354    7183661.61             0      25000.00
+     X274      2164   431.7692463   14183058.01    -217074.00     155261.00
+     X275      2164     6.4177176     601786.03             0       6158.00
+     X276      2164   176.3895543   12491033.01     -21621.00     249077.00
+     X277      2164     9.5729031    2576781.87      -3988.00      29420.00
+     X278      2164    92.0584056    4762723.48     -84127.00      35000.00
+     X279      2164    10.2886464    1151015.05             0      12239.00
+     X280      2164   101.4188090    9357587.83             0     287680.00
+     X281      2164     8.8836498    1088296.25             0      26493.00
+     X282      2164    17.0566254    2849824.95             0     150538.00
+     X283      2164     0.2117257     193023.90             0       9916.00
+     X284      2164     3.1870065     906005.67             0      30000.00
+     X285      2164     0.0178516      13771.24             0   600.0000000
+     X286      2164     5.5595528     505268.39             0      11490.00
+     X287      2164     1.3916112     132377.55             0       1700.00
+     X288      2164     3.5422257     943811.55             0      29224.00
+     X289      2164     0.1065782      23851.55             0       2000.00
+     X290      2164     2.1819738     254567.82             0      16675.00
+     X291      2164     0.8338249     254271.37             0       8411.00
+     X292      2164    60.2400547    1001559.77             0      21000.00
+     X293      2164     5.0206094     171331.50             0       2157.00
+     X294      2164    20.6532365    1479422.08             0      95000.00
+     X295      2164     0.3190335      64556.60             0       1607.00
+     X296      2164    65.3149909    3793129.13    -131518.00     109196.00
+     X297      2164     0.6641100     157419.45  -238.0000000      10968.00
+     X298      2164   314.5995375    3938477.92             0      30308.00
+     X299      2164    37.7399388    1119365.42             0       4368.00
+     X300      2164    25.3253218   10428745.47             0     778950.00
+     X301      2164     3.5113761     534130.09             0      33676.00
+     X302      2164   116.5263247    2341287.79  -136.0000000      12000.00
+     X303      2164    14.1623018     673457.50             0       4800.00
+     X304      2162     1.4751334    1296615.73     -15000.00      23174.00
+     X305      2164     0.1018542      55133.40  -280.0000000       3000.00
+     X306      2160    21.6400487    4857111.34     -36719.00     162134.00
+     X307      2164     0.9987989     232965.15  -224.0000000      12972.00
+     X308      2161    53.1552210   23835468.24     -52575.00     745000.00
+     X309      2164             0             0             0             0
+     X310      2164    18.6753248    1904671.54             0      13000.00
+     X311      2164     0.9910579     481843.20             0      10000.00
+     X312      2163     1.4036518     475327.80             0       9000.00
+     X313      2164     1.0454238     184232.64             0       2068.00
+     X314      2164     0.2262835      37818.47             0   270.0000000
+     X315      2164             0             0             0             0
+     X316      2164    21.3035521    2236847.69             0      13000.00
+     X317      2164             0             0             0             0
+     X318      2164     0.3158300      87457.76             0       1034.00
+     X319      2164             0             0             0             0
+     X320      2164             0             0             0             0
+     X321      2164     1.0180478     281911.72             0       3333.00
+     X322      2164             0             0             0             0
+     X323      2164             0             0             0             0
+     X324      2164             0             0             0             0
+     X325      2164             0             0             0             0
+     X326      2164             0             0             0             0
+     X327      2164             0             0             0             0
+     X328      2162   221.5134751   37297274.65             0    2283897.00
+     X329      2164    11.1614415    1908374.49             0      51000.00
+     X330      2164    64.7632634    4933702.77             0      90000.00
+     X331      2161    61.7015961    9380111.92             0      85921.00
+     X332      2164     4.8133291    1674172.62             0      32000.00
+     X333      2164    53.1888924    5531049.87             0      40000.00
+     X334      2163     3.0504016     467740.86             0       5831.00
+     X335      2164    27.7534115    1751477.22             0      66200.00
+     X336      2163     3.9369613    1797259.86             0      49000.00
+     X337      2164     0.0651085      66162.54             0       6000.00
+     X338      2164     9.9475867    1760936.61             0      43000.00
+     X339      2163     8.9105368    3609992.26             0      63871.00
+     X340      2155   116.2565147    1949747.28             0      78198.00
+     X341      2163     8.3120863    4503803.67             0     267500.00
+     X342      2164     0.1639289     215260.98             0      16000.00
+     X343      2164     0.0338060      87624.48             0       9694.00
+     X344      2164     4.3878668    1061647.33             0      50000.00
+     X345      2164     1.2144889     673800.17             0      22500.00
+     X346      2164   307.6341157   66727143.96             0    3283900.00
+     X347      2164     2.2974625     843005.38             0      90000.00
+     X348      2164     1.2456473       7273.80             0    18.0000000
+     X349      2164     0.7460716      36420.63             0    99.0000000
+     X350      2164     0.2131102       9606.04             0    99.0000000
+     X351      2164     0.7392576      39017.56             0    99.0000000
+     X352      2164     0.1956756       2254.65             0    18.0000000
+     X353      2164     0.1956652       2253.17             0    18.0000000
+     X354      2164     0.5105188      33715.69             0    99.0000000
+     X355      2164     0.0481226       1267.23             0    13.0000000
+     X356      2164     0.0480857       1262.48             0    10.0000000
+     X357      2164     0.2944979      26005.83             0    99.0000000
+     X358      2164     3.8435231       7206.04     1.0000000     6.0000000
+     X359      2164    48.6356254      76564.40    17.0000000    91.0000000
+     X360      2164     3.4651471       6589.55             0     4.0000000
+     X361      2164     1.0699682       2418.52     1.0000000     9.0000000
+     X362      2164    10.3064935      66212.51             0    99.0000000
+     X363      2164     1.4674336       5490.69     1.0000000     9.0000000
+     X364      2164     1.0000000             0     1.0000000     1.0000000
+     X365      2164     2.7195994      13105.97     1.0000000     9.0000000
+     X366      2164    27.6117937     201059.98             0    99.0000000
+     X367      2164     3.8427592      16246.14     1.0000000     9.0000000
+     X368      2163     3.2588562      17417.47     1.0000000     9.0000000
+     X369      2164     1.5840469      18430.82             0    99.0000000
+     X370      2164     0.2351366      16821.31             0    99.0000000
+     X371      2164     0.1144392      15932.58             0    99.0000000
+     X372      2164     3.8877578      71163.52             0    99.0000000
+     X373      2164     2.2817882      68807.47             0    99.0000000
+     X374      2164     0.0059680   521.5234672             0     3.0000000
+     X375      2164     1.2461258       3665.79     1.0000000     9.0000000
+     X376      2164    86.2920564     147080.94    10.0000000    99.0000000
+     X377      2164    86.4756965     153686.24     1.0000000    99.0000000
+     X378      2164       8648.63   15368517.67   101.0000000       9909.00
+     X379      2164    98.7080893      22711.03             0    99.0000000
+     X380      2164    98.7629674      23084.69             0    99.0000000
+     X381      2164   106.7179904     351090.17   100.0000000   900.0000000
+     X382      2164       9895.90     834174.40             0       9900.00
+     X383      2164       9897.27     912446.42     1.0000000       9909.00
+     X384      2164     1.0602648       3231.83     1.0000000     9.0000000
+     X385      2164    98.7377533      22100.87             0    99.0000000
+     X386      2164    98.7397961      24075.52             0    99.0000000
+     X387      2164     1.7661090       4662.16     1.0000000     9.0000000
+     X388      2164    56.3118744     206432.31    10.0000000    99.0000000
+     X389      2164    59.8945659     221843.89     1.0000000    99.0000000
+     X390      2164     1.2276287       4547.05     1.0000000     9.0000000
+     X391      2164    91.1175697     117525.26             0    99.0000000
+     X392      2164    92.1748538     117966.07             0    99.0000000
+     X393      2164     2.4287508       5716.69     1.0000000     7.0000000
+     X394      2164     4.0613942      13541.65             0    11.0000000
+     X395      2164     3.0324270       7044.05     1.0000000     5.0000000
+     X396      2164     3.3372541       9443.06             0    11.0000000
+     X397      2164     2.1460918      14757.36     1.0000000    11.0000000
+     X398      2164     2.3885764       5049.86     1.0000000     4.0000000
+
+*****************************************************************************
+*****************************************************************************
+*****************************************************************************
+*****************************************************************************
+*****************************************************************************

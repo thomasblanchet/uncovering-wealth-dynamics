@@ -1,0 +1,420 @@
+# ---------------------------------------------------------------------------- #
+# Simulate the model
+# ---------------------------------------------------------------------------- #
+
+library(tidyverse)
+library(here)
+library(glue)
+library(VineCopula)
+library(scales)
+library(ggtext)
+
+options(dplyr.summarise.inform = FALSE)
+
+dir.create(here("graphs", "07-simulate-model-warren-i"), showWarnings = FALSE)
+dir.create(here("work", "07-simulate-model-warren-i"), showWarnings = FALSE)
+
+set.seed(19920902)
+
+stat_match     <- read_rds(here("work", "01-utils", "stat_match.rds"))
+top_shares     <- read_rds(here("work", "01-utils", "top_shares.rds"))
+rectangular    <- read_rds(here("work", "01-utils", "rectangular.rds"))
+nreg_drv0_grid <- read_rds(here("work", "01-utils", "nreg_drv0_grid.rds"))
+nreg_drv1_grid <- read_rds(here("work", "01-utils", "nreg_drv1_grid.rds"))
+nreg_drv0      <- read_rds(here("work", "01-utils", "nreg_drv0.rds"))
+nreg_drv1      <- read_rds(here("work", "01-utils", "nreg_drv1.rds"))
+
+tax_schedule_summary <- read_rds(here("work", "02-import-estate-tax-schedule", "tax_schedule_summary.rds"))
+tax_schedule_details <- read_rds(here("work", "02-import-estate-tax-schedule", "tax_schedule_details.rds"))
+estate_tax           <- read_rds(here("work", "02-import-estate-tax-schedule", "estate_tax.rds"))
+
+dina_macro <- read_rds(here("work", "02-import-dina", "dina_macro.rds"))
+population <- read_rds(here("work", "02-import-population", "population.rds"))
+life_table <- read_rds(here("work", "02-import-mortality", "life_table.rds"))
+fertility  <- read_rds(here("work", "02-import-female-fertility", "fertility.rds"))
+
+marriage_divorce_rate <- read_rds(here("work", "03-estimate-marriage-rates", "marriage_divorce_rate.rds"))
+copula_inheritance    <- read_rds(here("work", "03-estimate-inheritance-process", "copula_inheritance.rds"))
+
+copula_marriage     <- read_rds(here("work", "03-estimate-marriage-process", "copula_marriage.rds"))
+spouse_wealth_share <- read_rds(here("work", "03-estimate-marriage-process", "spouse_wealth_share.rds"))
+
+model_micro_birth <- read_rds(here("work", "04-estimate-distribution-birth", "model_micro_birth.rds"))
+
+dx               <- read_rds(here("work", "04-prepare-data", "dx.rds"))
+grid_cutpoints   <- read_rds(here("work", "04-prepare-data", "grid_cutpoints.rds"))
+grid_midpoints   <- read_rds(here("work", "04-prepare-data", "grid_midpoints.rds"))
+year_pivot       <- read_rds(here("work", "04-prepare-data", "year_pivot.rds"))
+model_macro_data <- read_rds(here("work", "04-prepare-data", "model_macro_data.rds"))
+
+model_all_data <- read_rds(here("work", "05-fit-model", "model_all_data.rds"))
+
+simul_savings            <- read_rds(here("work", "07-simulation-functions", "simul_savings.rds"))
+simul_marriages_divorces <- read_rds(here("work", "07-simulation-functions", "simul_marriages_divorces.rds"))
+simul_inheritance        <- read_rds(here("work", "07-simulation-functions", "simul_inheritance.rds"))
+simul_birth_death        <- read_rds(here("work", "07-simulation-functions", "simul_birth_death.rds"))
+
+model_params        <- read_rds(here("work", "07-prepare-simulation", "model_params.rds"))
+data_simul          <- read_rds(here("work", "07-prepare-simulation", "data_simul.rds"))
+data_simul_demog    <- read_rds(here("work", "07-prepare-simulation", "data_simul_demog.rds"))
+simul_param_income  <- read_rds(here("work", "07-prepare-simulation", "simul_param_income.rds"))
+growth_rates        <- read_rds(here("work", "07-prepare-simulation", "growth_rates.rds"))
+avg_national_income <- read_rds(here("work", "07-prepare-simulation", "avg_national_income.rds"))
+pop_growth          <- read_rds(here("work", "07-prepare-simulation", "pop_growth.rds"))
+pop_death           <- read_rds(here("work", "07-prepare-simulation", "pop_death.rds"))
+gperc               <- read_rds(here("work", "07-prepare-simulation", "gperc.rds"))
+gperc_size          <- read_rds(here("work", "07-prepare-simulation", "gperc_size.rds"))
+gperc_unif          <- read_rds(here("work", "07-prepare-simulation", "gperc_unif.rds"))
+num_draws           <- read_rds(here("work", "07-prepare-simulation", "num_draws.rds"))
+
+# ---------------------------------------------------------------------------- #
+# Run the simulation
+# ---------------------------------------------------------------------------- #
+
+# Future net national income path to simulate the evolution
+national_income_path <- dina_macro %>%
+    transmute(year, avg_nni = national_income/deflator/adult_population)
+growth_post1980 <- mean(model_macro_data %>% filter(year >= 1980 & year <= 2019) %>% pull(growth_rate))
+national_income_path <- data.frame(year = 1962:2100) %>% left_join(national_income_path) %>% arrange(year)
+
+national_income_path$avg_nni[national_income_path$year > 2019] <-
+    national_income_path$avg_nni[national_income_path$year == 2019]*(1 + growth_post1980)^(2020:2100 - 2015)
+
+# Warren tax schedule
+warren_wealth_tax <- data.frame(
+    bracket = c(50e6, 1e9),
+    rate = c(0.02, 0.03)
+)
+# Normalize bracket values at the year the tax is instaured
+warren_wealth_tax <- warren_wealth_tax %>%
+    mutate(bracket = bracket/national_income_path$avg_nni[national_income_path$year == 2021])
+# Compute amount of tax paid by each bracket
+warren_wealth_tax <- warren_wealth_tax %>%
+    mutate(bracket_size = c(diff(bracket), NA)) %>%
+    mutate(tax_bracket = bracket_size*rate) %>%
+    mutate(tax_cumul = c(0, cumsum(tax_bracket)[-n()])) %>%
+    select(-c(bracket_size, tax_bracket))
+
+wealth_tax <- function(wealth, schedule_brackets, schedule_rates, schedule_cumul) {
+    brackets <- cut(wealth,
+        breaks = c(schedule_brackets, Inf),
+        include.lowest = TRUE,
+        labels = FALSE
+    )
+
+    taxable_bracket <- schedule_brackets[brackets]
+    taxable_rate <- schedule_rates[brackets]
+    taxable_cumul <- schedule_cumul[brackets]
+
+    tax_amount <- taxable_cumul + taxable_rate*(wealth - taxable_bracket)
+    tax_amount[is.na(tax_amount)] <- 0
+
+    return(tax_amount)
+}
+
+last_year <- 2019
+
+data_simul_init <- data_simul
+
+data_simul_effects <- NULL
+data_simul_tabul <- NULL
+
+for (i in 1:5) {
+    data_simul <- data_simul_init
+    for (yr in 1963:2100) {
+        # # Testing purposes only: after the first year
+        # if (yr > 1963) {
+        #     data_simul_tabul <- bind_rows(data_simul_tabul, data_simul_tabul %>%
+        #         filter(year == 1963 & replicate == i) %>%
+        #         mutate(year = yr, replicate = i))
+        #     data_simul_effects <- bind_rows(data_simul_effects, data_simul_effects %>%
+        #         filter(year == 1963 & replicate == i) %>%
+        #         mutate(year = yr, replicate = i))
+        #     cat(glue("* {yr} => Filled with dummy data"), "\n")
+        #     next
+        # }
+
+        # ------------------------------------------------------------------------ #
+        # Original simulated distribution
+        # ------------------------------------------------------------------------ #
+
+        data_simul_distrib <- data_simul %>%
+            mutate(asinh_wealth = asinh(wealth)) %>%
+            mutate(weight = weight/sum(weight)) %>%
+            mutate(wealth_bin = round(10*asinh_wealth)) %>%
+            group_by(wealth_bin) %>%
+            summarise(density = sum(weight)/dx) %>%
+            mutate(asinh_wealth = wealth_bin/10) %>%
+            arrange(desc(wealth_bin)) %>%
+            mutate(cdf = 1 - dx*cumsum(density))
+
+        # ------------------------------------------------------------------------ #
+        # Simulate and age/sex distribution
+        # ------------------------------------------------------------------------ #
+
+        if (yr <= last_year) {
+            data_simul_new <- bind_cols(
+                data_simul %>% mutate(year = yr) %>% arrange(wealth),
+                data_simul_demog %>% filter(year == yr) %>% select(-year)
+            )
+        } else {
+            # For the future, just update mortality rates
+            life_table_yr <- life_table %>%
+                filter(year == yr) %>%
+                filter(variant == "Past" | variant == "Medium") %>%
+                select(sex, age, qx)
+            life_table_yr_spouse <- life_table_yr %>% transmute(
+                sex = if_else(sex == "male", "female", "male"),
+                age_spouse = age,
+                qx_spouse = qx
+            )
+
+            data_simul_new <- bind_cols(
+                data_simul %>% mutate(year = yr) %>% arrange(wealth),
+                data_simul_demog %>%
+                    filter(year == last_year) %>%
+                    select(-year, -qx, -qx_spouse) %>%
+                    left_join(life_table_yr, by = c("age", "sex")) %>%
+                    mutate(qx = replace_na(qx, 1)) %>% # 100+ people with no data: assume 100% mortality
+                    # Also update mortality rate of spouse
+                    left_join(life_table_yr_spouse, by = c("age_spouse", "sex"))
+            )
+        }
+
+        # ------------------------------------------------------------------------ #
+        # Effects of savings
+        # ------------------------------------------------------------------------ #
+
+        if (yr <= year_pivot) {
+            param_savings_yr <- model_params %>% transmute(asinh_wealth, diffu, drift = drift1)
+        } else {
+            param_savings_yr <- model_params %>% transmute(asinh_wealth, diffu, drift = drift2)
+        }
+
+        if (yr <= last_year) {
+            growth_rate_yr <- growth_rates %>% filter(year == yr) %>% pull(growth_rate)
+            param_income_yr <- simul_param_income %>% filter(year == yr) %>% select(-year)
+        } else {
+            growth_rate_yr <- growth_rates %>% filter(year %in% c(2010:last_year)) %>% pull(growth_rate) %>% mean()
+            param_income_yr <- simul_param_income %>% filter(year == last_year) %>% select(-year)
+        }
+
+        simul_savings_yr <- simul_savings(
+            data_simul = data_simul_new,
+            param_income = param_income_yr,
+            param_savings = param_savings_yr,
+            growth_rate = growth_rate_yr
+        )
+
+        data_simul_new <- simul_savings_yr$data_simul
+        data_simul_effects_yr <- simul_savings_yr$effects
+
+        # ------------------------------------------------------------------------ #
+        # Simulate the wealth tax
+        # ------------------------------------------------------------------------ #
+
+        if (yr >= 2021) {
+            # Adjust the tax bracket to hold them constant
+            adj_schedule <- national_income_path$avg_nni[national_income_path$year == yr] /
+                national_income_path$avg_nni[national_income_path$year == 2021]
+
+            warren_wealth_tax_current <- warren_wealth_tax %>% mutate(
+                bracket = bracket/adj_schedule,
+                tax_cumul = tax_cumul/adj_schedule
+            )
+
+            # Amount of the tax
+            data_simul_new <- data_simul_new %>% mutate(
+                taxable_wealth = if_else(couple == 1, 2*wealth, wealth),
+                wealth_tax = wealth_tax(taxable_wealth,
+                                        warren_wealth_tax_current$bracket,
+                                        warren_wealth_tax_current$rate,
+                                        warren_wealth_tax_current$tax_cumul
+                )
+            )
+            # Payment of the tax
+            data_simul_new <- data_simul_new %>% mutate(
+                wealth = wealth - if_else(couple == 1, wealth_tax/2, wealth_tax)
+            )
+        }
+
+        # ------------------------------------------------------------------------ #
+        # Simulate effect of marriages & divorces
+        # ------------------------------------------------------------------------ #
+
+        if (yr <= last_year) {
+            marriage_divorce_rate_yr <- marriage_divorce_rate %>%
+                filter(year == yr) %>% select(-year)
+        } else {
+            marriage_divorce_rate_yr <- marriage_divorce_rate %>%
+                filter(year == last_year) %>% select(-year)
+        }
+
+        simul_marriages_divorces_yr <- simul_marriages_divorces(
+            data_simul = data_simul_new,
+            marriage_divorce_rate = marriage_divorce_rate_yr,
+            copula_marriage = copula_marriage,
+            spouse_wealth_share = spouse_wealth_share
+        )
+
+        data_simul_new <- simul_marriages_divorces_yr$data_simul
+        data_simul_effects_yr <- data_simul_effects_yr %>%
+            left_join(simul_marriages_divorces_yr$effects, by = "wealth_bin")
+
+        # ------------------------------------------------------------------------ #
+        # Simulate inheritance
+        # ------------------------------------------------------------------------ #
+
+        # Retrieve national income of the year to be able to compute the level of
+        # inheritance taxation
+        avg_national_income_yr <- avg_national_income %>% filter(year == min(yr, last_year)) %>% pull(avg)
+
+        simul_inheritance_yr <- simul_inheritance(
+            data_simul = data_simul_new,
+            estate_tax_fun = function(w) estate_tax(w*avg_national_income_yr, min(yr, last_year))/avg_national_income_yr
+        )
+
+        data_simul_new <- simul_inheritance_yr$data_simul
+        data_simul_effects_yr <- data_simul_effects_yr %>% left_join(simul_inheritance_yr$effects, by = "wealth_bin")
+
+        # ------------------------------------------------------------------------ #
+        # Simulate birth/death
+        # ------------------------------------------------------------------------ #
+
+        death_rate <- pop_death %>% filter(year == yr) %>% pull(death_rate)
+        growth_rate <- pop_growth %>% filter(year == yr) %>% pull(pop_growth)
+        birth_rate <- death_rate + growth_rate
+
+        simul_birth_death_yr <- simul_birth_death(data_simul_new, birth_rate)
+
+        data_simul_new <- simul_birth_death_yr$data_simul
+        data_simul_effects_yr <- data_simul_effects_yr %>% left_join(simul_birth_death_yr$effects, by = "wealth_bin")
+
+        # ------------------------------------------------------------------------ #
+        # Resample the distribution
+        # ------------------------------------------------------------------------ #
+
+        data_simul_new <- data_simul_new %>%
+            arrange(wealth) %>%
+            mutate(rank = (cumsum(weight) - weight/2)/sum(weight)) %>%
+            mutate(bracket = findInterval(1e5*rank, gperc)) %>%
+            group_by(bracket) %>%
+            # Sample num_draws observations within each g-percentile
+            slice_sample(n = num_draws, weight_by = weight, replace = TRUE) %>%
+            mutate(weight = gperc_size[bracket], p = gperc[bracket]) %>%
+            transmute(year = yr, weight, p, wealth) %>%
+            ungroup() %>%
+            arrange(wealth)
+
+        cat(glue("* {yr} => {round(100*top_shares(data_simul_new$wealth, data_simul_new$weight, p = 0.99), 2)}%"), "\n")
+
+        data_simul <- data_simul_new
+        data_simul_effects <- bind_rows(data_simul_effects, data_simul_effects_yr %>% mutate(year = yr, replicate = i))
+
+        # ------------------------------------------------------------------------ #
+        # Tabulate the distribution
+        # ------------------------------------------------------------------------ #
+
+        data_simul_tabul <- bind_rows(
+            data_simul_tabul,
+            data_simul %>%
+                arrange(wealth) %>%
+                mutate(rank = (cumsum(weight) - weight/2)/sum(weight)) %>%
+                mutate(bracket = findInterval(1e5*rank, gperc)) %>%
+                group_by(year, bracket) %>%
+                summarise(a = weighted.mean(wealth, weight)) %>%
+                ungroup() %>%
+                arrange(bracket) %>%
+                mutate(p = gperc[bracket]) %>%
+                mutate(n = diff(c(p, 1e5))) %>%
+                mutate(s = a*n/1e5/weighted.mean(a, n)) %>%
+                arrange(desc(p)) %>%
+                mutate(ts = cumsum(s)) %>%
+                mutate(bs = 1 - ts) %>%
+                mutate(replicate = i) %>%
+                arrange(p)
+        )
+    }
+}
+
+stop()
+
+# ---------------------------------------------------------------------------- #
+# Save results
+# ---------------------------------------------------------------------------- #
+
+write_rds(data_simul_tabul,   here("work", "07-simulate-model-warren-i", "data_simul_warren1_tabul.rds"))
+write_rds(data_simul_effects, here("work", "07-simulate-model-warren-i", "data_simul_warren1_effects.rds"))
+
+# ---------------------------------------------------------------------------- #
+# Plot results
+# ---------------------------------------------------------------------------- #
+
+dina_distrib               <- read_rds(here("work", "02-import-dina", "dina_distrib.rds"))
+model_micro_data           <- read_rds(here("work", "04-prepare-data", "model_micro_data.rds"))
+data_simul_tabul           <- read_rds(here("work", "07-simulate-model", "data_simul_tabul.rds"))
+data_simul_effects         <- read_rds(here("work", "07-simulate-model", "data_simul_effects.rds"))
+data_simul_future_tabul    <- read_rds(here("work", "07-simulate-model-future", "data_simul_future_tabul.rds"))
+data_simul_future_effects  <- read_rds(here("work", "07-simulate-model-future", "data_simul_future_effects.rds"))
+data_simul_warren1_tabul   <- read_rds(here("work", "07-simulate-model-warren-i", "data_simul_warren1_tabul.rds"))
+data_simul_warren1_effects <- read_rds(here("work", "07-simulate-model-warren-i", "data_simul_warren1_effects.rds"))
+
+gperc <- c(
+    seq(0, 99000, 1000), seq(99100, 99900, 100),
+    seq(99910, 99990, 10), seq(99991, 99999, 1)
+)
+gperc_size <- diff(c(gperc, 1e5))
+
+tabulations_combined <- bind_rows(
+    model_micro_data %>%
+        filter(asinh(wealth) >= min(grid_cutpoints)) %>% # Reflective barrier
+        group_by(year) %>%
+        arrange(year, wealth) %>%
+        mutate(rank = (cumsum(weight) - weight/2)/sum(weight)) %>%
+        mutate(bracket = findInterval(1e5*rank, gperc)) %>%
+        group_by(year, bracket) %>%
+        summarise(a = weighted.mean(wealth, weight)) %>%
+        arrange(year, bracket) %>%
+        mutate(p = gperc[bracket]) %>%
+        mutate(n = diff(c(p, 1e5))) %>%
+        mutate(s = a*n/1e5/weighted.mean(a, n)) %>%
+        arrange(desc(p)) %>%
+        mutate(ts = cumsum(s)) %>%
+        mutate(bs = 1 - ts) %>%
+        arrange(p) %>%
+        mutate(type = "Observed"),
+    data_simul_warren1_tabul %>% mutate(type = "Simulated\n(counterfactual)"),
+    data_simul_future_tabul %>% mutate(type = "Simulated\n(benchmark)")
+)
+
+# Add 1962 to simulation group (using real value, as this is the starting point)
+tabulations_combined <- tabulations_combined %>% bind_rows(
+    tabulations_combined %>% filter(year == 1962 & type == "Observed") %>% mutate(type = "Simulated\n(benchmark)")
+)
+
+pdf(here("graphs", "07-simulate-model-warren-i", "actual-simul-top1-warren-i.pdf"), height = 3, width = 6)
+print(
+    tabulations_combined %>%
+        filter(p == 99000) %>%
+        bind_rows(dina_distrib %>% filter(year < 1962) %>% transmute(year, ts = wealth_top1, type = "Observed")) %>%
+        group_by(type, year) %>%
+        summarise(ts = median(ts)) %>%
+        filter(year <= 2070) %>%
+        mutate(t = if_else(type == "Observed", year, 5*floor((year - 1)/5))) %>%
+        group_by(type, t) %>%
+        summarise(year = mean(year), ts = median(ts)) %>%
+        ggplot() +
+        theme_bw() +
+        geom_line(aes(x = year, y = ts, color = type), size = 0.7) +
+        geom_point(aes(x = year, y = ts, color = type, shape = type), size = 1.5) +
+        scale_color_brewer(type = "qual", palette = "Set1",
+            limits = c("Observed", "Simulated\n(benchmark)", "Simulated\n(counterfactual)")) +
+        scale_shape_manual(values = c(`Observed` = 1, `Simulated\n(counterfactual)` = 0, `Simulated\n(benchmark)` = 5),
+            limits = c("Observed", "Simulated\n(benchmark)", "Simulated\n(counterfactual)")) +
+        scale_y_continuous(name = "Top 1% share", limits = c(0.2, 0.5), breaks = seq(0.2, 0.5, 0.05),
+            minor_breaks = NULL, labels = label_percent(accuracy = 1)) +
+        scale_x_continuous(name = NULL, limits = c(1910, 2070), breaks = seq(1920, 2060, 20), minor_breaks = NULL) +
+        theme(legend.position = "right", legend.title = element_blank(),
+            legend.text = element_text(margin =  margin(t = 0.1, b = 0.1, unit = "cm")))
+)
+dev.off()

@@ -1,0 +1,168 @@
+# ---------------------------------------------------------------------------- #
+# Import & clear PSID data
+# ---------------------------------------------------------------------------- #
+
+library(tidyverse)
+library(haven)
+library(here)
+library(readr)
+
+options(dplyr.summarise.inform = FALSE)
+
+# Note: Stata code must be run in the folder to generate State file
+data_psid <- read_dta(here("raw-data", "psid", "J305877.dta"))
+
+pivot_spec <- tribble(
+    ~.name, ~.value, ~year,
+
+    "S117",    "wealth", 1984,
+    "S217",    "wealth", 1989,
+    "S317",    "wealth", 1994,
+    "S417",    "wealth", 1999,
+    "S517",    "wealth", 2001,
+    "S617",    "wealth", 2003,
+    "S717",    "wealth", 2005,
+    "S817",    "wealth", 2007,
+    "ER46970", "wealth", 2009,
+    "ER52394", "wealth", 2011,
+    "ER58211", "wealth", 2013,
+    "ER65408", "wealth", 2015,
+    "ER71485", "wealth", 2017,
+    "ER77511", "wealth", 2019,
+
+    "S117A",   "wealth_imputation", 1984,
+    "S217A",   "wealth_imputation", 1989,
+    "S317A",   "wealth_imputation", 1994,
+    "S417A",   "wealth_imputation", 1999,
+    "S517A",   "wealth_imputation", 2001,
+    "S617A",   "wealth_imputation", 2003,
+    "S717A",   "wealth_imputation", 2005,
+    "S817A",   "wealth_imputation", 2007,
+    "ER46971", "wealth_imputation", 2009,
+    "ER52395", "wealth_imputation", 2011,
+    "ER58212", "wealth_imputation", 2013,
+    "ER65409", "wealth_imputation", 2015,
+    "ER71486", "wealth_imputation", 2017,
+    "ER77512", "wealth_imputation", 2019,
+
+    "V439",    "weight", 1968,
+    "V1014",   "weight", 1969,
+    "V1609",   "weight", 1970,
+    "V2321",   "weight", 1971,
+    "V2968",   "weight", 1972,
+    "V3301",   "weight", 1973,
+    "V3721",   "weight", 1974,
+    "V4224",   "weight", 1975,
+    "V5099",   "weight", 1976,
+    "V5665",   "weight", 1977,
+    "V6212",   "weight", 1978,
+    "V6805",   "weight", 1979,
+    "V7451",   "weight", 1980,
+    "V8103",   "weight", 1981,
+    "V8727",   "weight", 1982,
+    "V9433",   "weight", 1983,
+    "V11079",  "weight", 1984,
+    "V12446",  "weight", 1985,
+    "V13687",  "weight", 1986,
+    "V14737",  "weight", 1987,
+    "V16208",  "weight", 1988,
+    "V17612",  "weight", 1989,
+    "V18943",  "weight", 1990,
+    "V20243",  "weight", 1991,
+    "V21547",  "weight", 1992,
+    "V23361",  "weight", 1993,
+    "ER4160",  "weight", 1994,
+    "ER7000",  "weight", 1995,
+    "ER9251",  "weight", 1996,
+    "ER12084", "weight", 1997,
+    "ER16518", "weight", 1999,
+    "ER20394", "weight", 2001,
+    "ER24179", "weight", 2003,
+    "ER28078", "weight", 2005,
+    "ER41069", "weight", 2007,
+    "ER47012", "weight", 2009,
+    "ER52436", "weight", 2011,
+    "ER58257", "weight", 2013,
+    "ER65492", "weight", 2015,
+    "ER71570", "weight", 2017,
+    "ER77631", "weight", 2019,
+
+    "V81",     "income", 1968,
+    "V529",    "income", 1969,
+    "V1514",   "income", 1970,
+    "V2226",   "income", 1971,
+    "V2852",   "income", 1972,
+    "V3256",   "income", 1973,
+    "V3676",   "income", 1974,
+    "V4154",   "income", 1975,
+    "V5029",   "income", 1976,
+    "V5626",   "income", 1977,
+    "V6173",   "income", 1978,
+    "V6766",   "income", 1979,
+    "V7412",   "income", 1980,
+    "V8065",   "income", 1981,
+    "V8689",   "income", 1982,
+    "V9375",   "income", 1983,
+    "V11022",  "income", 1984,
+    "V12371",  "income", 1985,
+    "V13623",  "income", 1986,
+    "V14670",  "income", 1987,
+    "V16144",  "income", 1988,
+    "V17533",  "income", 1989,
+    "V18875",  "income", 1990,
+    "V20175",  "income", 1991,
+    "V21481",  "income", 1992,
+    "V23322",  "income", 1993,
+    "ER4153",  "income", 1994,
+    "ER6993",  "income", 1995,
+    "ER9244",  "income", 1996,
+    "ER12079", "income", 1997,
+    "ER16462", "income", 1999,
+    "ER20456", "income", 2001,
+    "ER24099", "income", 2003,
+    "ER28037", "income", 2005,
+    "ER41027", "income", 2007,
+    "ER46935", "income", 2009,
+    "ER52343", "income", 2011,
+    "ER58152", "income", 2013,
+    "ER65349", "income", 2015,
+    "ER71426", "income", 2017,
+    "ER77448", "income", 2019,
+
+    "V9421",    "marstat", 1983,
+    "V11067",   "marstat", 1984,
+    "V12428",   "marstat", 1985,
+    "V13667",   "marstat", 1986,
+    "V14714",   "marstat", 1987,
+    "V16189",   "marstat", 1988,
+    "V17567",   "marstat", 1989,
+    "V18918",   "marstat", 1990,
+    "V20218",   "marstat", 1991,
+    "V21524",   "marstat", 1992,
+    "V23338",   "marstat", 1993,
+    "ER4159C",  "marstat", 1994,
+    "ER6999C",  "marstat", 1995,
+    "ER9250C",  "marstat", 1996,
+    "ER12223C", "marstat", 1997,
+    "ER16425",  "marstat", 1999,
+    "ER20371",  "marstat", 2001,
+    "ER24152",  "marstat", 2003,
+    "ER28051",  "marstat", 2005,
+    "ER41041",  "marstat", 2007,
+    "ER46985",  "marstat", 2009,
+    "ER52409",  "marstat", 2011,
+    "ER58227",  "marstat", 2013,
+    "ER65463",  "marstat", 2015,
+    "ER71542",  "marstat", 2017,
+    "ER77603",  "marstat", 2019
+)
+
+data_psid <- data_psid %>%
+    mutate(hid = row_number()) %>%
+    pivot_longer_spec(pivot_spec) %>%
+    select(hid, weight, year, marstat, income, wealth, wealth_imputation) %>%
+    filter(!is.na(wealth))
+
+dir.create(here("work", "02-import-psid"), showWarnings = FALSE)
+write_rds(data_psid, here("work", "02-import-psid", "data_psid.rds"))
+
