@@ -206,27 +206,37 @@ dev.off()
 
 tax_base_norebate <- simulate_tax_base_norebate(tax_base_data, threshold2019, 0.12, 1, 1)
 tax_base_rebate <- simulate_tax_base_rebate(tax_base_data, threshold2019, 0.12, 1, 1)
+tax_base_rebate0 <- simulate_tax_base_rebate(tax_base_data, threshold2019/50, 0.12, 1, 1)
 
 data_distrib_tax <- expand_grid(
-    version = c("Initial distribution", "With a 12% wealth tax above $50m (no rebate)", "With a 12% wealth tax above $50m (with lump-sum rebate)"),
+    version = c(
+        "A. Initial distribution",
+        "B. With a 12% wealth tax above $50m (no rebate)",
+        "C. With a 12% wealth tax above $50m (with lump-sum rebate)",
+        "D. With a 12% wealth tax above $1m (with lump-sum rebate)"
+    ),
     group = c("Bottom 50%", "Middle 40%", "Next 9%", "Top 1%")
 )
 
 data_distrib_tax$share <- c(
     diff(-top_shares(tax_base_data$wealth, p = c(0, 0.5, 0.9, 0.99, 1), weight = tax_base_data$weight)),
     diff(-top_shares(tax_base_norebate$wealth, p = c(0, 0.5, 0.9, 0.99, 1), weight = tax_base_norebate$weight_new)),
-    diff(-top_shares(tax_base_rebate$wealth, p = c(0, 0.5, 0.9, 0.99, 1), weight = tax_base_rebate$weight_new))
+    diff(-top_shares(tax_base_rebate$wealth, p = c(0, 0.5, 0.9, 0.99, 1), weight = tax_base_rebate$weight_new)),
+    diff(-top_shares(tax_base_rebate0$wealth, p = c(0, 0.5, 0.9, 0.99, 1), weight = tax_base_rebate0$weight_new))
 )
 
 pdf(file.path("graphs", "08-wealth-tax-simulations", "distribution-wealth-tax-rebate.pdf"), width = 5, height = 4)
 p <- data_distrib_tax %>% ggplot() + theme_bw() +
     geom_col(aes(x = group, y = share, fill = version), position = "dodge") +
     scale_y_continuous(name = "Share of wealth", labels = percent_format(accuracy = 1)) +
-    scale_fill_manual(values = c(
-        `Initial distribution` = rgb(47, 72, 88, max = 255),
-        `With a 12% wealth tax above $50m (no rebate)` = rgb(246, 174, 45, max = 255),
-        `With a 12% wealth tax above $50m (with lump-sum rebate)` = rgb(242, 100, 25, max = 255)
-    )) +
+    scale_fill_manual(
+        values = c(
+            `A. Initial distribution` = rgb(47, 72, 88, max = 255),
+            `B. With a 12% wealth tax above $50m (no rebate)` = rgb(246, 174, 45, max = 255),
+            `C. With a 12% wealth tax above $50m (with lump-sum rebate)` = rgb(242, 100, 25, max = 255),
+            `D. With a 12% wealth tax above $1m (with lump-sum rebate)` = rgb(103, 148, 54, max = 255)
+        )
+    ) +
     theme(panel.grid.major = element_line(size = 0.2), panel.border = element_blank(),
         panel.background = element_blank(), legend.position = "bottom", legend.direction = "vertical",
         legend.title = element_blank(), axis.title.x = element_blank())
