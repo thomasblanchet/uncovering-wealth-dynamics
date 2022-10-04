@@ -15,18 +15,18 @@ handlers(handler_progress(
 ))
 options(dplyr.summarise.inform = FALSE)
 
-rectangular <- read_rds(here("work", "01-utils", "rectangular.rds"))
+rectangular    <- read_rds(here("work", "01-utils", "rectangular.rds"))
 nreg_drv0_grid <- read_rds(here("work", "01-utils", "nreg_drv0_grid.rds"))
 nreg_drv1_grid <- read_rds(here("work", "01-utils", "nreg_drv1_grid.rds"))
-nreg_drv0 <- read_rds(here("work", "01-utils", "nreg_drv0.rds"))
-nreg_drv1 <- read_rds(here("work", "01-utils", "nreg_drv1.rds"))
+nreg_drv0      <- read_rds(here("work", "01-utils", "nreg_drv0.rds"))
+nreg_drv1      <- read_rds(here("work", "01-utils", "nreg_drv1.rds"))
 
 model_micro_data <- read_rds(here("work", "04-prepare-data", "model_micro_data.rds"))
 
-dx <- read_rds(here("work", "04-prepare-data", "dx.rds"))
+dx             <- read_rds(here("work", "04-prepare-data", "dx.rds"))
 grid_cutpoints <- read_rds(here("work", "04-prepare-data", "grid_cutpoints.rds"))
 grid_midpoints <- read_rds(here("work", "04-prepare-data", "grid_midpoints.rds"))
-year_pivot <- read_rds(here("work", "04-prepare-data", "year_pivot.rds"))
+year_pivot     <- read_rds(here("work", "04-prepare-data", "year_pivot.rds"))
 
 # ---------------------------------------------------------------------------- #
 # Estimate density (histogram + smoothing)
@@ -367,5 +367,5 @@ dev.off()
 # ---------------------------------------------------------------------------- #
 
 dir.create(here("work", "04-estimate-distribution-wealth"), showWarnings = FALSE)
-write_rds(model_distribution_wealth, here("work", "04-estimate-distribution-wealth", "model_distribution_wealth.rds"))
+write_rds(model_distribution_wealth,    here("work", "04-estimate-distribution-wealth", "model_distribution_wealth.rds"))
 write_rds(estimate_distribution_wealth, here("work", "04-estimate-distribution-wealth", "estimate_distribution_wealth.rds"))

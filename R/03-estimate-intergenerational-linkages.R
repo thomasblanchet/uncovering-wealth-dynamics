@@ -14,10 +14,10 @@ handlers(handler_progress(
 ))
 options(dplyr.summarise.inform = FALSE)
 
-population <- read_rds(here("work", "02-import-population", "population.rds"))
-life_table <- read_rds(here("work", "02-import-mortality", "life_table.rds"))
+population     <- read_rds(here("work", "02-import-population", "population.rds"))
+life_table     <- read_rds(here("work", "02-import-mortality", "life_table.rds"))
 fertility_both <- read_rds(here("work", "03-estimate-male-fertility", "fertility_both.rds"))
-dina_micro <- read_rds(here("work", "03-combine-calibrate-microdata", "dina_micro.rds"))
+dina_micro     <- read_rds(here("work", "03-combine-calibrate-microdata", "dina_micro.rds"))
 
 # First, calculate sex ratio at birth from the population data
 sex_ratio_birth <- population %>%

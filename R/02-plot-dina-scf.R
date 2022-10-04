@@ -8,18 +8,18 @@ library(scales)
 
 dir.create(here("graphs", "02-plot-dina-scf"), showWarnings = FALSE)
 
-top_shares <- read_rds(here("work", "01-utils", "top_shares.rds"))
-winsorize <- read_rds(here("work", "01-utils", "winsorize.rds"))
+top_shares        <- read_rds(here("work", "01-utils", "top_shares.rds"))
+winsorize         <- read_rds(here("work", "01-utils", "winsorize.rds"))
 weighted_quantile <- read_rds(here("work", "01-utils", "weighted_quantile.rds"))
-rectangular <- read_rds(here("work", "01-utils", "rectangular.rds"))
-nreg_drv0_grid <- read_rds(here("work", "01-utils", "nreg_drv0_grid.rds"))
-nreg_drv0 <- read_rds(here("work", "01-utils", "nreg_drv0.rds"))
+rectangular       <- read_rds(here("work", "01-utils", "rectangular.rds"))
+nreg_drv0_grid    <- read_rds(here("work", "01-utils", "nreg_drv0_grid.rds"))
+nreg_drv0         <- read_rds(here("work", "01-utils", "nreg_drv0.rds"))
 
 dina_distrib <- read_rds(here("work", "02-import-dina", "dina_distrib.rds"))
-dina_micro <- read_rds(here("work", "02-import-dina", "dina_micro.rds"))
-dina_macro <- read_rds(here("work", "02-import-dina", "dina_macro.rds"))
+dina_micro   <- read_rds(here("work", "02-import-dina", "dina_micro.rds"))
+dina_macro   <- read_rds(here("work", "02-import-dina", "dina_macro.rds"))
 
-scf <- read_rds(here("work", "02-import-scf", "scf.rds"))
+scf      <- read_rds(here("work", "02-import-scf", "scf.rds"))
 scf_plus <- read_rds(here("work", "02-import-scf-plus", "scf_plus.rds"))
 
 # ---------------------------------------------------------------------------- #

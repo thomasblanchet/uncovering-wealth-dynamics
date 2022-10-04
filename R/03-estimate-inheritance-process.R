@@ -18,13 +18,13 @@ options(dplyr.summarise.inform = FALSE)
 dir.create(here("graphs", "03-estimate-inheritance-process"), showWarnings = FALSE)
 dir.create(here("work", "03-estimate-inheritance-process"), showWarnings = FALSE)
 
-tricube <- read_rds(here("work", "01-utils", "tricube.rds"))
-stat_match <- read_rds(here("work", "01-utils", "stat_match.rds"))
-scf <- read_rds(here("work", "02-import-scf", "scf.rds"))
-dina_micro_children <- read_rds(here("work", "03-estimate-intergenerational-linkages", "dina_micro_children.rds"))
+tricube              <- read_rds(here("work", "01-utils", "tricube.rds"))
+stat_match           <- read_rds(here("work", "01-utils", "stat_match.rds"))
+scf                  <- read_rds(here("work", "02-import-scf", "scf.rds"))
+dina_micro_children  <- read_rds(here("work", "03-estimate-intergenerational-linkages", "dina_micro_children.rds"))
 tax_schedule_summary <- read_rds(here("work", "02-import-estate-tax-schedule", "tax_schedule_summary.rds"))
 tax_schedule_details <- read_rds(here("work", "02-import-estate-tax-schedule", "tax_schedule_details.rds"))
-estate_tax <- read_rds(here("work", "02-import-estate-tax-schedule", "estate_tax.rds"))
+estate_tax           <- read_rds(here("work", "02-import-estate-tax-schedule", "estate_tax.rds"))
 
 # ---------------------------------------------------------------------------- #
 # The extensive margin:
@@ -567,6 +567,6 @@ with_progress({
 # Save
 # ---------------------------------------------------------------------------- #
 
-write_rds(dina_micro_inheritance, here("work", "03-estimate-inheritance-process", "dina_micro_inheritance.rds"))
-write_rds(copula_inheritance, here("work", "03-estimate-inheritance-process", "copula_inheritance.rds"))
+write_rds(dina_micro_inheritance,        here("work", "03-estimate-inheritance-process", "dina_micro_inheritance.rds"))
+write_rds(copula_inheritance,            here("work", "03-estimate-inheritance-process", "copula_inheritance.rds"))
 write_rds(dina_micro_inheritance_params, here("work", "03-estimate-inheritance-process", "dina_micro_inheritance_params.rds"))

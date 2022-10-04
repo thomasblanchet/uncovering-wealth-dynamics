@@ -358,9 +358,9 @@ fertility <- fertility %>% complete(nesting(year, source, variant), age = 12:75,
 # ---------------------------------------------------------------------------- #
 
 dir.create(here("work", "02-import-female-fertility"), showWarnings = FALSE)
-write_rds(tfr, here("work", "02-import-female-fertility", "tfr.rds"))
-write_rds(tfr_all, here("work", "02-import-female-fertility", "tfr_all.rds"))
-write_rds(fertility, here("work", "02-import-female-fertility", "fertility.rds"))
+write_rds(tfr,           here("work", "02-import-female-fertility", "tfr.rds"))
+write_rds(tfr_all,       here("work", "02-import-female-fertility", "tfr_all.rds"))
+write_rds(fertility,     here("work", "02-import-female-fertility", "fertility.rds"))
 write_rds(fertility_all, here("work", "02-import-female-fertility", "fertility_all.rds"))
 
 # ---------------------------------------------------------------------------- #

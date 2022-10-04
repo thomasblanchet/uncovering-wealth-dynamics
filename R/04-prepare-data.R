@@ -7,10 +7,10 @@ library(here)
 
 options(dplyr.summarise.inform = FALSE)
 
-dina_macro <- read_rds(here("work", "02-import-dina", "dina_macro.rds"))
-dina_micro <- read_rds(here("work", "03-combine-calibrate-microdata", "dina_micro.rds"))
+dina_macro             <- read_rds(here("work", "02-import-dina", "dina_macro.rds"))
+dina_micro             <- read_rds(here("work", "03-combine-calibrate-microdata", "dina_micro.rds"))
 dina_micro_inheritance <- read_rds(here("work", "03-estimate-inheritance-process", "dina_micro_inheritance.rds"))
-dina_micro_marriage <- read_rds(here("work", "03-estimate-marriage-process", "dina_micro_marriage.rds"))
+dina_micro_marriage    <- read_rds(here("work", "03-estimate-marriage-process", "dina_micro_marriage.rds"))
 
 # ---------------------------------------------------------------------------- #
 # Define grid
@@ -158,12 +158,12 @@ model_micro_marriage <- model_micro_marriage %>%
 
 dir.create(here("work", "04-prepare-data"), showWarnings = FALSE)
 
-write_rds(model_macro_data, here("work", "04-prepare-data", "model_macro_data.rds"))
-write_rds(model_micro_data, here("work", "04-prepare-data", "model_micro_data.rds"))
+write_rds(model_macro_data,        here("work", "04-prepare-data", "model_macro_data.rds"))
+write_rds(model_micro_data,        here("work", "04-prepare-data", "model_micro_data.rds"))
 write_rds(model_micro_inheritance, here("work", "04-prepare-data", "model_micro_inheritance.rds"))
-write_rds(model_micro_marriage, here("work", "04-prepare-data", "model_micro_marriage.rds"))
+write_rds(model_micro_marriage,    here("work", "04-prepare-data", "model_micro_marriage.rds"))
 
-write_rds(dx, here("work", "04-prepare-data", "dx.rds"))
+write_rds(dx,             here("work", "04-prepare-data", "dx.rds"))
 write_rds(grid_cutpoints, here("work", "04-prepare-data", "grid_cutpoints.rds"))
 write_rds(grid_midpoints, here("work", "04-prepare-data", "grid_midpoints.rds"))
-write_rds(year_pivot, here("work", "04-prepare-data", "year_pivot.rds"))
+write_rds(year_pivot,     here("work", "04-prepare-data", "year_pivot.rds"))

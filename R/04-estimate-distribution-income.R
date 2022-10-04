@@ -15,21 +15,21 @@ handlers(handler_progress(
 ))
 options(dplyr.summarise.inform = FALSE)
 
-rectangular <- read_rds(here("work", "01-utils", "rectangular.rds"))
+rectangular    <- read_rds(here("work", "01-utils", "rectangular.rds"))
 nreg_drv0_grid <- read_rds(here("work", "01-utils", "nreg_drv0_grid.rds"))
 nreg_drv1_grid <- read_rds(here("work", "01-utils", "nreg_drv1_grid.rds"))
-nreg_drv0 <- read_rds(here("work", "01-utils", "nreg_drv0.rds"))
-nreg_drv1 <- read_rds(here("work", "01-utils", "nreg_drv1.rds"))
-weighted_cov <- read_rds(here("work", "01-utils", "weighted_cov.rds"))
-weighted_var <- read_rds(here("work", "01-utils", "weighted_var.rds"))
-weighted_sd <- read_rds(here("work", "01-utils", "weighted_sd.rds"))
+nreg_drv0      <- read_rds(here("work", "01-utils", "nreg_drv0.rds"))
+nreg_drv1      <- read_rds(here("work", "01-utils", "nreg_drv1.rds"))
+weighted_cov   <- read_rds(here("work", "01-utils", "weighted_cov.rds"))
+weighted_var   <- read_rds(here("work", "01-utils", "weighted_var.rds"))
+weighted_sd    <- read_rds(here("work", "01-utils", "weighted_sd.rds"))
 
 model_micro_data <- read_rds(here("work", "04-prepare-data", "model_micro_data.rds"))
 
-dx <- read_rds(here("work", "04-prepare-data", "dx.rds"))
+dx             <- read_rds(here("work", "04-prepare-data", "dx.rds"))
 grid_cutpoints <- read_rds(here("work", "04-prepare-data", "grid_cutpoints.rds"))
 grid_midpoints <- read_rds(here("work", "04-prepare-data", "grid_midpoints.rds"))
-year_pivot <- read_rds(here("work", "04-prepare-data", "year_pivot.rds"))
+year_pivot     <- read_rds(here("work", "04-prepare-data", "year_pivot.rds"))
 
 # ---------------------------------------------------------------------------- #
 # Calculate income and its variance over the grid
@@ -260,5 +260,5 @@ with_progress({
 
 dir.create(here("work", "04-estimate-distribution-income"), showWarnings = FALSE)
 
-write_rds(model_distribution_income, here("work", "04-estimate-distribution-income", "model_distribution_income.rds"))
+write_rds(model_distribution_income,    here("work", "04-estimate-distribution-income", "model_distribution_income.rds"))
 write_rds(estimate_distribution_income, here("work", "04-estimate-distribution-income", "estimate_distribution_income.rds"))

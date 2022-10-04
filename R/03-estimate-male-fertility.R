@@ -17,8 +17,8 @@ handlers(handler_progress(
 options(dplyr.summarise.inform = FALSE)
 
 census_data <- read_rds(here("work", "02-import-census", "census_data.rds"))
-population <- read_rds(here("work", "02-import-population", "population.rds"))
-fertility <- read_rds(here("work", "02-import-female-fertility", "fertility.rds"))
+population  <- read_rds(here("work", "02-import-population", "population.rds"))
+fertility   <- read_rds(here("work", "02-import-female-fertility", "fertility.rds"))
 
 # Keep weights aside
 census_weights <- census_data %>% fgroup_by(year, serial) %>% fselect(year, serial, hhwt) %>% fmean()

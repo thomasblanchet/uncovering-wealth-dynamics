@@ -176,5 +176,5 @@ marriage_divorce_macro <- marriage_divorce_macro %>%
 # ---------------------------------------------------------------------------- #
 
 dir.create(here("work", "02-import-marital-status"), showWarnings = FALSE)
-write_rds(marital_status_table, here("work", "02-import-marital-status", "marital_status_table.rds"))
+write_rds(marital_status_table,   here("work", "02-import-marital-status", "marital_status_table.rds"))
 write_rds(marriage_divorce_macro, here("work", "02-import-marital-status", "marriage_divorce_macro.rds"))

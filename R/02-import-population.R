@@ -244,7 +244,7 @@ population <- bind_rows(
 # ---------------------------------------------------------------------------- #
 
 dir.create(here("work", "02-import-population"), showWarnings = FALSE)
-write_rds(population, here("work", "02-import-population", "population.rds"))
+write_rds(population,     here("work", "02-import-population", "population.rds"))
 write_rds(population_all, here("work", "02-import-population", "population_all.rds"))
 
 # ---------------------------------------------------------------------------- #

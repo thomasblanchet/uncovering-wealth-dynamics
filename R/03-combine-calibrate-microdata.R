@@ -8,11 +8,11 @@ library(here)
 options(dplyr.summarise.inform = FALSE)
 
 linear_calibration <- read_rds(here("work", "01-utils", "linear_calibration.rds"))
-stat_match <- read_rds(here("work", "01-utils", "stat_match.rds"))
-population <- read_rds(here("work", "02-import-population", "population.rds"))
-life_table <- read_rds(here("work", "02-import-mortality", "life_table.rds"))
-dina_micro <- read_rds(here("work", "02-import-dina", "dina_micro.rds"))
-scf_inter <- read_rds(here("work", "02-import-scf", "scf_inter.rds"))
+stat_match         <- read_rds(here("work", "01-utils", "stat_match.rds"))
+population         <- read_rds(here("work", "02-import-population", "population.rds"))
+life_table         <- read_rds(here("work", "02-import-mortality", "life_table.rds"))
+dina_micro         <- read_rds(here("work", "02-import-dina", "dina_micro.rds"))
+scf_inter          <- read_rds(here("work", "02-import-scf", "scf_inter.rds"))
 
 # Use age data from the SCF by preserving the emprical copula between age
 # and net wealth. We treat separately singles and married couples to preserve

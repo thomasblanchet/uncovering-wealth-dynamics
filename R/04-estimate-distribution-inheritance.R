@@ -249,4 +249,4 @@ with_progress({
 
 dir.create(here("work", "04-estimate-distribution-inheritance"), showWarnings = FALSE)
 write_rds(model_distribution_inheritance, here("work", "04-estimate-distribution-inheritance", "model_distribution_inheritance.rds"))
-write_rds(inheritance_rate, here("work", "04-estimate-distribution-inheritance", "inheritance_rate.rds"))
+write_rds(inheritance_rate,               here("work", "04-estimate-distribution-inheritance", "inheritance_rate.rds"))

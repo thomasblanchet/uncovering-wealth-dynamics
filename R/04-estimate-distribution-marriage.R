@@ -25,8 +25,8 @@ weighted_sd    <- read_rds(here("work", "01-utils", "weighted_sd.rds"))
 
 model_micro_marriage <- read_rds(here("work", "04-prepare-data", "model_micro_marriage.rds"))
 
-dx             <- read_rds(here("work", "04-prepare-data", "dx.rds"))
-year_pivot     <- read_rds(here("work", "04-prepare-data", "year_pivot.rds"))
+dx         <- read_rds(here("work", "04-prepare-data", "dx.rds"))
+year_pivot <- read_rds(here("work", "04-prepare-data", "year_pivot.rds"))
 
 # ---------------------------------------------------------------------------- #
 # Re-define grid
@@ -211,4 +211,4 @@ with_progress({
 
 dir.create(here("work", "04-estimate-distribution-marriage"), showWarnings = FALSE)
 write_rds(model_distribution_marriage, here("work", "04-estimate-distribution-marriage", "model_distribution_marriage.rds"))
-write_rds(model_distribution_divorce, here("work", "04-estimate-distribution-marriage", "model_distribution_divorce.rds"))
+write_rds(model_distribution_divorce,  here("work", "04-estimate-distribution-marriage", "model_distribution_divorce.rds"))

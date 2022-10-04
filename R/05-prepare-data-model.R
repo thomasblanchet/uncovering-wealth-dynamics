@@ -192,7 +192,7 @@ model_all_data <- prepare_data_model(10, 5)
 # ---------------------------------------------------------------------------- #
 
 dir.create(here("work", "05-prepare-data-model"), showWarnings = FALSE)
-write_rds(model_all_data, here("work", "05-prepare-data-model", "model_all_data.rds"))
+write_rds(model_all_data,     here("work", "05-prepare-data-model", "model_all_data.rds"))
 write_rds(prepare_data_model, here("work", "05-prepare-data-model", "prepare_data_model.rds"))
-write_rds(pop_growth, here("work", "05-prepare-data-model", "pop_growth.rds"))
-write_rds(pop_death, here("work", "05-prepare-data-model", "pop_death.rds"))
+write_rds(pop_growth,         here("work", "05-prepare-data-model", "pop_growth.rds"))
+write_rds(pop_death,          here("work", "05-prepare-data-model", "pop_death.rds"))

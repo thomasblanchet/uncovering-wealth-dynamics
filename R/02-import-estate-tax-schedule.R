@@ -63,7 +63,7 @@ estate_tax <- function(estate_value, year) {
 dir.create(here("work", "02-import-estate-tax-schedule"), showWarnings = FALSE)
 write_rds(tax_schedule_summary, here("work", "02-import-estate-tax-schedule", "tax_schedule_summary.rds"))
 write_rds(tax_schedule_details, here("work", "02-import-estate-tax-schedule", "tax_schedule_details.rds"))
-write_rds(estate_tax, here("work", "02-import-estate-tax-schedule", "estate_tax.rds"))
+write_rds(estate_tax,           here("work", "02-import-estate-tax-schedule", "estate_tax.rds"))
 
 # ---------------------------------------------------------------------------- #
 # Plot the marginal tax rates

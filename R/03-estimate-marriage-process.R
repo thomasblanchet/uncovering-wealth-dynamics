@@ -17,12 +17,12 @@ options(dplyr.summarise.inform = FALSE)
 dir.create(here("graphs", "03-estimate-marriage-process"), showWarnings = FALSE)
 dir.create(here("work", "03-estimate-marriage-process"), showWarnings = FALSE)
 
-tricube <- read_rds(here("work", "01-utils", "tricube.rds"))
-stat_match <- read_rds(here("work", "01-utils", "stat_match.rds"))
-top_shares <- read_rds(here("work", "01-utils", "top_shares.rds"))
-sipp_data <- read_rds(here("work", "02-import-sipp", "sipp_data.rds"))
-dina_micro <- read_rds(here("work", "03-combine-calibrate-microdata", "dina_micro.rds"))
-marriage_divorce_rate <- read_rds(here("work", "03-estimate-marriage-rates", "marriage_divorce_rate.rds"))
+tricube                <- read_rds(here("work", "01-utils", "tricube.rds"))
+stat_match             <- read_rds(here("work", "01-utils", "stat_match.rds"))
+top_shares             <- read_rds(here("work", "01-utils", "top_shares.rds"))
+sipp_data              <- read_rds(here("work", "02-import-sipp", "sipp_data.rds"))
+dina_micro             <- read_rds(here("work", "03-combine-calibrate-microdata", "dina_micro.rds"))
+marriage_divorce_rate  <- read_rds(here("work", "03-estimate-marriage-rates", "marriage_divorce_rate.rds"))
 marriage_divorce_macro <- read_rds(here("work", "02-import-marital-status", "marriage_divorce_macro.rds"))
 
 # Wealth data is only collected on an annual basis: so we aggregate the
@@ -327,7 +327,7 @@ dina_micro_marriage <- dina_micro_marriage %>% select(year, id, weight, wealth,
 # ---------------------------------------------------------------------------- #
 
 write_rds(dina_micro_marriage, here("work", "03-estimate-marriage-process", "dina_micro_marriage.rds"))
-write_rds(copula_marriage, here("work", "03-estimate-marriage-process", "copula_marriage.rds"))
+write_rds(copula_marriage,     here("work", "03-estimate-marriage-process", "copula_marriage.rds"))
 write_rds(spouse_wealth_share, here("work", "03-estimate-marriage-process", "spouse_wealth_share.rds"))
 
 # ---------------------------------------------------------------------------- #

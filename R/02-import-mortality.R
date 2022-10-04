@@ -278,8 +278,8 @@ life_expectancy <- life_table %>%
     arrange(source, variant, sex, year, age)
 
 dir.create(here("work", "02-import-mortality"), showWarnings = FALSE)
-write_rds(life_table_all, here("work", "02-import-mortality", "life_table_all.rds"))
-write_rds(life_table, here("work", "02-import-mortality", "life_table.rds"))
+write_rds(life_table_all,  here("work", "02-import-mortality", "life_table_all.rds"))
+write_rds(life_table,      here("work", "02-import-mortality", "life_table.rds"))
 write_rds(life_expectancy, here("work", "02-import-mortality", "life_expectancy.rds"))
 
 # ---------------------------------------------------------------------------- #

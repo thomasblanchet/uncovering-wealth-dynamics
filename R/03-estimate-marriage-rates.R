@@ -12,10 +12,10 @@ handlers(handler_progress(
 ))
 options(dplyr.summarise.inform = FALSE)
 
-winsorize <- read_rds(here("work", "01-utils", "winsorize.rds"))
-marital_status_table <- read_rds(here("work", "02-import-marital-status", "marital_status_table.rds"))
+winsorize              <- read_rds(here("work", "01-utils", "winsorize.rds"))
+marital_status_table   <- read_rds(here("work", "02-import-marital-status", "marital_status_table.rds"))
 marriage_divorce_macro <- read_rds(here("work", "02-import-marital-status", "marriage_divorce_macro.rds"))
-population <- read_rds(here("work", "02-import-population", "population.rds"))
+population             <- read_rds(here("work", "02-import-population", "population.rds"))
 
 # Estimate as proportion
 marital_status_table <- marital_status_table %>%
